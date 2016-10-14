@@ -1,0 +1,4 @@
+1.   As a beginner player, I want a tutorial level, so I can easily learn how to play the game. 
+2.   As an advanced player, I want at least 10 hours of gameplay, so I can have fun.
+3.   As a gamer, I want an endless game mode, so the game will have replay value.
+
