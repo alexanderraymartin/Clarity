@@ -1,0 +1,3 @@
+The system shall display a percentage-based indicator of progress.
+The system shall display the player's current health and strength at all times.
+The system shall display the current system time whenever the game is paused.
