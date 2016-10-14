@@ -1,0 +1,4 @@
+28. The system shall allow the user to adjust the volume of in-game sound
+    effects.
+29. The system shall adjust the player's vision based on their level progress.
+30. The system shall allow custom player avatars.
