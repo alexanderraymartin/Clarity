@@ -1,0 +1,5 @@
+Dustin Bolt
+Non-Functional Requirements
+The system shall take no longer than 5 minutes to learn the controls.
+The system shall require a password to access user profile.
+The system shall run with 1GB or less of RAM.
