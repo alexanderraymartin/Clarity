@@ -1,3 +1,0 @@
-The system shall allow the user to move in four different directions using the arrow keys.
-The system shall provide a hint to give the player an indication that they’re going in the correct direction.
-The system shall allow the player to pause the game during gameplay.

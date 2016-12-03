@@ -1,3 +1,0 @@
-As a player/user, I want to gain power ups throughout the game, so that I can get through the game more easily.
-As a player/user, I want to move in more than one direction, so that I can dodge the enemies.
-As a player/user, I want to receive an obvious hint if I’m going in the correct direction, so that I’m not randomly moving around looking for the goal.

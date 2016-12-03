@@ -1,3 +1,0 @@
-The system shall allow the user to adjust the volume of in-game sound effects.
-The system shall adjust the player’s vision based on their level progress.
-The system shall allow custom player avatars.

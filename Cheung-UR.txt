@@ -1,3 +1,0 @@
-1. As a user, I want to listen to an upbeat soundtrack, so that I am more engaged with the game.
-2. As a beginner user, I want a tutorial, so that I can learn the basics of the game.
-3. As a veteran user, I want to view my accomplishment as I progress, so that I have goals to beat.

@@ -1,3 +1,0 @@
-1.	The system shall poll the user for input within every 100 milliseconds while the game is running.
-2.	The system shall display a tip for the user within every minute during the tutorial level.
-3.	The system shall save the user's data within five seconds upon receiving a save request from the user.

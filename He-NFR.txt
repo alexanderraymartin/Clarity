@@ -1,3 +1,0 @@
-The system shall allow users to download the game in Windows 7 and above.
-The system shall allow users to exit the game when unexpected bugs occurred. 
-The system shall respond accordingly within 0.1 seconds after user input.

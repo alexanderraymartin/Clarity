@@ -1,3 +1,0 @@
-1. The system shall be playable through Windows XP and up using 2.0 or higher.
-2. The system shall take no longer than 5 minutes for any person that is at least eight years old to reach 10 points.
-3. The system shall be compatible with either keyboard and mouse or controller.

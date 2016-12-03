@@ -1,9 +1,0 @@
-Dustin Bolt
-Functional Requirements
-
-1. The system shall display the users score at the completion of each level.
-2. The system shall register a user input within a 100th of a second after input.
-3. The system shall display when a player loses a life.
-4. The system shall allow the player to pause given that input.
-5. The system shall have multiple levels.
-
