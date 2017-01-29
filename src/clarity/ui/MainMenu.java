@@ -1,4 +1,4 @@
-package ui;
+package clarity.ui;
 
 public class MainMenu {
 

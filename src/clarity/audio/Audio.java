@@ -1,4 +1,4 @@
-package audio;
+package clarity.audio;
 
 public class Audio {
 

@@ -1,4 +1,4 @@
-package graphics.entity;
+package clarity.graphics.entity;
 
 public abstract class Entity {
 
