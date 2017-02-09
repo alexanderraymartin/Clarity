@@ -35,9 +35,10 @@ public class Mouse implements MouseListener, MouseMotionListener {
   }
 
   /**
-   * @return True button clicked and released.
+   * @return True if button clicked and released.
    */
   public static boolean buttonClickAndRelease() {
+    Mouse.getButton();
     boolean temp = mouseReleased;
     mouseReleased = false;
     return temp;

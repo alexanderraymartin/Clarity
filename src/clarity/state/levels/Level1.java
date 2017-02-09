@@ -1,18 +1,19 @@
-package clarity.ui;
+package clarity.state.levels;
 
 import clarity.state.State;
 import clarity.state.StateManager;
-import clarity.state.levels.Level1;
+import clarity.ui.MainMenu;
 import clarity.utilities.input.Mouse;
 
-public class MainMenu extends State {
+public class Level1 extends State {
 
   /**
    * @param manager The state manager.
    */
-  public MainMenu(StateManager manager) {
-    super(manager, "/textures/backgrounds/mainMenu.png", "musicFileName", "mapFileName");
+  public Level1(StateManager manager) {
+    super(manager, "/textures/backgrounds/level1.png", "musicFileName", "mapFileName");
   }
+
 
   /**
    * (non-Javadoc)
@@ -22,7 +23,8 @@ public class MainMenu extends State {
   public void update() {
     super.update();
     if (Mouse.buttonClickAndRelease()) {
-      manager.setCurrentState(new Level1(manager));
+      manager.setCurrentState(new MainMenu(manager));
     }
   }
+
 }

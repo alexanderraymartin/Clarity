@@ -15,7 +15,11 @@ public class Background {
   private double xpos;
   private double ypos;
 
-  public Background() {
+  /**
+   * @param path Path to the asset.
+   */
+  public Background(String path) {
+    loadBackground(path);
   }
 
   // TODO Add asset manager implementation.
@@ -24,7 +28,7 @@ public class Background {
    * 
    * @param path Path to the asset.
    */
-  public void loadBackground(String path) {
+  private void loadBackground(String path) {
     try {
       image = ImageIO.read(getClass().getResourceAsStream(path));
     } catch (IOException exception) {
@@ -45,7 +49,8 @@ public class Background {
    * @param graphics Graphics to render.
    */
   public void render(Graphics2D graphics) {
-    graphics.drawImage(image, (int) xpos, (int) ypos, Game.WIDTH, Game.HEIGHT, null);
+    graphics.drawImage(image, (int) xpos, (int) ypos, Game.WIDTH * Game.SCALE,
+        Game.HEIGHT * Game.SCALE, null);
   }
 
 }

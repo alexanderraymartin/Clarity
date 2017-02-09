@@ -1,8 +1,9 @@
 package clarity.main;
 
-import clarity.graphics.Background;
 import clarity.state.StateManager;
 import clarity.utilities.Timer;
+import clarity.utilities.input.Keyboard;
+import clarity.utilities.input.Mouse;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -40,8 +41,8 @@ public class Game extends JPanel {
   // private int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
   // private int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-  // TODO remove this variable - testing purposes.
-  private Background bg;
+  private Keyboard keyboard;
+  private Mouse mouse;
 
   /**
    * Game constructor.
@@ -50,6 +51,12 @@ public class Game extends JPanel {
     setPreferredSize(new Dimension((int) (WIDTH * SCALE), (int) (HEIGHT * SCALE)));
     setFocusable(true);
     requestFocus();
+    keyboard = new Keyboard();
+    mouse = new Mouse();
+    addKeyListener(keyboard);
+    addMouseListener(mouse);
+    addMouseMotionListener(mouse);
+
     frame = new JFrame();
     frame.add(this);
     frame.pack();
@@ -57,12 +64,9 @@ public class Game extends JPanel {
     frame.setLocationRelativeTo(null);
     frame.setTitle(TITLE);
     frame.setResizable(false);
+    // frame.setUndecorated(true); // no boarders
     // frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
     frame.setVisible(true);
-
-    // TODO remove
-    bg = new Background();
-    bg.loadBackground("/textures/backgrounds/cat.png");
     run();
   }
 
@@ -93,12 +97,12 @@ public class Game extends JPanel {
   }
 
   private void update() {
-
+    keyboard.update();
+    manager.update();
   }
 
   private void render() {
     graphics = (Graphics2D) getGraphics();
-    bg.render(graphics);
     manager.render(graphics);
   }
 
