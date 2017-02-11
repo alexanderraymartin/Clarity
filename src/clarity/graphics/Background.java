@@ -11,26 +11,27 @@ import javax.imageio.ImageIO;
 
 public class Background {
 
+  private static final String PATH = "/textures/backgrounds/";
   private BufferedImage image;
   private double xpos;
   private double ypos;
 
   /**
-   * @param path Path to the asset.
+   * @param fileName Name of the file.
    */
-  public Background(String path) {
-    loadBackground(path);
+  public Background(String fileName) {
+    loadBackground(fileName);
   }
 
   // TODO Add asset manager implementation.
   /**
    * Load the background image.
    * 
-   * @param path Path to the asset.
+   * @param fileName Path to the asset.
    */
-  private void loadBackground(String path) {
+  private void loadBackground(String fileName) {
     try {
-      image = ImageIO.read(getClass().getResourceAsStream(path));
+      image = ImageIO.read(getClass().getResourceAsStream(PATH + fileName));
     } catch (IOException exception) {
       exception.printStackTrace();
     }

@@ -24,6 +24,8 @@ public abstract class State {
 
 
   /**
+   * init() is called at the end of this constructor.
+   * 
    * @param manager The state manager.
    * @param backgroundFileName The name of the background image file.
    * @param musicFileName The name of the music file.
@@ -35,17 +37,26 @@ public abstract class State {
     this.backgroundFileName = backgroundFileName;
     this.musicFileName = musicFileName;
     this.mapFileName = mapFileName;
-    this.background = new Background(backgroundFileName);
-    this.entities = new ArrayList<Entity>();
-    this.projectiles = new ArrayList<Projectile>();
-    this.particles = new ArrayList<Particle>();
+    init();
+  }
+
+  /**
+   * init() is not called through this constructor. Call init() in the sub-class constructor.
+   * 
+   * @param manager The state manager.
+   */
+  public State(StateManager manager) {
+    this.manager = manager;
   }
 
   /**
    * Initialize the state.
    */
   public void init() {
-    // TODO
+    background = new Background(backgroundFileName);
+    entities = new ArrayList<Entity>();
+    projectiles = new ArrayList<Projectile>();
+    particles = new ArrayList<Particle>();
   }
 
   /**
