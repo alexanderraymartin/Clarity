@@ -1,11 +1,11 @@
 package clarity.graphics.entity;
 
 public abstract class Entity {
-  private double size;
-  private Sprite sprite;
-  private int movementSpeed;
-  private double xLocation;
-  private double yLocation;
+  protected double size;
+  protected Sprite sprite;
+  protected int movementSpeed;
+  protected double xLocation;
+  protected double yLocation;
   
 
   
