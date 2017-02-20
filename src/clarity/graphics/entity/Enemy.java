@@ -1,9 +1,9 @@
 package clarity.graphics.entity;
 
-public class Enemy extends Entity{
+public class Enemy extends Entity {
   private double size;
-  private Sprite attack; 
-  void Move() {
-  }
+  private Sprite attack;
+
+  public void move() {}
 
 }

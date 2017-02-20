@@ -6,65 +6,74 @@ public class Player extends Entity {
   private double movementSpeed;
   private double health;
   private double lightSource;
-  private boolean left, right, up, down;
+  private boolean left;
+  private boolean right;
+  private boolean up;
+  private boolean down;
 
   public Player() {
-    
+
   }
-  
+
   /**
-   * @param newLeft left input value
+   * @param newLeft left input value.
    */
   public void setLeft(boolean newLeft) {
-     left = newLeft; 
+    left = newLeft;
   }
-  
+
   /**
-   * @param newUp up input value
+   * @param newUp up input value.
    */
   public void setUp(boolean newUp) {
-     up = newUp;
+    up = newUp;
   }
-  
+
   /**
-   * @param newDown down input value
+   * @param newDown down input value.
    */
   public void setDown(boolean newDown) {
-     down = newDown;
+    down = newDown;
   }
-  
+
   /**
-   * @param newRight right input value
+   * @param newRight right input value.
    */
   public void setRight(boolean newRight) {
-     right = newRight;
+    right = newRight;
   }
-  
+
   public void update() {
     move();
   }
-  
+
   private void move() {
-    if(left){
-      xLocation = xLocation - movementSpeed;
+    if (left) {
+      xlocation = xlocation - movementSpeed;
     }
-    if(right){
-      xLocation = xLocation + movementSpeed;
+    if (right) {
+      xlocation = xlocation + movementSpeed;
     }
-    if(up){
-      yLocation = yLocation - movementSpeed;
+    if (up) {
+      ylocation = ylocation - movementSpeed;
     }
-    if(down){
-      yLocation = yLocation + movementSpeed;
+    if (down) {
+      ylocation = ylocation + movementSpeed;
     }
   }
-  
-  public double getX(){
-    return xLocation;
- }
 
- public double getY(){
-    return yLocation;
- }
+  /**
+   * @return The x location.
+   */
+  public double getX() {
+    return xlocation;
+  }
+
+  /**
+   * @return The y location.
+   */
+  public double getY() {
+    return ylocation;
+  }
 
 }

@@ -72,12 +72,12 @@ public class Audio {
   }
 
   /**
-   * @param amount Adjusts the gain by the percentage amount
+   * @param amount Adjusts the gain by the percentage amount.
    */
   public void setGain(float amount) {
     float interval = Math.abs(gainControl.getMaximum() - gainControl.getMinimum()) / 100;
-    
-    gainControl.setValue(gainControl.getMinimum() + (float)(amount * interval));
+
+    gainControl.setValue(gainControl.getMinimum() + (float) (amount * interval));
     System.out.println(gainControl.getValue());
   }
 
