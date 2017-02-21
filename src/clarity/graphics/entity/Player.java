@@ -2,7 +2,6 @@ package clarity.graphics.entity;
 
 public class Player extends Entity {
 
-  private double size;
   private double movementSpeed;
   private double health;
   private double lightSource;
@@ -49,16 +48,16 @@ public class Player extends Entity {
 
   private void move() {
     if (left) {
-      xlocation = xlocation - movementSpeed;
+      xLocation = xLocation - movementSpeed;
     }
     if (right) {
-      xlocation = xlocation + movementSpeed;
+      xLocation = xLocation + movementSpeed;
     }
     if (up) {
-      ylocation = ylocation - movementSpeed;
+      yLocation = yLocation - movementSpeed;
     }
     if (down) {
-      ylocation = ylocation + movementSpeed;
+      yLocation = yLocation + movementSpeed;
     }
   }
 
@@ -66,14 +65,33 @@ public class Player extends Entity {
    * @return The x location.
    */
   public double getX() {
-    return xlocation;
+    return xLocation;
   }
 
   /**
    * @return The y location.
    */
   public double getY() {
-    return ylocation;
+    return yLocation;
   }
+  
+  /**
+   * 
+   * @param light value added to current lightSource value
+   */
+  private void gotLightSource(int light) {
+    lightSource += light;
+  }
+  
+  /*
+   * health gained
+   */
+   private void gainHealth(int boost) {
+     health += boost;
+   }
+   
+   private void loseHealth(int damage) {
+     health -= damage;
+   }
 
 }
