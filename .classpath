@@ -18,5 +18,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="libraries/jl1.0.1.jar"/>
+	<classpathentry kind="lib" path="libraries/mp3spi1.9.5.jar"/>
+	<classpathentry kind="lib" path="libraries/tritonus_share.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
