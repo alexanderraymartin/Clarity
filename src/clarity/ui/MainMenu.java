@@ -16,6 +16,7 @@ public class MainMenu extends State {
    */
   public MainMenu(StateManager manager) {
     super(manager, BACKGROUND_FILE_NAME, MUSIC_FILE_NAME, MAP_FILE_NAME);
+    init();
   }
 
   /**
