@@ -7,6 +7,8 @@ import clarity.utilities.Save;
 
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
+
 public class TestSave
 {
 
@@ -17,8 +19,9 @@ public class TestSave
     Save save = new Save("", currentState);
 
     assertEquals("", save.getPath());
-    assertNotNull(save.getSavedState());
   }
+
+
 
   @Test
   public void testSetPath() {

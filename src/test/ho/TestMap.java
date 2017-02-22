@@ -1,14 +1,15 @@
 package test.ho;
 
 import clarity.graphics.Map;
-
 import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class TestMap
 {
    @Test
    public void testGetHeight() {
-      Map map = new Map(5, 10);
+      Map map = new Map(5,  10);
 
       assertEquals(10, map.getHeight());
    }
