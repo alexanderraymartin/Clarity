@@ -76,18 +76,19 @@ public class Audio {
    */
   public void setGain(float amount) {
     float mult;
-    
-    if (amount > 100)
+
+    if (amount > 100) {
       mult = 100;
-    else if (amount < 0)
+    } else if (amount < 0) {
       mult = 0;
-    else
+    } else {
       mult = amount;
-    
+    }
+
     float interval = Math.abs(gainControl.getMaximum() - gainControl.getMinimum()) / 100;
     gainControl.setValue(gainControl.getMinimum() + mult * interval);
   }
-  
+
   public float getVolume() {
     return gainControl.getValue();
   }

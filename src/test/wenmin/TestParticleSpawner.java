@@ -1,6 +1,6 @@
 package test.wenmin;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.entity.particle.ParticleSpawner;
@@ -8,7 +8,6 @@ import clarity.graphics.entity.particle.ParticleSpawner;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
 
 public class TestParticleSpawner {
 
@@ -21,7 +20,7 @@ public class TestParticleSpawner {
     arr.add(particle);
     assertEquals(arr, ps.getArray());
   }
-  
+
   @Test
   public void particleSpawnerGet() {
     ArrayList<Particle> arr = new ArrayList<Particle>();

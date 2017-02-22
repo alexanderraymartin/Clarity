@@ -48,16 +48,16 @@ public class Player extends Entity {
 
   private void move() {
     if (left) {
-      xLocation = xLocation - movementSpeed;
+      xlocation = xlocation - movementSpeed;
     }
     if (right) {
-      xLocation = xLocation + movementSpeed;
+      xlocation = xlocation + movementSpeed;
     }
     if (up) {
-      yLocation = yLocation - movementSpeed;
+      ylocation = ylocation - movementSpeed;
     }
     if (down) {
-      yLocation = yLocation + movementSpeed;
+      ylocation = ylocation + movementSpeed;
     }
   }
 
@@ -65,41 +65,40 @@ public class Player extends Entity {
    * @return The x location.
    */
   public double getX() {
-    return xLocation;
+    return xlocation;
   }
 
   /**
    * @return The y location.
    */
   public double getY() {
-    return yLocation;
+    return ylocation;
   }
-  
+
   /**
-   * 
-   * @param light value added to current lightSource value
+   * @param light Value added to current lightSource value.
    */
   public void gotLightSource(int light) {
     lightSource += light;
   }
-  
-  /*
-   * health gained
+
+  /**
+   * @param boost The amount of health gained.
    */
-   public void gainHealth(int boost) {
-     health += boost;
-   }
-   
-   private void loseHealth(int damage) {
-     health -= damage;
-   }
-   
-   public double getHealth() {
-     return health;
-   }
-   
-   public double getLight(){
-     return lightSource;
-   }
+  public void gainHealth(int boost) {
+    health += boost;
+  }
+
+  public void loseHealth(int damage) {
+    health -= damage;
+  }
+
+  public double getHealth() {
+    return health;
+  }
+
+  public double getLight() {
+    return lightSource;
+  }
 
 }

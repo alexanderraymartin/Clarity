@@ -1,5 +1,7 @@
 package test.ho;
 
+import static junit.framework.TestCase.assertEquals;
+
 import clarity.state.Level;
 import clarity.state.State;
 import clarity.state.StateManager;
@@ -7,10 +9,7 @@ import clarity.utilities.Save;
 
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
-
-public class TestSave
-{
+public class TestSave {
 
   @Test
   public void testConstructor() {
