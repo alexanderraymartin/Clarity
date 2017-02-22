@@ -3,8 +3,8 @@ package clarity.graphics.entity;
 public class Player extends Entity {
 
   private double movementSpeed;
-  private double health;
-  private double lightSource;
+  private double health = 100;
+  private double lightSource = 100;
   private boolean left;
   private boolean right;
   private boolean up;
@@ -79,19 +79,27 @@ public class Player extends Entity {
    * 
    * @param light value added to current lightSource value
    */
-  private void gotLightSource(int light) {
+  public void gotLightSource(int light) {
     lightSource += light;
   }
   
   /*
    * health gained
    */
-   private void gainHealth(int boost) {
+   public void gainHealth(int boost) {
      health += boost;
    }
    
    private void loseHealth(int damage) {
      health -= damage;
+   }
+   
+   public double getHealth() {
+     return health;
+   }
+   
+   public double getLight(){
+     return lightSource;
    }
 
 }
