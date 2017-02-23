@@ -11,11 +11,11 @@ public class TestEnemy {
   @Test
   public void testRandomMove() {
     Enemy enemy = new Enemy();
-    enemy.xlocation = 20;
-    enemy.ylocation = 20;
+    enemy.xcoord = 20;
+    enemy.ycoord = 20;
     enemy.move();
 
-    assertNotEquals(enemy.xlocation, 20);
-    assertNotEquals(enemy.ylocation, 20);
+    assertNotEquals(enemy.xcoord, 20);
+    assertNotEquals(enemy.ycoord, 20);
   }
 }

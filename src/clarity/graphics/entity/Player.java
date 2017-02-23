@@ -48,16 +48,16 @@ public class Player extends Entity {
 
   private void move() {
     if (left) {
-      xlocation = xlocation - movementSpeed;
+      xcoord = xcoord - movementSpeed;
     }
     if (right) {
-      xlocation = xlocation + movementSpeed;
+      xcoord = xcoord + movementSpeed;
     }
     if (up) {
-      ylocation = ylocation - movementSpeed;
+      ycoord = ycoord - movementSpeed;
     }
     if (down) {
-      ylocation = ylocation + movementSpeed;
+      ycoord = ycoord + movementSpeed;
     }
   }
 
@@ -65,14 +65,14 @@ public class Player extends Entity {
    * @return The x location.
    */
   public double getX() {
-    return xlocation;
+    return xcoord;
   }
 
   /**
    * @return The y location.
    */
   public double getY() {
-    return ylocation;
+    return ycoord;
   }
 
   /**
@@ -99,6 +99,10 @@ public class Player extends Entity {
 
   public double getLight() {
     return lightSource;
+  }
+
+  protected void init() {
+
   }
 
 }

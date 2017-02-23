@@ -1,5 +1,9 @@
 package clarity.graphics.entity;
 
-public class Projectile {
+public abstract class Projectile extends Entity {
+
+  public Projectile(int mobId) {
+    super(mobId);
+  }
 
 }

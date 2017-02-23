@@ -18,9 +18,9 @@ public abstract class State {
   protected String mapFileName;
 
 
-  private ArrayList<Entity> entities;
-  private ArrayList<Projectile> projectiles;
-  private ArrayList<Particle> particles;
+  private static ArrayList<Entity> entities;
+  private static ArrayList<Projectile> projectiles;
+  private static ArrayList<Particle> particles;
 
 
   /**
@@ -56,6 +56,37 @@ public abstract class State {
     entities = new ArrayList<Entity>();
     projectiles = new ArrayList<Projectile>();
     particles = new ArrayList<Particle>();
+  }
+
+  /**
+   * @return The arrayList of entities.
+   */
+  public static ArrayList<Entity> getEntities() {
+    if (entities == null) {
+      entities = new ArrayList<Entity>();
+    }
+    return entities;
+  }
+
+  /**
+   * @return The arrayList of projectiles.
+   */
+  public static ArrayList<Projectile> getProjectiles() {
+    if (projectiles == null) {
+      projectiles = new ArrayList<Projectile>();
+    }
+    return projectiles;
+  }
+
+
+  /**
+   * @return The arrayList of particles.
+   */
+  public static ArrayList<Particle> getParticles() {
+    if (particles == null) {
+      particles = new ArrayList<Particle>();
+    }
+    return particles;
   }
 
   /**

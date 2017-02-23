@@ -1,6 +1,8 @@
 package clarity.graphics;
 
 public class Map {
+  private double xcoord;
+  private double ycoord;
   private int height;
   private int width;
 
@@ -33,5 +35,13 @@ public class Map {
 
   public int getHeight() {
     return this.height;
+  }
+
+  public double getX() {
+    return xcoord;
+  }
+
+  public double getY() {
+    return ycoord;
   }
 }

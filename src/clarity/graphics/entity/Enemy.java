@@ -3,7 +3,7 @@ package clarity.graphics.entity;
 import java.util.Random;
 
 public class Enemy extends Entity {
-  protected Sprite attack;
+  protected SpriteSheet attack;
   private static final int UP = 1;
   private static final int RIGHT = 2;
   private static final int DOWN = 3;
@@ -16,23 +16,27 @@ public class Enemy extends Entity {
     Random move = new Random();
     int next = move.nextInt(5);
     if (next == UP) {
-      ylocation += movementSpeed;
+      ycoord += moveSpeed;
     }
     if (next == DOWN) {
-      ylocation -= movementSpeed;
+      ycoord -= moveSpeed;
     }
     if (next == RIGHT) {
-      xlocation += movementSpeed;
+      xcoord += moveSpeed;
     }
     if (next == LEFT) {
-      xlocation += movementSpeed;
+      xcoord += moveSpeed;
     }
-    if (xlocation < 0) {
-      xlocation = 0;
+    if (xcoord < 0) {
+      xcoord = 0;
     }
-    if (ylocation < 0) {
-      ylocation = 0;
+    if (ycoord < 0) {
+      ycoord = 0;
     }
+  }
+
+  protected void init() {
+
   }
 
 }
