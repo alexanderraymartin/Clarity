@@ -1,4 +1,4 @@
-package test.wenmin;
+package test.he;
 
 import static org.junit.Assert.assertEquals;
 

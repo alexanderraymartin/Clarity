@@ -1,4 +1,4 @@
-package test.wenmin;
+package test.he;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

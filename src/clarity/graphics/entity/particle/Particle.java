@@ -6,6 +6,7 @@ public class Particle extends Entity {
   double xpos;
   double ypos;
   int speed;
+  Map 
 
   /**
    * Particle Constructor.
