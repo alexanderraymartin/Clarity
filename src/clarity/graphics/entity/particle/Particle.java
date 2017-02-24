@@ -1,12 +1,18 @@
 package clarity.graphics.entity.particle;
 
+import java.awt.Color;
+
+import clarity.graphics.Map;
 import clarity.graphics.entity.Entity;
 
 public class Particle extends Entity {
   double xpos;
   double ypos;
   int speed;
-  Map 
+  double duration;
+  Color color;
+  double maxX = 1000;
+  double maxY = 1000;
 
   /**
    * Particle Constructor.
@@ -15,11 +21,12 @@ public class Particle extends Entity {
    * @param ypos refers to the y position of the particle
    * @param speed refers to the speed of the particle
    */
-  public Particle(double xpos, double ypos, int speed) {
+  public Particle(double xpos, double ypos, double duration, Color color) {
     super();
     this.xpos = xpos;
     this.ypos = ypos;
-    this.speed = speed;
+    this.duration = duration;
+    this.color = color;
   }
 
   public double getX() {
