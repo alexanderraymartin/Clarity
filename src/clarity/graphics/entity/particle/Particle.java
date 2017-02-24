@@ -21,12 +21,11 @@ public class Particle extends Entity {
    * @param ypos refers to the y position of the particle
    * @param speed refers to the speed of the particle
    */
-  public Particle(double xpos, double ypos, double duration, Color color) {
+  public Particle(double xpos, double ypos, int speed) {
     super();
     this.xpos = xpos;
     this.ypos = ypos;
-    this.duration = duration;
-    this.color = color;
+    this.speed = speed;
   }
 
   public double getX() {
