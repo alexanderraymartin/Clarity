@@ -1,10 +1,15 @@
 package test.martin;
 
+import clarity.graphics.entity.Entity;
+import clarity.graphics.entity.Projectile;
+import clarity.graphics.entity.particle.Particle;
 import clarity.state.Level;
 import clarity.state.State;
 import clarity.state.StateManager;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class TestState {
 
@@ -15,5 +20,30 @@ public class TestState {
 
     assert (currentState instanceof Level);
   }
+
+  @Test
+  public void testGetEntities() {
+    ArrayList<Entity> entities = null;
+    entities = State.getEntities();
+
+    assert (entities != null);
+  }
+
+  @Test
+  public void testGetProjectiles() {
+    ArrayList<Projectile> projectiles = null;
+    projectiles = State.getProjectiles();
+
+    assert (projectiles != null);
+  }
+
+  @Test
+  public void testGetParticles() {
+    ArrayList<Particle> particles = null;
+    particles = State.getParticles();
+
+    assert (particles != null);
+  }
+
 
 }
