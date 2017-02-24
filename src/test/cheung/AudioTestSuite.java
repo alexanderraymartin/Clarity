@@ -1,4 +1,4 @@
-package test.liang;
+package test.cheung;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
