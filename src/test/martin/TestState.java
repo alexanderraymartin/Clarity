@@ -6,8 +6,10 @@ import clarity.graphics.entity.particle.Particle;
 import clarity.state.Level;
 import clarity.state.State;
 import clarity.state.StateManager;
-import java.util.ArrayList;
+
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class TestState {
 
