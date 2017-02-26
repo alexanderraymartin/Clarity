@@ -83,9 +83,9 @@ public class Game extends JPanel {
         update();
         updates++;
         gameLoopTimer.reset();
+        render(); // render as fast as possible
+        frames++;
       }
-      render(); // render as fast as possible
-      frames++;
       if (titleTimer.hasElapsed(1000)) {
         frame.setTitle(TITLE + "  |  " + updates + " UPS, " + frames + " FPS");
         System.out.println(TITLE + "  |  " + updates + " UPS, " + frames + " FPS");
