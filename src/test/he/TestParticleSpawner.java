@@ -4,10 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.entity.particle.ParticleSpawner;
-
-import org.junit.Test;
-
 import java.util.ArrayList;
+import org.junit.Test;
 
 public class TestParticleSpawner {
 

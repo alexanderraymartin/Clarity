@@ -1,9 +1,8 @@
 package clarity.graphics.entity.particle;
 
-import java.awt.Color;
-
-import clarity.graphics.Map;
 import clarity.graphics.entity.Entity;
+
+import java.awt.Color;
 
 public class Particle extends Entity {
   double xpos;
