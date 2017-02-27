@@ -21,6 +21,8 @@ public abstract class Entity {
   protected double dx;
   protected double dy;
   // tiles
+  
+ 
   protected Map map;
   protected int tileSize;
   protected double xmap;

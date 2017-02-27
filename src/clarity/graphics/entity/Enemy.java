@@ -4,27 +4,31 @@ import java.util.Random;
 
 public class Enemy extends Entity {
   protected SpriteSheet attack;
-  private static final int UP = 1;
-  private static final int RIGHT = 2;
-  private static final int DOWN = 3;
-  private static final int LEFT = 4;
+  private static final int UP = 0;
+  private static final int RIGHT = 1;
+  private static final int DOWN = 2;
+  private static final int LEFT = 3;
 
   /**
    * Move the enemy.
    */
-  public void move() {
+
+  public void move(long seed) {
     Random move = new Random();
-    int next = move.nextInt(5);
-    if (next == UP) {
+    move.setSeed(seed);
+    int next = Math.abs(move.nextInt());
+    if (next % 4 == UP) {
+      System.out.println("up");
       ycoord += moveSpeed;
-    }
-    if (next == DOWN) {
+    } else if (next % 4 == DOWN) {
+      System.out.println("down");
       ycoord -= moveSpeed;
-    }
-    if (next == RIGHT) {
+    } else if (next % 4 == RIGHT) {
+      System.out.println("right");
       xcoord += moveSpeed;
-    }
-    if (next == LEFT) {
+    } else if (next % 4 == LEFT) {
+      System.out.println("left");
+
       xcoord += moveSpeed;
     }
     if (xcoord < 0) {

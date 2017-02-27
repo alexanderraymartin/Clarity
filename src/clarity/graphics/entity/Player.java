@@ -78,7 +78,7 @@ public class Player extends Entity {
   /**
    * @param light Value added to current lightSource value.
    */
-  public void gotLightSource(int light) {
+  public void gainLightSource(int light) {
     lightSource += light;
   }
 
