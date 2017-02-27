@@ -3,9 +3,5 @@ language: java
 jdk:
   - oraclejdk8
   
-# blocklist
-branches:
-  except:
-    - cheung
-
-    
+exclude_paths:
+- "cheung/"
