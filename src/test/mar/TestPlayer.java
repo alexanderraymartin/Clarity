@@ -23,7 +23,7 @@ public class TestPlayer {
   @Test
   public void testLight() {
     Player player = new Player();
-    player.gotLightSource(10);
+    player.gainLightSource(10);
 
     assertEquals((double) player.getLight(), 110, 0);
   }
