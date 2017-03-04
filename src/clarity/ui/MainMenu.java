@@ -5,6 +5,8 @@ import clarity.state.State;
 import clarity.state.StateManager;
 import clarity.utilities.input.Mouse;
 
+import java.awt.Graphics2D;
+
 public class MainMenu extends State {
 
   private static final String BACKGROUND_FILE_NAME = "mainMenu.png";
@@ -25,9 +27,13 @@ public class MainMenu extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
-    super.update();
     if (Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Level(manager));
     }
+  }
+
+  @Override
+  public void render(Graphics2D graphics) {
+    background.render(graphics);
   }
 }

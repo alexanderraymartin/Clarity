@@ -8,6 +8,7 @@ import clarity.utilities.Vector2d;
 import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
 
+import java.awt.Graphics2D;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -52,18 +53,43 @@ public class Level extends State {
   }
 
   /**
-   * (non-Javadoc)
-   * 
-   * @see clarity.state.State#update()
+   * Update the current state.
    */
   public void update() {
     checkLevelComplete();
     checkPause();
     if (!isPaused) {
-      super.update();
-      if (Mouse.buttonClickAndRelease()) {
-        manager.loadNextState(new MainMenu(manager));
+      for (int i = 0; i < getEntities().size(); i++) {
+        getEntities().get(i).update();
       }
+      for (int i = 0; i < getProjectiles().size(); i++) {
+        getProjectiles().get(i).update();
+      }
+      for (int i = 0; i < getParticles().size(); i++) {
+        getParticles().get(i).update();
+      }
+    }
+    if (Mouse.buttonClickAndRelease()) {
+      manager.loadNextState(new MainMenu(manager));
+    }
+  }
+
+  /**
+   * Render the current state.
+   * 
+   * @param graphics The graphics to render.
+   */
+  public void render(Graphics2D graphics) {
+    background.render(graphics);
+    map.render(graphics);
+    for (int i = 0; i < getEntities().size(); i++) {
+      getEntities().get(i).render(graphics);
+    }
+    for (int i = 0; i < getProjectiles().size(); i++) {
+      getProjectiles().get(i).render(graphics);
+    }
+    for (int i = 0; i < getParticles().size(); i++) {
+      getParticles().get(i).render(graphics);
     }
   }
 
