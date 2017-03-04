@@ -83,6 +83,7 @@ public abstract class Entity {
   public double maxEnergy;
   public boolean isDead;
   public boolean isImmune;
+  public int immunityTimer;
   public boolean shouldExplode;
   // player
   public boolean isPlayerControlled;
