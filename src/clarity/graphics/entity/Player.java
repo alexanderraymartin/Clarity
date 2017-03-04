@@ -1,78 +1,64 @@
 package clarity.graphics.entity;
 
+import clarity.state.Level;
+import clarity.utilities.input.Keyboard;
+
 public class Player extends Entity {
 
-  private double movementSpeed;
-  private double health = 100;
   private double lightSource = 100;
-  private boolean left;
-  private boolean right;
-  private boolean up;
-  private boolean down;
+
 
   public Player() {
 
   }
 
   /**
-   * @param newLeft left input value.
+   * (non-Javadoc)
+   * 
+   * @see clarity.graphics.entity.Entity#update()
    */
-  public void setLeft(boolean newLeft) {
-    left = newLeft;
-  }
-
-  /**
-   * @param newUp up input value.
-   */
-  public void setUp(boolean newUp) {
-    up = newUp;
-  }
-
-  /**
-   * @param newDown down input value.
-   */
-  public void setDown(boolean newDown) {
-    down = newDown;
-  }
-
-  /**
-   * @param newRight right input value.
-   */
-  public void setRight(boolean newRight) {
-    right = newRight;
-  }
-
   public void update() {
-    move();
+    checkWin();
+    movePlayer();
+    super.update();
   }
 
-  private void move() {
-    if (left) {
-      xcoord = xcoord - movementSpeed;
+  private void checkWin() {
+    if ((int) (xcoord / tileSize) == Level.getWinLocation().getX() / tileSize) {
+      if ((int) (ycoord / tileSize) == Level.getWinLocation().getY() / tileSize) {
+        Level.levelComplete = true;
+      }
     }
-    if (right) {
-      xcoord = xcoord + movementSpeed;
+  }
+
+  private void movePlayer() {
+    if (Keyboard.leftPressed() && !Keyboard.rightPressed()) {
+      setLeft(true);
+    } else {
+      setLeft(false);
     }
-    if (up) {
-      ycoord = ycoord - movementSpeed;
+    if (Keyboard.rightPressed() && !Keyboard.leftPressed()) {
+      setRight(true);
+    } else {
+      setRight(false);
     }
-    if (down) {
-      ycoord = ycoord + movementSpeed;
+    if (Keyboard.upPressed()) {
+      setJumping(true);
+    } else {
+      setJumping(false);
+    }
+    if (Keyboard.downPressed()) {
+      setDown(true);
+    } else {
+      setDown(false);
     }
   }
 
   /**
-   * @return The x location.
+   * @param boost The amount of health gained.
    */
-  public double getX() {
-    return xcoord;
-  }
-
-  /**
-   * @return The y location.
-   */
-  public double getY() {
-    return ycoord;
+  public void gainHealth(int boost) {
+    currentHealth += boost;
   }
 
   /**
@@ -82,20 +68,6 @@ public class Player extends Entity {
     lightSource += light;
   }
 
-  /**
-   * @param boost The amount of health gained.
-   */
-  public void gainHealth(int boost) {
-    health += boost;
-  }
-
-  public void loseHealth(int damage) {
-    health -= damage;
-  }
-
-  public double getHealth() {
-    return health;
-  }
 
   public double getLight() {
     return lightSource;

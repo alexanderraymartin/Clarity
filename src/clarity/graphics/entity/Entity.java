@@ -1,7 +1,9 @@
 package clarity.graphics.entity;
 
+import clarity.audio.Audio;
 import clarity.graphics.Map;
 import clarity.graphics.entity.particle.Particle;
+import clarity.graphics.tile.Tile;
 import clarity.main.Game;
 import clarity.state.State;
 import clarity.utilities.Vector2d;
@@ -21,8 +23,6 @@ public abstract class Entity {
   protected double dx;
   protected double dy;
   // tiles
-  
- 
   protected Map map;
   protected int tileSize;
   protected double xmap;
@@ -41,15 +41,24 @@ public abstract class Entity {
   protected double ydestination;
   protected double xposition;
   protected double yposition;
+
+  protected boolean topLeft;
+  protected boolean topRight;
+  protected boolean bottomLeft;
+  protected boolean bottomRight;
+  protected boolean middleLeft;
+  protected boolean middleRight;
+  protected boolean topMiddle;
+  protected boolean bottomMiddle;
   // animation
   protected Animation animation;
   protected int currentAction;
   protected boolean facingRight;
   // animation index
-  protected static final int MOVING_RIGHT = 0;
-  protected static final int MOVING_LEFT = 1;
-  protected static final int MOVING_UP = 2;
-  protected static final int MOVING_DOWN = 3;
+  protected static final int IDLE = 0;
+  protected static final int WALKING = 1;
+  protected static final int JUMPING = 2;
+  protected static final int FALLING = 3;
   protected static final int ATTACKING = 4;
   protected static final int SPECIAL_ABILITY = 5;
   // movement
@@ -57,8 +66,16 @@ public abstract class Entity {
   public boolean isLeft;
   public boolean isUp;
   public boolean isDown;
+  public boolean isJumping;
+  public boolean isFalling;
   public double moveSpeed;
   public double maxSpeed;
+  public double stopSpeed;
+
+  public double fallSpeed;
+  public double maxFallSpeed;
+  public double jumpStart;
+  public double stopJumpSpeed;
   // health and energy
   public double currentHealth;
   public double maxHealth;
@@ -77,7 +94,7 @@ public abstract class Entity {
   public Entity(int mobId) {
     this.mobId = mobId;
     this.animation = new Animation();
-    this.currentAction = MOVING_RIGHT;
+    this.currentAction = IDLE;
     this.shouldExplode = true;
     this.isPlayerControlled = false;
     init();
@@ -100,6 +117,8 @@ public abstract class Entity {
   }
 
   protected abstract void init();
+
+
 
   /**
    * @param entity The entity to check for collision.
@@ -147,8 +166,8 @@ public abstract class Entity {
   }
 
   public void setMapPosition() {
-    xmap = map.getX();
-    ymap = map.getY();
+    xmap = map.getMapX();
+    ymap = map.getMapY();
   }
 
   protected void getNextPosition() {
@@ -164,16 +183,49 @@ public abstract class Entity {
         dx = maxSpeed;
       }
     }
-    if (isUp) { // entity going up
-      dy -= moveSpeed;
-      if (dy < -maxSpeed) {
-        dy = -maxSpeed;
+    if (isDown && isFalling) { // entity going down and falling
+      dy += fallSpeed;
+    }
+    if (!isLeft && !isRight) { // entity slowing down
+      if (dx > 0) {
+        dx -= stopSpeed;
+        if (dx < 0) {
+          dx = 0;
+        }
+      } else if (dx < 0) {
+        dx += stopSpeed;
+        if (dx > 0) {
+          dx = 0;
+        }
       }
     }
-    if (isDown) { // entity going down
-      dy += moveSpeed;
-      if (dy > maxSpeed) {
-        dy = maxSpeed;
+    if (isJumping && !isFalling) { // entity jumping
+      // playSoundEffect("jump"); // TODO
+      dy = jumpStart;
+      isFalling = true;
+    }
+    if (isFalling) { // entity falling
+      dy += fallSpeed;
+      if (dy > 0) {
+        isJumping = false;
+      }
+      if (dy < 0 && !isJumping) {
+        dy += stopJumpSpeed;
+      }
+      if (dy > maxFallSpeed) {
+        dy = maxFallSpeed;
+      }
+    }
+  }
+
+  /**
+   * @param soundEffectName Name of the sound effect.
+   */
+  public void playSoundEffect(String soundEffectName) {
+    if (onScreen()) {
+      Audio soundEffect = Audio.soundEffects.get(soundEffectName);
+      if (soundEffect != null) {
+        soundEffect.play();
       }
     }
   }
@@ -187,6 +239,26 @@ public abstract class Entity {
   }
 
   /**
+   * @param vector The new position.
+   * @param value True if the entity is facing right.
+   */
+  public void setPosition(Vector2d vector, boolean value) {
+    this.xcoord = vector.getX();
+    this.ycoord = vector.getY();
+    facingRight = value;
+  }
+
+  /**
+   * @param type The animation type.
+   * @return True once animation is completed.
+   */
+  protected boolean playAnimationOnce(int type) {
+    setAnimation(type);
+    this.animation.update();
+    return this.animation.hasPlayedOnce();
+  }
+
+  /**
    * @param type The animation type.
    */
   protected void setAnimation(int type) {
@@ -196,11 +268,84 @@ public abstract class Entity {
     }
   }
 
-  private boolean checkTileCollision() {
+  private void checkCorners(Vector2d vector) {
+    int leftTile = (int) (vector.getX() - collisionWidth / 2) / tileSize;
+    int rightTile = (int) (vector.getX() + collisionWidth / 2 - 1) / tileSize;
+    int topTile = (int) (vector.getY() - collisionHeight / 2) / tileSize;
+    int bottomTile = (int) (vector.getY() + collisionHeight / 2 - 1) / tileSize;
+    if (topTile < 0 || bottomTile >= map.getNumOfRows() || leftTile < 0
+        || rightTile >= map.getNumOfCols()) {
+      topLeft = topRight = bottomLeft = bottomRight = false;
+      setDead(true);
+      return;
+    }
+    topLeft = map.getType(topTile, leftTile) == Tile.COLLISION;
+    topRight = map.getType(topTile, rightTile) == Tile.COLLISION;
+    bottomLeft = map.getType(bottomTile, leftTile) == Tile.COLLISION;
+    bottomRight = map.getType(bottomTile, rightTile) == Tile.COLLISION;
+    /* ------------------------------------------ */
+    middleLeft = map.getType((topTile + bottomTile) / 2, leftTile) == Tile.COLLISION;
+    middleRight = map.getType((topTile + bottomTile) / 2, rightTile) == Tile.COLLISION;
+    topMiddle = map.getType(topTile, (leftTile + rightTile) / 2) == Tile.COLLISION;
+    bottomMiddle = map.getType(bottomTile, (leftTile + rightTile) / 2) == Tile.COLLISION;
+  }
+
+  /**
+   * @return True if the entity is colliding with a tile.
+   */
+  public boolean checkTileCollision() {
     boolean returnValue = false;
-
-    // TODO Add tile collision here!
-
+    int xoffset = collisionWidth / tileSize + 5;
+    int yoffset = collisionHeight / tileSize + 5;
+    xdestination = xcoord + dx;
+    ydestination = ycoord + dy;
+    xposition = xcoord;
+    yposition = ycoord;
+    checkCorners(new Vector2d(xcoord, ydestination)); // check ycoord axis
+    if (dy < 0) {
+      if (topLeft || topRight || topMiddle) {
+        returnValue = true;
+        dy = 0;
+        yposition = ((int) (ycoord - yoffset) / tileSize) * tileSize + collisionHeight / 2;
+      } else {
+        yposition += dy;
+      }
+    }
+    if (dy > 0) {
+      if (bottomLeft || bottomRight || bottomMiddle) {
+        returnValue = true;
+        dy = 0;
+        yposition = (((int) (ycoord + yoffset) / tileSize) + 1) * tileSize - collisionHeight / 2;
+        isFalling = false;
+      } else {
+        yposition += dy;
+      }
+    }
+    checkCorners(new Vector2d(xdestination, ycoord)); // check xcoord axis
+    if (dx < 0) {
+      if (topLeft || bottomLeft || middleLeft) {
+        returnValue = true;
+        dx = 0;
+        xposition = ((int) (xcoord - xoffset) / tileSize) * tileSize + collisionWidth / 2;
+      } else {
+        xposition += dx;
+      }
+    }
+    if (dx > 0) {
+      if (topRight || bottomRight || middleRight) {
+        returnValue = true;
+        dx = 0;
+        xposition = (((int) (xcoord + xoffset) / tileSize) + 1) * tileSize - collisionWidth / 2;
+      } else {
+        xposition += dx;
+      }
+    }
+    if (!isFalling) {
+      checkCorners(new Vector2d(xcoord, ydestination + 1));
+      if (!bottomLeft && !bottomRight && !bottomMiddle) {
+        isFalling = true;
+      }
+    }
     return returnValue;
   }
 
@@ -228,15 +373,15 @@ public abstract class Entity {
       getNextPosition();
       checkTileCollision();
       setPosition(new Vector2d(xposition, yposition));
-      int tempAnimation = MOVING_DOWN;
-      if (isDown) { // moving down
-        tempAnimation = MOVING_DOWN;
-      } else if (isUp) { // moving up
-        tempAnimation = MOVING_UP;
-      } else if (isLeft) { // moving left
-        tempAnimation = MOVING_LEFT;
-      } else if (isRight) { // moving right
-        tempAnimation = MOVING_RIGHT;
+      int tempAnimation;
+      if (dy > 0) {
+        tempAnimation = FALLING;
+      } else if (dy < 0) {
+        tempAnimation = JUMPING;
+      } else if (isLeft || isRight) {
+        tempAnimation = WALKING;
+      } else {
+        tempAnimation = IDLE;
       }
       setAnimation(tempAnimation);
       animation.update();
@@ -271,6 +416,124 @@ public abstract class Entity {
     }
   }
 
+
+  /**
+   * @return The modID.
+   */
+  public int getMobId() {
+    return mobId;
+  }
+
+  /**
+   * @return True if the entity is facing right.
+   */
+  public boolean isFacingRight() {
+    return facingRight;
+  }
+
+  public void setVector(Vector2d vector) {
+    this.dx = vector.getX();
+    this.dy = vector.getY();
+  }
+
+  public void setLeft(boolean value) {
+    isLeft = value;
+  }
+
+  public void setRight(boolean value) {
+    isRight = value;
+  }
+
+  public void setUp(boolean value) {
+    isUp = value;
+  }
+
+  public void setDown(boolean value) {
+    isDown = value;
+  }
+
+  public void setJumping(boolean value) {
+    isJumping = value;
+  }
+
+
+  public double getX() {
+    return xcoord;
+  }
+
+  public double getY() {
+    return ycoord;
+  }
+
+  /**
+   * @return Width of sprite.
+   */
+  public int getWidth() {
+    return spriteWidth;
+  }
+
+  /**
+   * @return Height of sprite.
+   */
+  public int getHeight() {
+    return spriteHeight;
+  }
+
+  /**
+   * @return Collision width of sprite.
+   */
+  public int getCollisionWidth() {
+    return collisionWidth;
+  }
+
+  /**
+   * @return Collision Height of sprite.
+   */
+  public int getCollisionHeight() {
+    return collisionHeight;
+  }
+
+  /**
+   * @return Health of entity.
+   */
+  public double getHealth() {
+    return currentHealth;
+  }
+
+  /**
+   * @return Max health of entity.
+   */
+  public double getMaxHealth() {
+    return maxHealth;
+  }
+
+  /**
+   * @return Energy of entity.
+   */
+  public double getEnergy() {
+    return currentEnergy;
+  }
+
+  /**
+   * @return Max energy of entity.
+   */
+  public double getMaxEnergy() {
+    return maxEnergy;
+  }
+
+  /**
+   * @return True if the entity is dead.
+   */
+  public boolean isDead() {
+    return isDead;
+  }
+
+  /**
+   * @param value True if entity is dead.
+   */
+  public void setDead(boolean value) {
+    isDead = value;
+  }
 
 
 }

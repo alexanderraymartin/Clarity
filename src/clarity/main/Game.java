@@ -6,7 +6,10 @@ import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,12 +37,18 @@ public class Game extends JPanel {
    */
   public static final String TITLE = "Clarity";
 
+  /**
+   * True if full screen mode is enabled.
+   */
+  private static final boolean FULL_SCREEN_MODE = false;
+  private int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+  private int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+  private double monitorScale = Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WIDTH;
 
   private JFrame frame;
   private Graphics2D graphics;
+  private BufferedImage image;
   private StateManager manager;
-  // private int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-  // private int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
   private Keyboard keyboard;
   private Mouse mouse;
@@ -57,15 +66,22 @@ public class Game extends JPanel {
     addMouseListener(mouse);
     addMouseMotionListener(mouse);
 
+    image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+    graphics = (Graphics2D) image.getGraphics();
+
     frame = new JFrame();
+    frame.setResizable(false);
+    frame.setTitle(TITLE);
     frame.add(this);
+    if (FULL_SCREEN_MODE) {
+      frame.setUndecorated(true); // no boarders
+    }
     frame.pack();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setLocationRelativeTo(null);
-    frame.setTitle(TITLE);
-    frame.setResizable(false);
-    // frame.setUndecorated(true); // no boarders
-    // frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
+    if (FULL_SCREEN_MODE) {
+      frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
+    }
     frame.setVisible(true);
     run();
   }
@@ -102,8 +118,21 @@ public class Game extends JPanel {
   }
 
   private void render() {
-    graphics = (Graphics2D) getGraphics();
+    // StateManager.loadingScreen.render(graphics);
     manager.render(graphics);
+
+    //////// add above here ////////
+    Graphics graphics2 = (Graphics2D) getGraphics(); // gets image to render
+    if (FULL_SCREEN_MODE) {
+      // render image to screen
+      graphics2.drawImage(image, (int) (monitorWidth - WIDTH * monitorScale) / 2,
+          (int) (monitorHeight - HEIGHT * monitorScale) / 2, (int) (WIDTH * monitorScale),
+          (int) (HEIGHT * monitorScale), null);
+    } else {
+      // render image to screen
+      graphics2.drawImage(image, 0, 0, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE), null);
+    }
+    graphics2.dispose(); // dispose of graphics from memory
   }
 
 }

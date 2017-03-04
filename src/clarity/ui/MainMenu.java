@@ -27,7 +27,7 @@ public class MainMenu extends State {
   public void update() {
     super.update();
     if (Mouse.buttonClickAndRelease()) {
-      manager.setCurrentState(new Level(manager));
+      manager.loadNextState(new Level(manager));
     }
   }
 }

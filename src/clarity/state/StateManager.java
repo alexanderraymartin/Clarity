@@ -1,5 +1,6 @@
 package clarity.state;
 
+import clarity.graphics.Background;
 import clarity.ui.MainMenu;
 
 import java.awt.Graphics2D;
@@ -13,22 +14,49 @@ public class StateManager {
   private State currentState;
   private ArrayList<String> levels;
   private static final String LEVELS_PATH = "/levels/levels.txt";
-  private int currentLevel;
+  private int currentLevelIndex;
+  private static final String LOADING_SCREEN_PATH = "loadingScreen.png";
+  public static final Background loadingScreen = new Background(LOADING_SCREEN_PATH);
 
   /**
    * Create the state manager.
    */
   public StateManager() {
     this.currentState = new MainMenu(this);
-    this.currentLevel = 0;
+    this.currentLevelIndex = 0;
     getLevels();
   }
+
+  /**
+   * @return The current level's index.
+   */
+  public int getCurrentLevelIndex() {
+    return currentLevelIndex;
+  }
+
+  /**
+   * @param nextLevel The next level's index.
+   */
+  public void setCurrentLevel(int nextLevel) {
+    this.currentLevelIndex = nextLevel;
+  }
+
+
+  /**
+   * @param state The next state.
+   */
+  public void loadNextState(State state) {
+    currentState.close();
+    currentState = state;
+  }
+
+
 
   /**
    * @return The current level's file path.
    */
   public String getCurrentLevel() {
-    return levels.get(currentLevel);
+    return levels.get(currentLevelIndex);
   }
 
   /**
@@ -61,14 +89,6 @@ public class StateManager {
    */
   public State getCurrentState() {
     return currentState;
-  }
-
-  /**
-   * @param state The next state.
-   */
-  public void setCurrentState(State state) {
-    currentState.close();
-    currentState = state;
   }
 
   /**

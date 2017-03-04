@@ -13,8 +13,8 @@ public class Background {
 
   private static final String PATH = "/textures/backgrounds/";
   private BufferedImage image;
-  private double xpos;
-  private double ypos;
+  private double xpos = 0;
+  private double ypos = 0;
 
   /**
    * @param fileName Name of the file.
@@ -50,8 +50,7 @@ public class Background {
    * @param graphics Graphics to render.
    */
   public void render(Graphics2D graphics) {
-    graphics.drawImage(image, (int) xpos, (int) ypos, Game.WIDTH * Game.SCALE,
-        Game.HEIGHT * Game.SCALE, null);
+    graphics.drawImage(image, (int) xpos, (int) ypos, Game.WIDTH, Game.HEIGHT, null);
   }
 
 }

@@ -44,6 +44,10 @@ public class Audio {
       // volume and mute control
       gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
       muteControl = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
+
+      // TODO Remove set gain and add volume control
+      setGain(70);
+
     } catch (Exception exception) {
       exception.printStackTrace();
     }
@@ -88,11 +92,11 @@ public class Audio {
   public float getMaximum() {
     return gainControl.getMaximum();
   }
-  
+
   public float getMinimum() {
     return gainControl.getMinimum();
   }
-  
+
   public float getVolume() {
     return gainControl.getValue();
   }

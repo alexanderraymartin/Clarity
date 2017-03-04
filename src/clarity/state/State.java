@@ -1,5 +1,6 @@
 package clarity.state;
 
+import clarity.audio.Audio;
 import clarity.graphics.Background;
 import clarity.graphics.entity.Entity;
 import clarity.graphics.entity.Projectile;
@@ -7,6 +8,7 @@ import clarity.graphics.entity.particle.Particle;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class State {
 
@@ -16,7 +18,6 @@ public abstract class State {
   protected String backgroundFileName;
   protected String musicFileName;
   protected String mapFileName;
-
 
   private static ArrayList<Entity> entities;
   private static ArrayList<Projectile> projectiles;
@@ -127,6 +128,36 @@ public abstract class State {
     }
     for (int i = 0; i < particles.size(); i++) {
       // particles.get(i).render(graphics);
+    }
+  }
+
+  protected void closeMusic(HashMap<String, Audio> audio, String fileName) {
+    String[] temp = new String[audio.size()];
+    int index = -1;
+    for (String string : audio.keySet()) {
+      if (string == fileName) {
+        continue;
+      }
+      audio.get(string).close();
+      index++;
+      temp[index] = string;
+    }
+    for (int j = 0; j < temp.length; j++) {
+      audio.remove(temp[j]);
+    }
+  }
+
+  protected void closeMusic(HashMap<String, Audio> audio) {
+    closeMusic(audio, null);
+  }
+
+  protected void playMusic() {
+    closeMusic(Audio.music, musicFileName);
+    if (musicFileName != null) {
+      if (!Audio.music.containsKey(musicFileName)) {
+        Audio.music.put(musicFileName, new Audio("/sounds/music/" + musicFileName));
+        Audio.music.get(musicFileName).loop();
+      }
     }
   }
 
