@@ -38,7 +38,7 @@ public class Game extends JPanel {
   public static final String TITLE = "Clarity";
 
   /**
-   * True if full screen mode is enabled.
+   * Set to true to enable full screen mode.
    */
   private static final boolean FULL_SCREEN_MODE = false;
   private int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();

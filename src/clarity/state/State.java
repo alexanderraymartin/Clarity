@@ -113,7 +113,7 @@ public abstract class State {
     String[] temp = new String[audio.size()];
     int index = -1;
     for (String string : audio.keySet()) {
-      if (string == fileName) {
+      if (string.equals(fileName)) {
         continue;
       }
       audio.get(string).close();
