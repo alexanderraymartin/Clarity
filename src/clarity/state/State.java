@@ -109,28 +109,26 @@ public abstract class State {
    */
   public abstract void render(Graphics2D graphics);
 
-  protected void closeMusic(HashMap<String, Audio> audio, String fileName) {
-    String[] temp = new String[audio.size()];
-    int index = -1;
-    for (String string : audio.keySet()) {
-      if (string.equals(fileName)) {
-        continue;
+  // Closes all music except music with same name as toKeep
+  protected void closeOtherMusic(HashMap<String, Audio> music, String toKeep) {
+    music.forEach((songName, song) ->
+    {
+      if (!songName.equals(toKeep)) {
+        song.close();
       }
-      audio.get(string).close();
-      index++;
-      temp[index] = string;
-    }
-    for (int j = 0; j < temp.length; j++) {
-      audio.remove(temp[j]);
-    }
+    });
   }
 
-  protected void closeMusic(HashMap<String, Audio> audio) {
-    closeMusic(audio, null);
+  protected void closeAllMusic(HashMap<String, Audio> audio) {
+    closeOtherMusic(audio, null);
   }
 
-  protected void playMusic() {
-    closeMusic(Audio.music, musicFileName);
+  // Pass in name of some music to keep it loaded and close all other music
+  protected void playMusic(String otherSong) {
+    if (otherSong != null) {
+      closeOtherMusic(Audio.music, musicFileName);
+    }
+
     if (musicFileName != null) {
       if (!Audio.music.containsKey(musicFileName)) {
         Audio.music.put(musicFileName, new Audio("/sounds/music/" + musicFileName));

@@ -17,11 +17,11 @@ public class Audio {
   /**
    * Sound effects for every entity in the game.
    */
-  public static HashMap<String, Audio> soundEffects = new HashMap<String, Audio>();
+  public static HashMap<String, Audio> soundEffects = new HashMap<>();
   /**
    * Music for the game.
    */
-  public static HashMap<String, Audio> music = new HashMap<String, Audio>();
+  public static HashMap<String, Audio> music = new HashMap<>();
 
   /**
    * @param path Path to the audio file.
@@ -61,18 +61,14 @@ public class Audio {
    * Pause the music.
    */
   public static void pauseSongs() {
-    for (String string : music.keySet()) {
-      music.get(string).stop();
-    }
+    music.forEach((name, song) -> song.stop());
   }
 
   /**
    * Resume the music.
    */
   public static void resumeSongs() {
-    for (String string : music.keySet()) {
-      music.get(string).resume();
-    }
+    music.forEach((name, song) -> song.resume());
   }
 
   /**

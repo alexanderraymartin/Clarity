@@ -163,11 +163,8 @@ public abstract class Entity {
    * @param damage Amount of damage entity takes.
    */
   public void hit(int damage) {
-    currentHealth -= damage;
-    if (currentHealth < 0) {
-      currentHealth = 0;
-      isDead = true;
-    }
+    currentHealth = currentHealth - damage < 0 ? 0 : currentHealth - damage;
+    isDead = true;
   }
 
   public void setMapPosition() {
@@ -534,7 +531,7 @@ public abstract class Entity {
   }
 
   /**
-   * @param value True if entity is dead.
+   * @param value Set isDead to value
    */
   public void setDead(boolean value) {
     isDead = value;

@@ -23,7 +23,6 @@ public class Background {
     loadBackground(fileName);
   }
 
-  // TODO Add asset manager implementation.
   /**
    * Load the background image.
    * 

@@ -112,7 +112,7 @@ public class Level extends State {
     map.setPosition(spawnLocation);
     // creates player
     createPlayer(map, this);
-    playMusic();
+    playMusic(null);
     levelComplete = false;
   }
 

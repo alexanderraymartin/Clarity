@@ -2,6 +2,9 @@ package clarity.utilities;
 
 import clarity.state.State;
 
+import java.nio.file.InvalidPathException;
+import java.nio.file.Paths;
+
 public class Save {
   private String path;
   private State savedState;
@@ -11,8 +14,13 @@ public class Save {
     this.savedState = savedState;
   }
 
-  // Needs an actual implementation
   private boolean isValidPath(String path) {
+    try {
+      Paths.get(path);
+    }
+    catch (InvalidPathException | NullPointerException exception) {
+      return false;
+    }
     return true;
   }
 
