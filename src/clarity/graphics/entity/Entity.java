@@ -531,7 +531,7 @@ public abstract class Entity {
   }
 
   /**
-   * @param value Set isDead to value
+   * @param value Set isDead to value.
    */
   public void setDead(boolean value) {
     isDead = value;

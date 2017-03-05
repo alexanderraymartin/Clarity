@@ -17,8 +17,7 @@ public class Save {
   private boolean isValidPath(String path) {
     try {
       Paths.get(path);
-    }
-    catch (InvalidPathException | NullPointerException exception) {
+    } catch (InvalidPathException | NullPointerException exception) {
       return false;
     }
     return true;

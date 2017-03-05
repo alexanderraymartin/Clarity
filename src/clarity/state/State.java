@@ -111,8 +111,7 @@ public abstract class State {
 
   // Closes all music except music with same name as toKeep
   protected void closeOtherMusic(HashMap<String, Audio> music, String toKeep) {
-    music.forEach((songName, song) ->
-    {
+    music.forEach((songName, song) -> {
       if (!songName.equals(toKeep)) {
         song.close();
       }
