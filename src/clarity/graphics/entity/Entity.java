@@ -5,6 +5,7 @@ import clarity.graphics.Map;
 import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.tile.Tile;
 import clarity.main.Game;
+import clarity.state.Level;
 import clarity.state.State;
 import clarity.utilities.Vector2d;
 
@@ -94,6 +95,8 @@ public abstract class Entity {
    */
   public Entity(int mobId) {
     this.mobId = mobId;
+    this.map = Level.getCurrentMap();
+    this.tileSize = Map.getTileSize();
     this.animation = new Animation();
     this.currentAction = IDLE;
     this.shouldExplode = true;
@@ -102,6 +105,7 @@ public abstract class Entity {
     if (spriteSheet != null) {
       spriteWidth = spriteSheet.getWidth();
       spriteHeight = spriteSheet.getHeight();
+      sprites = spriteSheet.getSprites();
       animation.setFrames(sprites.get(currentAction));
     }
     if (this instanceof Projectile) {

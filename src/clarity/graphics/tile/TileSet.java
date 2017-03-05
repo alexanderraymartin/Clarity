@@ -22,7 +22,7 @@ public class TileSet {
   private static final int NUM_TILES_DOWN = 2;
   /* ------------------------------------------ */
   private static final String TILE_LOCATION = "/textures/tiles/";
-  private static final String PLACE_HOLDER1 = "level_template.png";
+  private static final String PLACE_HOLDER1 = "grass.png";
   private static final String PLACE_HOLDER2 = "level_template.png";
   private static final String PLACE_HOLDER3 = "level_template.png";
   private static final String[] TILE_PATHS = {PLACE_HOLDER1, PLACE_HOLDER2, PLACE_HOLDER3};

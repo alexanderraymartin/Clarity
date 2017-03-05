@@ -15,6 +15,8 @@ public class SpriteSheet {
       new SpriteSheet(10, 10, new int[] {1, 1}, "/textures/projectiles/dummy.png");
   public static final SpriteSheet template = new SpriteSheet(30, 30,
       new int[] {8, 3, 1, 1, 8, 10, 4, 4, 5}, "/textures/characters/character_template.png");
+  public static final SpriteSheet player =
+      new SpriteSheet(30, 30, new int[] {2, 2, 1, 1, 1, 1}, "/textures/characters/player.png");
 
   /**
    * @param spriteWidth The width of the sprite.

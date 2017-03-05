@@ -1,6 +1,7 @@
 package clarity.state;
 
 import clarity.graphics.Map;
+import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
 import clarity.ui.MainMenu;
@@ -28,7 +29,6 @@ public class Level extends State {
    */
   public Level(StateManager manager) {
     super(manager);
-    player = new Player();
     loadLevel(manager.getCurrentLevel());
     isPaused = false;
     map = new Map();
@@ -94,6 +94,7 @@ public class Level extends State {
   }
 
   protected void createPlayer(Map map, Level level) {
+    player = new Player(MobId.PLAYER);
     player.setPosition(spawnLocation, true);
     player.isPlayerControlled = true;
     map.setPositionInstantly(

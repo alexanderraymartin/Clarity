@@ -250,8 +250,8 @@ public class Map {
             break;
           }
           int temp = map[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-          if (temp == 0) {
-            continue; // Clear block
+          if (temp == 0 || temp == 1 || temp == 2) {
+            continue; // Clear block / spawn location / win location
           }
           int value = map[row][col]; // number in map file
           int index = (value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()));

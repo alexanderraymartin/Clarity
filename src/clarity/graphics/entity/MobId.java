@@ -16,11 +16,11 @@ public class MobId {
       case DUMMY:
         return null;
       case PLAYER:
-        return new Player();
+        return new Player(PLAYER);
       case PLACE_HOLDER1:
-        return new Player();
+        return new Player(PLAYER);
       case PLACE_HOLDER2:
-        return new Player();
+        return new Player(PLAYER);
       default:
         break;
 

@@ -1,5 +1,6 @@
 package clarity.main;
 
+import clarity.state.Level;
 import clarity.state.StateManager;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
@@ -105,6 +106,9 @@ public class Game extends JPanel {
       if (titleTimer.hasElapsed(1000)) {
         frame.setTitle(TITLE + "  |  " + updates + " UPS, " + frames + " FPS");
         System.out.println(TITLE + "  |  " + updates + " UPS, " + frames + " FPS");
+        System.out.println("Entities: " + Level.getEntities().size());
+        System.out.println("Particles: " + Level.getParticles().size());
+        System.out.println("Projectiles: " + Level.getProjectiles().size());
         updates = 0;
         frames = 0;
         titleTimer.reset();
