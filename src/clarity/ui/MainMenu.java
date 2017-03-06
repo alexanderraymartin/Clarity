@@ -40,11 +40,12 @@ public class MainMenu extends State {
   public void update() {
     if (START.covered(START_FILE_NAME, "playHighlight.png") && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
-    } else if (EXIT.covered(EXIT_FILE_NAME,"exitHighlight.png") && Mouse.buttonClickAndRelease()) {
+    } else if (EXIT.covered(EXIT_FILE_NAME, "exitHighlight.png") && Mouse.buttonClickAndRelease()) {
       System.exit(0);
-    } else if (SETTINGS.covered(SETTINGS_FILE_NAME,"settingsHighlight.png") && Mouse.buttonClickAndRelease()) {
+    } else if (SETTINGS.covered(SETTINGS_FILE_NAME, "settingsHighlight.png")
+        && Mouse.buttonClickAndRelease()) {
       // TODO
-    } else if (HELP.covered(HELP_FILE_NAME,"helpHighlight.png") && Mouse.buttonClickAndRelease()) {
+    } else if (HELP.covered(HELP_FILE_NAME, "helpHighlight.png") && Mouse.buttonClickAndRelease()) {
       // TODO
 
     }
