@@ -1,6 +1,7 @@
 package clarity.ui;
 
 import clarity.state.Level;
+import clarity.state.Loading;
 import clarity.state.State;
 import clarity.state.StateManager;
 import clarity.utilities.input.Mouse;
@@ -28,7 +29,8 @@ public class MainMenu extends State {
    */
   public void update() {
     if (Mouse.buttonClickAndRelease()) {
-      manager.loadNextState(new Level(manager));
+      // TODO: This is just for testing
+      manager.loadNextState(new Loading(manager));
     }
   }
 

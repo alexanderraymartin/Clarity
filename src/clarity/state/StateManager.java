@@ -10,12 +10,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class StateManager {
+  private static final String LEVELS_PATH = "/levels/levels.txt";
+  private static final String LOADING_SCREEN_PATH = "loadingScreen.png";
 
   private State currentState;
   private ArrayList<String> levels;
-  private static final String LEVELS_PATH = "/levels/levels.txt";
   private int currentLevelIndex;
-  private static final String LOADING_SCREEN_PATH = "loadingScreen.png";
   public static final Background loadingScreen = new Background(LOADING_SCREEN_PATH);
 
   /**
@@ -37,7 +37,7 @@ public class StateManager {
   /**
    * @param nextLevel The next level's index.
    */
-  public void setCurrentLevel(int nextLevel) {
+  public void setCurrentLevelIndex(int nextLevel) {
     this.currentLevelIndex = nextLevel;
   }
 
@@ -49,8 +49,6 @@ public class StateManager {
     currentState.close();
     currentState = state;
   }
-
-
 
   /**
    * @return The current level's file path.

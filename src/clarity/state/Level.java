@@ -29,7 +29,7 @@ public class Level extends State {
    */
   public Level(StateManager manager) {
     super(manager);
-    loadLevel(manager.getCurrentLevel());
+    getLevelFileNames(manager.getCurrentLevel());
     isPaused = false;
     map = new Map();
     init();
@@ -38,7 +38,7 @@ public class Level extends State {
   /**
    * @param levelFile The name of the level file.
    */
-  public void loadLevel(String levelFile) {
+  public void getLevelFileNames(String levelFile) {
     try {
       InputStream input = getClass().getResourceAsStream(PATH + levelFile);
       BufferedReader reader = new BufferedReader(new InputStreamReader(input));
@@ -119,12 +119,7 @@ public class Level extends State {
 
   private void checkLevelComplete() {
     if (levelComplete) {
-      nextLevel();
     }
-  }
-
-  private void nextLevel() {
-    // TODO
   }
 
   private void checkPause() {
