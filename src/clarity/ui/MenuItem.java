@@ -14,7 +14,7 @@ public class MenuItem {
   private double xcoord;
   private double ycoord;
   private BufferedImage img;
-  private double height = 42;
+  private double height = 50;
   private double width = 100;
   private static final String PATH = "/menuItems/";
 
@@ -60,17 +60,19 @@ public class MenuItem {
   /**
    * @return True is item is hovered over with mouse.
    */
-  public boolean covered() {
+  public boolean covered(String fileName1,String fileName2) {
     double scale = Game.SCALE;
     if (Game.FULL_SCREEN_MODE) {
       scale = Game.monitorScale;
     }
     if (Mouse.getX() / scale < (xcoord + width) && Mouse.getX() / scale > xcoord
         && Mouse.getY() / scale > ycoord && Mouse.getY() / scale < (ycoord + height)) {
+      loadMenuItem(fileName2);
 
       return true;
 
     }
+    loadMenuItem(fileName1);
     return false;
   }
 
