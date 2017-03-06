@@ -1,5 +1,6 @@
 package clarity.main;
 
+import clarity.graphics.entity.SpriteSheet;
 import clarity.state.StateManager;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
@@ -10,7 +11,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -84,9 +87,27 @@ public class Game extends JPanel {
       frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
     }
     frame.setVisible(true);
+    createSplashScreen();
     run();
   }
 
+  /**
+   * Creates the splash screen on startup.
+   */
+  private void createSplashScreen() {
+    BufferedImage splashScreen;
+    try {
+      splashScreen = ImageIO
+          .read(SpriteSheet.class.getResourceAsStream("/textures/backgrounds/splashScreen.png"));
+      Graphics g2 = (Graphics2D) getGraphics();
+      g2.drawImage(splashScreen, (int) (monitorWidth - WIDTH * SCALE) / 2,
+          (int) (monitorHeight - HEIGHT * SCALE) / 2, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE),
+          null);
+      g2.dispose();
+    } catch (IOException exception) {
+      exception.printStackTrace();
+    }
+  }
 
   private void run() {
     Timer gameLoopTimer = new Timer();
@@ -95,6 +116,7 @@ public class Game extends JPanel {
     int updates = 0;
     requestFocus();
     manager = new StateManager();
+
     while (true) {
       if (gameLoopTimer.hasElapsed(1000 / 60)) { // update 60 times per second
         update();
