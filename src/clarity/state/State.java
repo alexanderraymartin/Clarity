@@ -79,7 +79,6 @@ public abstract class State {
     return projectiles;
   }
 
-
   /**
    * @return The arrayList of particles.
    */
