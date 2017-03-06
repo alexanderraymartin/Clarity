@@ -1,6 +1,5 @@
 package clarity.main;
 
-import clarity.state.Level;
 import clarity.state.StateManager;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
@@ -41,10 +40,11 @@ public class Game extends JPanel {
   /**
    * Set to true to enable full screen mode.
    */
-  private static final boolean FULL_SCREEN_MODE = false;
-  private int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-  private int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-  private double monitorScale = Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WIDTH;
+  public static final boolean FULL_SCREEN_MODE = false;
+  public static int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+  public static int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+  public static double monitorScale =
+      Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WIDTH;
 
   private JFrame frame;
   private Graphics2D graphics;
@@ -105,10 +105,10 @@ public class Game extends JPanel {
       }
       if (titleTimer.hasElapsed(1000)) {
         frame.setTitle(TITLE + "  |  " + updates + " UPS, " + frames + " FPS");
-        System.out.println(TITLE + "  |  " + updates + " UPS, " + frames + " FPS");
-        System.out.println("Entities: " + Level.getEntities().size());
-        System.out.println("Particles: " + Level.getParticles().size());
-        System.out.println("Projectiles: " + Level.getProjectiles().size());
+        // System.out.println(TITLE + " | " + updates + " UPS, " + frames + " FPS");
+        // System.out.println("Entities: " + Level.getEntities().size());
+        // System.out.println("Particles: " + Level.getParticles().size());
+        // System.out.println("Projectiles: " + Level.getProjectiles().size());
         updates = 0;
         frames = 0;
         titleTimer.reset();
