@@ -1,6 +1,5 @@
 package clarity.ui;
 
-import clarity.state.Level;
 import clarity.state.Loading;
 import clarity.state.State;
 import clarity.state.StateManager;
