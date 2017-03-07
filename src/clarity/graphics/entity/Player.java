@@ -83,7 +83,7 @@ public class Player extends Entity {
     collisionWidth = 20;
     collisionHeight = 30;
     // movement speeds
-    moveSpeed = 0.5;
+    moveSpeed = 0.3;
     maxSpeed = 1.75;
     stopSpeed = 0.4;
     // falling speeds
