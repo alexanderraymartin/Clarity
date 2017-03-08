@@ -1,10 +1,5 @@
 package test.ho;
 
-import static junit.framework.TestCase.assertEquals;
-
-import clarity.state.Level;
-import clarity.state.State;
-import clarity.state.StateManager;
 import clarity.utilities.Save;
 
 import org.junit.Test;
@@ -12,24 +7,12 @@ import org.junit.Test;
 public class TestSave {
 
   @Test
-  public void testConstructor() {
-    StateManager stateManager = new StateManager();
-    State currentState = new Level(stateManager);
-    Save save = new Save("", currentState);
+  public void testSaveConstructor() {
+    Save save = new Save();
 
-    assertEquals("", save.getPath());
+    assert (save != null);
   }
 
 
-
-  @Test
-  public void testSetPath() {
-    StateManager stateManager = new StateManager();
-    State currentState = new Level(stateManager);
-    Save save = new Save("", currentState);
-
-    save.setPath("test");
-    assertEquals("test", save.getPath());
-  }
 
 }

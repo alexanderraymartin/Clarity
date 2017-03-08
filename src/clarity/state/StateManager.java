@@ -2,6 +2,7 @@ package clarity.state;
 
 import clarity.graphics.Background;
 import clarity.ui.MainMenu;
+import clarity.utilities.Save;
 
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
@@ -17,6 +18,7 @@ public class StateManager {
   private ArrayList<String> levels;
   private int currentLevelIndex;
   public static final Background loadingScreen = new Background(LOADING_SCREEN_PATH);
+  public static Save saveData;
 
   /**
    * Create the state manager.
@@ -24,6 +26,7 @@ public class StateManager {
   public StateManager() {
     this.currentState = new MainMenu(this);
     this.currentLevelIndex = 0;
+    StateManager.saveData = new Save();
     getLevels();
   }
 
@@ -48,6 +51,7 @@ public class StateManager {
   public void loadNextState(State state) {
     currentState.close();
     currentState = state;
+    StateManager.saveData.saveGame();
   }
 
   /**
