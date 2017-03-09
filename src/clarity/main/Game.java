@@ -99,11 +99,18 @@ public class Game extends JPanel {
     try {
       splashScreen = ImageIO
           .read(SpriteSheet.class.getResourceAsStream("/textures/backgrounds/splashScreen.png"));
-      Graphics g2 = (Graphics2D) getGraphics();
-      g2.drawImage(splashScreen, (int) (monitorWidth - WIDTH * SCALE) / 2,
-          (int) (monitorHeight - HEIGHT * SCALE) / 2, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE),
-          null);
-      g2.dispose();
+      Graphics graphics2 = (Graphics2D) getGraphics();
+      if (FULL_SCREEN_MODE) {
+        // render image to screen
+        graphics2.drawImage(splashScreen, (int) (monitorWidth - WIDTH * monitorScale) / 2,
+            (int) (monitorHeight - HEIGHT * monitorScale) / 2, (int) (WIDTH * monitorScale),
+            (int) (HEIGHT * monitorScale), null);
+      } else {
+        // render image to screen
+        graphics2.drawImage(splashScreen, 0, 0, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE),
+            null);
+      }
+      graphics2.dispose();
     } catch (IOException exception) {
       exception.printStackTrace();
     }
@@ -144,7 +151,6 @@ public class Game extends JPanel {
   }
 
   private void render() {
-    // StateManager.loadingScreen.render(graphics);
     manager.render(graphics);
 
     //////// add above here ////////
