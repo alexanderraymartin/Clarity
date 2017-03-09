@@ -14,6 +14,8 @@ public class MenuItem {
   private double xcoord;
   private double ycoord;
   private BufferedImage img;
+  private BufferedImage img2;
+  private BufferedImage img3;
   private double height = 50;
   private double width = 100;
   private static final String PATH = "/menuItems/";
@@ -23,15 +25,17 @@ public class MenuItem {
    * @param xcoord The x position.
    * @param ycoord The y position.
    */
-  public MenuItem(String fileName, double xcoord, double ycoord) {
-    loadMenuItem(fileName);
+  public MenuItem(String fileName,String fileName2, double xcoord, double ycoord) {
+    loadMenuItem(fileName, fileName2);
+    img = img2;
     this.xcoord = xcoord;
     this.ycoord = ycoord;
   }
 
-  private void loadMenuItem(String fileName) {
+  private void loadMenuItem(String fileName, String fileName2) {
     try {
-      img = ImageIO.read(getClass().getResourceAsStream(PATH + fileName));
+      img2 = ImageIO.read(getClass().getResourceAsStream(PATH + fileName));
+      img3 = ImageIO.read(getClass().getResourceAsStream(PATH + fileName2));
     } catch (IOException exception) {
       exception.printStackTrace();
     }
@@ -60,19 +64,20 @@ public class MenuItem {
   /**
    * @return True is item is hovered over with mouse.
    */
-  public boolean covered(String fileName1,String fileName2) {
+  public boolean covered() {
     double scale = Game.SCALE;
     if (Game.FULL_SCREEN_MODE) {
       scale = Game.monitorScale;
     }
     if (Mouse.getX() / scale < (xcoord + width) && Mouse.getX() / scale > xcoord
         && Mouse.getY() / scale > ycoord && Mouse.getY() / scale < (ycoord + height)) {
-      loadMenuItem(fileName2);
+      img = img3;
 
       return true;
 
     }
-    loadMenuItem(fileName1);
+    img = img2;
+    
     return false;
   }
 

@@ -18,11 +18,11 @@ public class MainMenu extends State {
   private static final String SETTINGS_FILE_NAME = "Settings.png";
   private static final String HELP_FILE_NAME = "Help.png";
 
-  private static final MenuItem START = new MenuItem(START_FILE_NAME, Game.WIDTH / 2 - 50, 70);
-  private static final MenuItem EXIT = new MenuItem(EXIT_FILE_NAME, 10, 210);
+  private static final MenuItem START = new MenuItem(START_FILE_NAME, "playHighlight.png", Game.WIDTH / 2 - 50, 70);
+  private static final MenuItem EXIT = new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", 10, 210);
   private static final MenuItem SETTINGS =
-      new MenuItem(SETTINGS_FILE_NAME, Game.WIDTH / 2 - 50, 180);
-  private static final MenuItem HELP = new MenuItem(SETTINGS_FILE_NAME, Game.WIDTH / 2 - 50, 125);
+      new MenuItem(SETTINGS_FILE_NAME, "settingsHighlight.png", Game.WIDTH / 2 - 50, 180);
+  private static final MenuItem HELP = new MenuItem(HELP_FILE_NAME, "helpHighlight.png", Game.WIDTH / 2 - 50, 125);
 
   /**
    * @param manager The state manager.
@@ -38,16 +38,15 @@ public class MainMenu extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
-    if (START.covered(START_FILE_NAME, "playHighlight.png") && Mouse.buttonClickAndRelease()) {
-      manager.loadNextState(new Loading(manager));
-    } else if (EXIT.covered(EXIT_FILE_NAME, "exitHighlight.png") && Mouse.buttonClickAndRelease()) {
+    if (START.covered() && Mouse.buttonClickAndRelease()) {
+      manager.loadNextState(new LevelMenu(manager));
+    } else if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
       System.exit(0);
-    } else if (SETTINGS.covered(SETTINGS_FILE_NAME, "settingsHighlight.png")
+    } else if (SETTINGS.covered()
         && Mouse.buttonClickAndRelease()) {
-      // TODO
-    } else if (HELP.covered(HELP_FILE_NAME, "helpHighlight.png") && Mouse.buttonClickAndRelease()) {
-      // TODO
-
+      //manager.loadNextState(new settings(manager));
+    } else if (HELP.covered() && Mouse.buttonClickAndRelease()) {
+      //manager.loadNextState(new help(manager));
     }
   }
 
