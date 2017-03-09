@@ -13,12 +13,16 @@ public class LevelMenu extends State {
   private static final String BACKGROUND_FILE_NAME = "mainMenu.png";
   private static final String MUSIC_FILE_NAME = "Vexento - We Are One (Original).mp3";
   private static final String MAP_FILE_NAME = "mapFileName";
-  private static final MenuItem LEVEL1 = new MenuItem("Play.png", "playHighlight.png",50, 50);
-  private static final MenuItem LEVEL2 = new MenuItem("Play.png", "playHighlight.png",Game.WIDTH / 2 - 50, 50);
-  private static final MenuItem LEVEL3 = new MenuItem("Play.png", "playHighlight.png",Game.WIDTH - 150, 50);
-  private static final MenuItem LEVEL4 = new MenuItem("Play.png", "playHighlight.png",50, 150);
-  private static final MenuItem LEVEL5 = new MenuItem("Play.png", "playHighlight.png",Game.WIDTH / 2 - 50, 150);
-  private static final MenuItem LEVEL6 = new MenuItem("Play.png", "playHighlight.png",Game.WIDTH - 150, 150);
+  private static final MenuItem LEVEL1 = new MenuItem("Play.png", "playHighlight.png", 50, 50);
+  private static final MenuItem LEVEL2 =
+      new MenuItem("Play.png", "playHighlight.png", Game.WIDTH / 2 - 50, 50);
+  private static final MenuItem LEVEL3 =
+      new MenuItem("Play.png", "playHighlight.png", Game.WIDTH - 150, 50);
+  private static final MenuItem LEVEL4 = new MenuItem("Play.png", "playHighlight.png", 50, 150);
+  private static final MenuItem LEVEL5 =
+      new MenuItem("Play.png", "playHighlight.png", Game.WIDTH / 2 - 50, 150);
+  private static final MenuItem LEVEL6 =
+      new MenuItem("Play.png", "playHighlight.png", Game.WIDTH - 150, 150);
 
   /**
    * @param manager The state manager.
@@ -36,20 +40,15 @@ public class LevelMenu extends State {
   public void update() {
     if (LEVEL1.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
-    }
-    else if (LEVEL2.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL2.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
-    }
-    else if (LEVEL3.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL3.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
-    }
-    else if (LEVEL4.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL4.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
-    }
-    else if (LEVEL5.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL5.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
-    }
-    else if (LEVEL6.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL6.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Loading(manager));
     }
 
