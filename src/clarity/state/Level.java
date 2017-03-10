@@ -1,5 +1,6 @@
 package clarity.state;
 
+import clarity.graphics.Light;
 import clarity.graphics.Map;
 import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
@@ -19,6 +20,7 @@ public class Level extends State {
   private static final String PATH = "/levels/";
   private static Player player;
   private static boolean isPaused;
+  private static Light light;
   public static Map map;
   public static Vector2d spawnLocation = new Vector2d(0, 0);
   public static Vector2d winLocation = new Vector2d(0, 0);
@@ -32,6 +34,7 @@ public class Level extends State {
     getLevelFileNames(manager.getCurrentLevel());
     isPaused = false;
     map = new Map();
+    light = new Light();
     init();
   }
 
@@ -68,6 +71,7 @@ public class Level extends State {
       for (int i = 0; i < getParticles().size(); i++) {
         getParticles().get(i).update();
       }
+      light.update();
     }
     if (Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
@@ -91,6 +95,7 @@ public class Level extends State {
     for (int i = 0; i < getParticles().size(); i++) {
       getParticles().get(i).render(graphics);
     }
+    light.render(graphics);
   }
 
   protected void createPlayer(Map map, Level level) {
