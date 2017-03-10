@@ -1,7 +1,5 @@
 package clarity.ui;
 
-import clarity.main.Game;
-import clarity.state.Loading;
 import clarity.state.State;
 import clarity.state.StateManager;
 import clarity.utilities.input.Mouse;
@@ -17,6 +15,7 @@ public class Settings extends State {
 
   private static final MenuItem EXIT = new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", 10, 210);
   private static final MenuItem BACK = new MenuItem("back.png", "backHighlight.png", 10, 10);
+
   /**
    * @param manager The state manager.
    */
@@ -33,8 +32,7 @@ public class Settings extends State {
   public void update() {
     if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
       System.exit(0);
-    }
-    else if (BACK.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (BACK.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
     }
   }

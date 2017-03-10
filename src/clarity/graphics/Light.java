@@ -40,7 +40,7 @@ public class Light {
   /**
    * @return True if the screen darkness is above a predefined threshold.
    */
-  public boolean isComplelyDark() {
+  public boolean isCompletelyDark() {
     if (currentDarkness >= THRESHOLD) {
       return true;
     }
