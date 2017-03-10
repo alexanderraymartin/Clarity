@@ -44,9 +44,9 @@ public class MainMenu extends State {
       System.exit(0);
     } else if (SETTINGS.covered()
         && Mouse.buttonClickAndRelease()) {
-      //manager.loadNextState(new settings(manager));
+      manager.loadNextState(new Settings(manager));
     } else if (HELP.covered() && Mouse.buttonClickAndRelease()) {
-      //manager.loadNextState(new help(manager));
+      manager.loadNextState(new Help(manager));
     }
   }
 
