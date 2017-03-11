@@ -125,7 +125,7 @@ public class Game extends JPanel {
     manager = new StateManager();
 
     while (true) {
-      if (gameLoopTimer.hasElapsed(1000 / 60)) { // update 60 times per second
+      if (gameLoopTimer.hasElapsed(1000.0 / 60.0)) { // update 60 times per second
         update();
         updates++;
         gameLoopTimer.reset();
