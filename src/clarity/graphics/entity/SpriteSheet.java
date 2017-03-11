@@ -11,12 +11,20 @@ public class SpriteSheet {
   private int spriteHeight;
   private ArrayList<BufferedImage[]> sprites;
 
-  public static final SpriteSheet dummy =
+  public static final SpriteSheet DUMMY =
       new SpriteSheet(10, 10, new int[] {1, 1}, "/textures/projectiles/dummy.png");
-  public static final SpriteSheet template = new SpriteSheet(30, 30,
+  public static final SpriteSheet TEMPLATE = new SpriteSheet(30, 30,
       new int[] {8, 3, 1, 1, 8, 10, 4, 4, 5}, "/textures/characters/character_template.png");
-  public static final SpriteSheet player =
+  public static final SpriteSheet PLAYER =
       new SpriteSheet(30, 30, new int[] {6, 8, 1, 1, 1, 1}, "/textures/characters/player.png");
+  public static final SpriteSheet GHOST =
+      new SpriteSheet(30, 30, new int[] {1, 1, 1, 1, 1, 1}, "/textures/characters/ghost.png");
+  public static final SpriteSheet SAIYAN =
+      new SpriteSheet(30, 30, new int[] {1, 4, 1, 1, 1, 3}, "/textures/characters/saiyan.png");
+  public static final SpriteSheet SKELETON =
+      new SpriteSheet(30, 30, new int[] {1, 3, 1, 1, 2, 2}, "/textures/characters/skeleton.png");
+  public static final SpriteSheet ZOMBIE =
+      new SpriteSheet(30, 30, new int[] {1, 4, 1, 1, 2, 1}, "/textures/characters/zombie.png");
 
   /**
    * @param spriteWidth The width of the sprite.

@@ -45,6 +45,8 @@ public class Particle extends Entity {
    * @see clarity.graphics.entity.Entity#update()
    */
   public void update() {
+    checkTileCollision();
+    setMapPosition();
     if (timer.hasElapsed(life)) {
       Level.getParticles().remove(this);
     }
@@ -66,8 +68,6 @@ public class Particle extends Entity {
    * @see clarity.graphics.entity.Entity#render(java.awt.Graphics2D)
    */
   public void render(Graphics2D graphics) {
-    checkTileCollision();
-    setMapPosition();
     graphics.setColor(color);
     if (onScreen()) {
       graphics.fill(new Rectangle((int) (xcoord + xmap), (int) (ycoord + ymap), size, size));

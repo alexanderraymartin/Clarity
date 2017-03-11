@@ -1,20 +1,25 @@
 package clarity.graphics.entity;
 
+import clarity.graphics.entity.particle.ParticleSpawner;
 import clarity.state.Level;
+import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
 
 public class Player extends Entity {
+  /**
+   * Duration of temporary immunity when the player is hit by an enemy.
+   */
+  private static final int TEMP_IMMUNITY_DURATION = 2000; // milliseconds
+
+  /**
+   * Timer for tracking the temporary immunity of the player.
+   */
+  public Timer tempImmunityTimer = new Timer();
 
   private double lightSource = 100;
 
-
   public Player(int mobId) {
     super(mobId);
-  }
-
-  // TODO REMOVE for test cases
-  public Player() {
-
   }
 
   /**
@@ -26,6 +31,25 @@ public class Player extends Entity {
     checkWin();
     movePlayer();
     super.update();
+  }
+
+  /**
+   * @param damage Amount of damage entity takes.
+   */
+  public void hit(int damage) {
+    if (!isImmune) {
+      isImmune = true;
+      tempImmunityTimer.reset();
+      currentHealth -= damage;
+      if (currentHealth <= 0) {
+        isDead = true;
+      }
+      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10);
+    }
+    // TODO Differentiate between temporary immunity from being hit and power up
+    if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {
+      isImmune = false;
+    }
   }
 
   private void checkWin() {
@@ -79,8 +103,8 @@ public class Player extends Entity {
   }
 
   protected void init() {
-    spriteSheet = SpriteSheet.player;
-    collisionWidth = 20;
+    spriteSheet = SpriteSheet.PLAYER;
+    collisionWidth = 18;
     collisionHeight = 30;
     // movement speeds
     moveSpeed = 0.3;

@@ -18,9 +18,10 @@ import java.io.InputStreamReader;
 public class Level extends State {
 
   private static final String PATH = "/levels/";
-  private static Player player;
   private static boolean isPaused;
   private static Light light;
+
+  public static Player player;
   public static Map map;
   public static Vector2d spawnLocation = new Vector2d(0, 0);
   public static Vector2d winLocation = new Vector2d(0, 0);
@@ -72,6 +73,9 @@ public class Level extends State {
         getParticles().get(i).update();
       }
       light.update();
+      if (player.isDead) {
+        createPlayer(map, this);
+      }
     }
     if (Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
@@ -98,7 +102,11 @@ public class Level extends State {
     light.render(graphics);
   }
 
-  protected void createPlayer(Map map, Level level) {
+  /**
+   * @param map The current map.
+   * @param level The current level.
+   */
+  public void createPlayer(Map map, Level level) {
     player = new Player(MobId.PLAYER);
     player.setPosition(spawnLocation, true);
     player.isPlayerControlled = true;

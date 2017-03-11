@@ -1,11 +1,18 @@
 package clarity.graphics.entity;
 
+import clarity.graphics.entity.enemy.Ghost;
+import clarity.graphics.entity.enemy.Saiyan;
+import clarity.graphics.entity.enemy.Skeleton;
+import clarity.graphics.entity.enemy.Zombie;
+
 public class MobId {
   public static final int DUMMY = -1;
   public static final int PLAYER = 0;
-  public static final int PLACE_HOLDER1 = PLAYER + 1;
-  public static final int PLACE_HOLDER2 = PLACE_HOLDER1 + 1;
-  public static final int[] MOB_IDS = {PLAYER, PLACE_HOLDER1, PLACE_HOLDER2};
+  public static final int GHOST = 1;
+  public static final int SAIYAN = 2;
+  public static final int SKELETON = 3;
+  public static final int ZOMBIE = 4;
+  public static final int[] MOB_IDS = {PLAYER, GHOST, SAIYAN, SKELETON, ZOMBIE};
 
   /**
    * @param key The key of the entity.
@@ -17,10 +24,14 @@ public class MobId {
         return null;
       case PLAYER:
         return new Player(PLAYER);
-      case PLACE_HOLDER1:
-        return new Player(PLAYER);
-      case PLACE_HOLDER2:
-        return new Player(PLAYER);
+      case GHOST:
+        return new Ghost(GHOST);
+      case SAIYAN:
+        return new Saiyan(SAIYAN);
+      case SKELETON:
+        return new Skeleton(SKELETON);
+      case ZOMBIE:
+        return new Zombie(ZOMBIE);
       default:
         break;
 

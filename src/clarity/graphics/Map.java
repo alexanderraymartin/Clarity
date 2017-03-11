@@ -2,6 +2,7 @@ package clarity.graphics;
 
 import clarity.graphics.entity.Entity;
 import clarity.graphics.entity.MobId;
+import clarity.graphics.tile.Tile;
 import clarity.graphics.tile.TileSet;
 import clarity.main.Game;
 import clarity.state.Level;
@@ -166,6 +167,10 @@ public class Map {
    * @return The type of tile.
    */
   public int getType(int row, int col) {
+    if (row < 0 || row >= numOfRows || col < 0 || col >= numOfCols) {
+      // bounds checking
+      return Tile.NO_COLLISION;
+    }
     int value = map[row][col];
     int index = value / (TileSet.getNumTilesAcross() * 2);
     int rowIndex = value / TileSet.getNumTilesAcross();

@@ -3,10 +3,12 @@ package clarity.graphics.entity;
 import clarity.audio.Audio;
 import clarity.graphics.Map;
 import clarity.graphics.entity.particle.Particle;
+import clarity.graphics.entity.particle.ParticleSpawner;
 import clarity.graphics.tile.Tile;
 import clarity.main.Game;
 import clarity.state.Level;
 import clarity.state.State;
+import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
 
 import java.awt.Graphics2D;
@@ -23,6 +25,7 @@ public abstract class Entity {
   public double ycoord;
   protected double dx;
   protected double dy;
+  protected Timer movementTimer;
   // tiles
   protected Map map;
   protected int tileSize;
@@ -101,6 +104,7 @@ public abstract class Entity {
     this.currentAction = IDLE;
     this.shouldExplode = true;
     this.isPlayerControlled = false;
+    this.movementTimer = new Timer();
     init();
     if (spriteSheet != null) {
       spriteWidth = spriteSheet.getWidth();
@@ -163,8 +167,12 @@ public abstract class Entity {
    * @param damage Amount of damage entity takes.
    */
   public void hit(int damage) {
-    currentHealth = currentHealth - damage < 0 ? 0 : currentHealth - damage;
-    isDead = true;
+    if (!isImmune) {
+      currentHealth -= damage;
+      if (currentHealth <= 0) {
+        isDead = true;
+      }
+    }
   }
 
   public void setMapPosition() {
@@ -297,8 +305,8 @@ public abstract class Entity {
    */
   public boolean checkTileCollision() {
     boolean returnValue = false;
-    int xoffset = collisionWidth / tileSize + 5;
-    int yoffset = collisionHeight / tileSize + 5;
+    int xoffset = collisionWidth / tileSize;
+    int yoffset = collisionHeight / tileSize;
     xdestination = xcoord + dx;
     ydestination = ycoord + dy;
     xposition = xcoord;
@@ -361,7 +369,8 @@ public abstract class Entity {
     if (isDead) {
       // death animation
       if (shouldExplode) {
-        // new ParticleSpawner((int) xcoord, (int) ycoord); //TODO
+        // These numbers are arbitrary values TODO
+        new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 30);
         shouldExplode = false;
       }
       if (this instanceof Projectile) {
