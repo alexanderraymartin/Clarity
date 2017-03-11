@@ -1,5 +1,6 @@
 package clarity.state;
 
+import clarity.graphics.Background;
 import clarity.graphics.Light;
 import clarity.graphics.Map;
 import clarity.graphics.entity.MobId;
@@ -19,10 +20,12 @@ public class Level extends State {
 
   private static final String PATH = "/levels/";
   private static boolean isPaused;
+  private static boolean pausePressed;
   private static Light light;
 
   public static Player player;
   public static Map map;
+  public static final Background pauseScreen = new Background("pauseScreen.png");
   public static Vector2d spawnLocation = new Vector2d(0, 0);
   public static Vector2d winLocation = new Vector2d(0, 0);
   public static boolean levelComplete;
@@ -34,6 +37,7 @@ public class Level extends State {
     super(manager);
     getLevelFileNames(manager.getCurrentLevel());
     isPaused = false;
+    pausePressed = false;
     map = new Map();
     light = new Light();
     init();
@@ -100,6 +104,9 @@ public class Level extends State {
       getParticles().get(i).render(graphics);
     }
     light.render(graphics);
+    if (isPaused) {
+      pauseScreen.render(graphics);
+    }
   }
 
   /**
@@ -137,10 +144,15 @@ public class Level extends State {
   }
 
   private void checkPause() {
-    if (Keyboard.escapePressed() && !isPaused) {
-      isPaused = true;
-    } else if (Keyboard.spacePressed() && isPaused) {
-      isPaused = false;
+    if (Keyboard.escapePressed() && !pausePressed) {
+      if (!isPaused) {
+        isPaused = true;
+      } else {
+        isPaused = false;
+      }
+      pausePressed = true;
+    } else if (!Keyboard.escapePressed()) {
+      pausePressed = false;
     }
   }
 
