@@ -124,13 +124,13 @@ public abstract class State {
   // Pass in name of some music to keep it loaded and close all other music
   protected void playMusic(String otherSong) {
     if (otherSong != null) {
-      closeOtherMusic(Audio.music, musicFileName);
+      closeOtherMusic(Audio.getMusic(), musicFileName);
     }
 
     if (musicFileName != null) {
-      if (!Audio.music.containsKey(musicFileName)) {
-        Audio.music.put(musicFileName, new Audio("/sounds/music/" + musicFileName));
-        Audio.music.get(musicFileName).loop();
+      if (!Audio.getMusic().containsKey(musicFileName)) {
+        Audio.getMusic().put(musicFileName, new Audio("/sounds/music/" + musicFileName));
+        Audio.getMusic().get(musicFileName).loop();
       }
     }
   }

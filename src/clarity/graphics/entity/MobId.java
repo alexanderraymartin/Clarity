@@ -14,6 +14,8 @@ public class MobId {
   public static final int ZOMBIE = 4;
   public static final int[] MOB_IDS = {PLAYER, GHOST, SAIYAN, SKELETON, ZOMBIE};
 
+  private MobId() {}
+
   /**
    * @param key The key of the entity.
    * @return An instance of the entity that matches the key.

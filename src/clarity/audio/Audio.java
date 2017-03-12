@@ -18,10 +18,7 @@ public class Audio {
   private BooleanControl muteControl;
   private static final int MICRO_SECONDS = 1000000;
   private static final Map<String, Audio> soundEffects = new HashMap<>();
-  /**
-   * Music for the game.
-   */
-  public static final Map<String, Audio> music = new HashMap<>();
+  private static final Map<String, Audio> music = new HashMap<>();
 
   /**
    * @param path Path to the audio file.
@@ -62,14 +59,14 @@ public class Audio {
    * Pause the music.
    */
   public static void pauseSongs() {
-    music.forEach((name, song) -> song.stop());
+    getMusic().forEach((name, song) -> song.stop());
   }
 
   /**
    * Resume the music.
    */
   public static void resumeSongs() {
-    music.forEach((name, song) -> song.resume());
+    getMusic().forEach((name, song) -> song.resume());
   }
 
   /**
@@ -77,6 +74,13 @@ public class Audio {
    */
   public static Map<String, Audio> getSoundEffects() {
     return soundEffects;
+  }
+
+  /**
+   * Music for the game.
+   */
+  public static Map<String, Audio> getMusic() {
+    return music;
   }
 
   /**
