@@ -27,11 +27,11 @@ public class Game extends JPanel {
   /**
    * Width of the window.
    */
-  public static final int WIDTH = 480;
+  public static final int WINDOW_WIDTH = 480;
   /**
    * Height of the window.
    */
-  public static final int HEIGHT = WIDTH / 16 * 9;
+  public static final int WINDOW_HEIGHT = WINDOW_WIDTH / 16 * 9;
   /**
    * Scale of the window.
    */
@@ -44,15 +44,15 @@ public class Game extends JPanel {
   /**
    * Set to true to enable full screen mode.
    */
-  public static final boolean FULL_SCREEN_MODE = false;
-  public static int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-  public static int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-  public static double monitorScale =
-      Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WIDTH;
+  public static final boolean FULL_SCREEN_MODE = true;
+  public final static int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+  public final static int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+  public final static double monitorScale =
+      Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WINDOW_WIDTH;
 
   private JFrame frame;
-  private Graphics2D graphics;
-  private BufferedImage image;
+  private transient Graphics2D graphics;
+  private transient BufferedImage image;
   private StateManager manager;
 
   private Keyboard keyboard;
@@ -62,7 +62,7 @@ public class Game extends JPanel {
    * Game constructor.
    */
   public Game() {
-    setPreferredSize(new Dimension((int) (WIDTH * SCALE), (int) (HEIGHT * SCALE)));
+    setPreferredSize(new Dimension((int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE)));
     setFocusable(true);
     requestFocus();
     keyboard = new Keyboard();
@@ -71,7 +71,7 @@ public class Game extends JPanel {
     addMouseListener(mouse);
     addMouseMotionListener(mouse);
 
-    image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+    image = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
     graphics = (Graphics2D) image.getGraphics();
 
     frame = new JFrame();
@@ -100,15 +100,15 @@ public class Game extends JPanel {
     try {
       splashScreen = ImageIO
           .read(SpriteSheet.class.getResourceAsStream("/textures/backgrounds/splashScreen.png"));
-      Graphics graphics2 = (Graphics2D) getGraphics();
+      Graphics graphics2 = getGraphics();
       if (FULL_SCREEN_MODE) {
         // render image to screen
-        graphics2.drawImage(splashScreen, (int) (monitorWidth - WIDTH * monitorScale) / 2,
-            (int) (monitorHeight - HEIGHT * monitorScale) / 2, (int) (WIDTH * monitorScale),
-            (int) (HEIGHT * monitorScale), null);
+        graphics2.drawImage(splashScreen, (int) (monitorWidth - WINDOW_WIDTH * monitorScale) / 2,
+            (int) (monitorHeight - WINDOW_HEIGHT * monitorScale) / 2, (int) (WINDOW_WIDTH * monitorScale),
+            (int) (WINDOW_HEIGHT * monitorScale), null);
       } else {
         // render image to screen
-        graphics2.drawImage(splashScreen, 0, 0, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE),
+        graphics2.drawImage(splashScreen, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE),
             null);
       }
       graphics2.dispose();
@@ -122,10 +122,11 @@ public class Game extends JPanel {
     Timer titleTimer = new Timer();
     int frames = 0;
     int updates = 0;
+    boolean isRunning = true;
     requestFocus();
     manager = new StateManager();
 
-    while (true) {
+    while (isRunning) {
       if (gameLoopTimer.hasElapsed(1000.0 / 60.0)) { // update 60 times per second
         update();
         updates++;
@@ -151,15 +152,15 @@ public class Game extends JPanel {
     manager.render(graphics);
 
     //////// add above here ////////
-    Graphics graphics2 = (Graphics2D) getGraphics(); // gets image to render
+    Graphics graphics2 = getGraphics(); // gets image to render
     if (FULL_SCREEN_MODE) {
       // render image to screen
-      graphics2.drawImage(image, (int) (monitorWidth - WIDTH * monitorScale) / 2,
-          (int) (monitorHeight - HEIGHT * monitorScale) / 2, (int) (WIDTH * monitorScale),
-          (int) (HEIGHT * monitorScale), null);
+      graphics2.drawImage(image, (int) (monitorWidth - WINDOW_WIDTH * monitorScale) / 2,
+          (int) (monitorHeight - WINDOW_HEIGHT * monitorScale) / 2, (int) (WINDOW_WIDTH * monitorScale),
+          (int) (WINDOW_HEIGHT * monitorScale), null);
     } else {
       // render image to screen
-      graphics2.drawImage(image, 0, 0, (int) (WIDTH * SCALE), (int) (HEIGHT * SCALE), null);
+      graphics2.drawImage(image, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE), null);
     }
     graphics2.dispose(); // dispose of graphics from memory
   }

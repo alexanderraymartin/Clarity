@@ -43,7 +43,7 @@ public class Background {
    * @param graphics Graphics to render.
    */
   public void render(Graphics2D graphics) {
-    graphics.drawImage(image, (int) xpos, (int) ypos, Game.WIDTH, Game.HEIGHT, null);
+    graphics.drawImage(image, (int) xpos, (int) ypos, Game.WINDOW_WIDTH, Game.WINDOW_HEIGHT, null);
   }
 
 }

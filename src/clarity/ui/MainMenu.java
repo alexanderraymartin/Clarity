@@ -18,12 +18,12 @@ public class MainMenu extends State {
   private static final String HELP_FILE_NAME = "Help.png";
 
   private static final MenuItem START =
-      new MenuItem(START_FILE_NAME, "playHighlight.png", Game.WIDTH / 2 - 50, 70);
+      new MenuItem(START_FILE_NAME, "playHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 70);
   private static final MenuItem EXIT = new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", 10, 210);
   private static final MenuItem SETTINGS =
-      new MenuItem(SETTINGS_FILE_NAME, "settingsHighlight.png", Game.WIDTH / 2 - 50, 180);
+      new MenuItem(SETTINGS_FILE_NAME, "settingsHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 180);
   private static final MenuItem HELP =
-      new MenuItem(HELP_FILE_NAME, "helpHighlight.png", Game.WIDTH / 2 - 50, 125);
+      new MenuItem(HELP_FILE_NAME, "helpHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 125);
 
   /**
    * @param manager The state manager.

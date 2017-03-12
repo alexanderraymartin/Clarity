@@ -159,8 +159,8 @@ public abstract class Entity {
    * @return True if the entity should be rendered.
    */
   public boolean onScreen() {
-    return !(xcoord + xmap + spriteWidth < 0 || xcoord + xmap - spriteWidth > Game.WIDTH
-        || ycoord + ymap + spriteHeight < 0 || ycoord + ymap - spriteHeight > Game.HEIGHT);
+    return !(xcoord + xmap + spriteWidth < 0 || xcoord + xmap - spriteWidth > Game.WINDOW_WIDTH
+        || ycoord + ymap + spriteHeight < 0 || ycoord + ymap - spriteHeight > Game.WINDOW_HEIGHT);
   }
 
   /**

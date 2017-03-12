@@ -119,7 +119,7 @@ public class Level extends State {
     player.setPosition(spawnLocation, true);
     player.setPlayerControlled(true);
     map.setPositionInstantly(
-        new Vector2d(Game.WIDTH / 2 - player.getX(), Game.HEIGHT / 2 - player.getY()));
+        new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(), Game.WINDOW_HEIGHT / 2 - player.getY()));
   }
 
   /**

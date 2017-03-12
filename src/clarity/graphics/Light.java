@@ -70,10 +70,10 @@ public class Light {
    */
   public void render(Graphics2D graphics) {
     graphics.setColor(new Color(0, 0, 0, currentDarkness));
-    int width = (int) (Game.WIDTH);
-    int height = (int) (Game.HEIGHT);
-    int xcoord = (int) (Game.WIDTH / 2 - width / 2);
-    int ycoord = (int) (Game.HEIGHT / 2 - height / 2);
+    int width = (int) (Game.WINDOW_WIDTH);
+    int height = (int) (Game.WINDOW_HEIGHT);
+    int xcoord = (int) (Game.WINDOW_WIDTH / 2 - width / 2);
+    int ycoord = (int) (Game.WINDOW_HEIGHT / 2 - height / 2);
     graphics.fillRect(xcoord, ycoord, width, height);
   }
 

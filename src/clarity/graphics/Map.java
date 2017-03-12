@@ -55,8 +55,8 @@ public class Map {
   public Map() {
     tileSets = TileSet.getTileSets();
     tileSize = TileSet.getTileSize();
-    numOfRowsToDraw = Game.HEIGHT / tileSize + 2;
-    numOfColsToDraw = Game.WIDTH / tileSize + 2;
+    numOfRowsToDraw = Game.WINDOW_HEIGHT / tileSize + 2;
+    numOfColsToDraw = Game.WINDOW_WIDTH / tileSize + 2;
     initMap(100, 100);
   }
 
@@ -151,9 +151,9 @@ public class Map {
     mapArray = new int[numOfRows][numOfCols];
     width = numOfCols * tileSize;
     height = numOfRows * tileSize;
-    xmin = Game.WIDTH - width;
+    xmin = Game.WINDOW_WIDTH - width;
     xmax = 0;
-    ymin = Game.HEIGHT - height;
+    ymin = Game.WINDOW_HEIGHT - height;
     ymax = 0;
     Level.map = this;
   }
