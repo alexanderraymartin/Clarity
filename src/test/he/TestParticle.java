@@ -22,7 +22,7 @@ public class TestParticle {
     Particle particle = new Particle(10, 10, 10, 10, Color.RED);
     assertEquals((double) 10, particle.getY(), 0);
   }
-  
+
   @Test
   public void particleGetterFallSpeed() {
     Particle particle = new Particle(10, 10, 10, 10, Color.RED);

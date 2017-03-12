@@ -43,7 +43,7 @@ public class Level extends State {
     isPaused = false;
     pausePressed = false;
     map = new Map();
-    light = new Light();
+    setLight(new Light());
     playerRespawnTimer = new Timer();
     respawnTimerSet = false;
     init();
@@ -82,7 +82,7 @@ public class Level extends State {
       for (int i = 0; i < getParticles().size(); i++) {
         getParticles().get(i).update();
       }
-      light.update();
+      getLight().update();
       if (player.isDead()) {
         if (!respawnTimerSet) {
           playerRespawnTimer.reset();
@@ -119,7 +119,7 @@ public class Level extends State {
     for (int i = 0; i < getParticles().size(); i++) {
       getParticles().get(i).render(graphics);
     }
-    light.render(graphics);
+    getLight().render(graphics);
     if (isPaused) {
       pauseScreen.render(graphics);
     }
@@ -182,6 +182,20 @@ public class Level extends State {
 
   public static Map getCurrentMap() {
     return map;
+  }
+
+  /**
+   * @return The light.
+   */
+  public static Light getLight() {
+    return light;
+  }
+
+  /**
+   * @param light The light to set.
+   */
+  public static void setLight(Light light) {
+    Level.light = light;
   }
 
 }

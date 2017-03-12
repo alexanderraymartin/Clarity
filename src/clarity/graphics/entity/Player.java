@@ -5,6 +5,8 @@ import clarity.state.Level;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
 
+import java.awt.Color;
+
 public class Player extends Entity {
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
@@ -44,7 +46,7 @@ public class Player extends Entity {
       if (currentHealth <= 0) {
         isDead = true;
       }
-      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10);
+      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10, Color.RED, Color.RED, Color.RED);
     }
     // TODO Differentiate between temporary immunity from being hit and power up
     if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {

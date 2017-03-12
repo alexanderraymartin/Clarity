@@ -9,7 +9,7 @@ public class Light {
 
 
   private static final float STARTING_DARKNESS_DEFAULT = 0f;
-  private static final float DARKNESS_ACCELERATION_DEFAULT = 0.0001f;
+  private static final float DARKNESS_ACCELERATION_DEFAULT = 0.0005f;
   private static final float THRESHOLD = 1f;
 
   /**
@@ -54,6 +54,13 @@ public class Light {
     currentDarkness = 0f;
   }
 
+  /**
+   * @param amount The amount of light to gain.
+   */
+  public void increaseLight(float amount) {
+    currentDarkness -= amount;
+    currentDarkness = Math.max(currentDarkness, 0);
+  }
 
   /**
    * Update the light.

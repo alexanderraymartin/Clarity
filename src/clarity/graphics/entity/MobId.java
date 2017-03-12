@@ -11,7 +11,8 @@ public class MobId {
   public static final int SAIYAN = 1;
   public static final int SKELETON = 2;
   public static final int ZOMBIE = 3;
-  public static final int[] MOB_IDS = {GHOST, SAIYAN, SKELETON, ZOMBIE};
+  public static final int TORCH = 4;
+  protected static final int[] MOB_IDS = {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH};
 
   private MobId() {}
 
@@ -31,6 +32,8 @@ public class MobId {
         return new Skeleton(SKELETON);
       case ZOMBIE:
         return new Zombie(ZOMBIE);
+      case TORCH:
+        return new Torch(TORCH);
       default:
         break;
 

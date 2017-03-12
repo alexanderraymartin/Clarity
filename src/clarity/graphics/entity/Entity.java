@@ -11,6 +11,7 @@ import clarity.state.State;
 import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -359,6 +360,10 @@ public abstract class Entity {
     return returnValue;
   }
 
+  protected void createParticleSpawner() {
+    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 30, Color.RED, Color.PINK, Color.GRAY);
+  }
+
   /**
    * Update the entity.
    */
@@ -369,8 +374,7 @@ public abstract class Entity {
     if (isDead) {
       // death animation
       if (shouldExplode) {
-        // These numbers are arbitrary values TODO
-        new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 30);
+        createParticleSpawner();
         shouldExplode = false;
       }
       if (this instanceof Projectile) {

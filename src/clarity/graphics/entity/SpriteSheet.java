@@ -15,8 +15,8 @@ public class SpriteSheet {
 
   public static final SpriteSheet DUMMY =
       new SpriteSheet(10, 10, new int[] {1, 1}, "/textures/projectiles/dummy.png");
-  public static final SpriteSheet TEMPLATE = new SpriteSheet(30, 30,
-      new int[] {8, 3, 1, 1, 8, 10, 4, 4, 5}, "/textures/characters/character_template.png");
+  public static final SpriteSheet TEMPLATE = new SpriteSheet(30, 30, new int[] {1, 1, 1, 1, 1, 1},
+      "/textures/characters/character_template.png");
   public static final SpriteSheet PLAYER =
       new SpriteSheet(30, 30, new int[] {6, 8, 1, 1, 1, 1}, "/textures/characters/player.png");
   public static final SpriteSheet GHOST =
@@ -27,6 +27,8 @@ public class SpriteSheet {
       new SpriteSheet(30, 30, new int[] {1, 3, 1, 1, 2, 2}, "/textures/characters/skeleton.png");
   public static final SpriteSheet ZOMBIE =
       new SpriteSheet(30, 30, new int[] {1, 4, 1, 1, 2, 1}, "/textures/characters/zombie.png");
+  public static final SpriteSheet TORCH =
+      new SpriteSheet(30, 30, new int[] {6, 1, 1, 1, 1, 1}, "/textures/characters/torch.png");
 
   /**
    * @param spriteWidth The width of the sprite.
