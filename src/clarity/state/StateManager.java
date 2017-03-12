@@ -65,7 +65,7 @@ public class StateManager {
   /**
    * @return The list of levels.
    */
-  private ArrayList<String> getLevels() {
+  public ArrayList<String> getLevels() {
     if (levels == null) {
       levels = new ArrayList<String>();
       try {
