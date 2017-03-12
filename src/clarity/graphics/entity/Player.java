@@ -18,8 +18,8 @@ public class Player extends Entity {
 
   private double lightSource = 100;
 
-  public Player(int mobId) {
-    super(mobId);
+  public Player() {
+    super();
   }
 
   /**
@@ -37,7 +37,7 @@ public class Player extends Entity {
    * @param damage Amount of damage entity takes.
    */
   public void hit(int damage) {
-    if (!isImmune()) {
+    if (!isImmune() && !isDead) {
       setImmune(true);
       tempImmunityTimer.reset();
       currentHealth -= damage;
@@ -111,7 +111,7 @@ public class Player extends Entity {
     maxSpeed = 1.75;
     stopSpeed = 0.4;
     // falling speeds
-    setFallSpeed(0.15);
+    fallSpeed = 0.18;
     maxFallSpeed = 4.0;
     // jumping speeds
     jumpStart = -6.0;

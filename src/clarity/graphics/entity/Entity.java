@@ -76,7 +76,7 @@ public abstract class Entity {
   protected double maxSpeed;
   protected double stopSpeed;
 
-  private double fallSpeed;
+  protected double fallSpeed;
   protected double maxFallSpeed;
   protected double jumpStart;
   protected double stopJumpSpeed;
@@ -563,10 +563,6 @@ public abstract class Entity {
 
   public double getFallSpeed() {
     return fallSpeed;
-  }
-
-  public void setFallSpeed(double fallSpeed) {
-    this.fallSpeed = fallSpeed;
   }
 
   public boolean isImmune() {

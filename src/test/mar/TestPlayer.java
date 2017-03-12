@@ -2,7 +2,6 @@ package test.mar;
 
 import static org.junit.Assert.assertEquals;
 
-import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
 
 import org.junit.Test;
@@ -12,7 +11,7 @@ public class TestPlayer {
 
   @Test
   public void testHealth() {
-    Player player = new Player(MobId.PLAYER);
+    Player player = new Player();
     // p.gainHealth(10);
     int change = 10;
     double newHealth = change + player.getHealth();
@@ -23,7 +22,7 @@ public class TestPlayer {
 
   @Test
   public void testLight() {
-    Player player = new Player(MobId.PLAYER);
+    Player player = new Player();
     player.gainLightSource(10);
 
     assertEquals((double) player.getLight(), 110, 0);

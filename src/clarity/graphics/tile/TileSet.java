@@ -24,10 +24,11 @@ public class TileSet {
   private static final int NUM_TILES_DOWN = 2;
   /* ------------------------------------------ */
   private static final String TILE_LOCATION = "/textures/tiles/";
-  private static final String PLACE_HOLDER1 = "grass.png";
-  private static final String PLACE_HOLDER2 = "level_template.png";
-  private static final String PLACE_HOLDER3 = "level_template.png";
-  private static final String[] TILE_PATHS = {PLACE_HOLDER1, PLACE_HOLDER2, PLACE_HOLDER3};
+  private static final String CASTLE_TILES = "castleTiles.png";
+  private static final String DUNGEON = "dungeon.png";
+  private static final String LIGHT_DUNGEON = "lightDungeon.png";
+  private static final String WINTER = "winter.png";
+  private static final String[] TILE_PATHS = {CASTLE_TILES, DUNGEON, LIGHT_DUNGEON, WINTER};
   /* ------------------------------------------ */
   private static TileSet[] tileSets;
 

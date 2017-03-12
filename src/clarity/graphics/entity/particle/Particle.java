@@ -31,7 +31,7 @@ public class Particle extends Entity {
     this.ycoord = ycoord;
     this.size = size;
     this.color = color;
-    setFallSpeed(0.075);
+    fallSpeed = 0.075;
     maxFallSpeed = 4.0;
     collisionWidth = collisionHeight = size;
     this.life = life + (random.nextInt(1000));

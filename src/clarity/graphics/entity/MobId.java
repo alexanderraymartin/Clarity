@@ -7,12 +7,11 @@ import clarity.graphics.entity.enemy.Zombie;
 
 public class MobId {
   public static final int DUMMY = -1;
-  public static final int PLAYER = 0;
-  public static final int GHOST = 1;
-  public static final int SAIYAN = 2;
-  public static final int SKELETON = 3;
-  public static final int ZOMBIE = 4;
-  public static final int[] MOB_IDS = {PLAYER, GHOST, SAIYAN, SKELETON, ZOMBIE};
+  public static final int GHOST = 0;
+  public static final int SAIYAN = 1;
+  public static final int SKELETON = 2;
+  public static final int ZOMBIE = 3;
+  public static final int[] MOB_IDS = {GHOST, SAIYAN, SKELETON, ZOMBIE};
 
   private MobId() {}
 
@@ -24,8 +23,6 @@ public class MobId {
     switch (key) {
       case DUMMY:
         return null;
-      case PLAYER:
-        return new Player(PLAYER);
       case GHOST:
         return new Ghost(GHOST);
       case SAIYAN:

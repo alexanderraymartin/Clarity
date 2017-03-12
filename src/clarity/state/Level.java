@@ -3,11 +3,11 @@ package clarity.state;
 import clarity.graphics.Background;
 import clarity.graphics.Light;
 import clarity.graphics.Map;
-import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
 import clarity.ui.MainMenu;
 import clarity.utilities.GameLogger;
+import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
 import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
@@ -23,6 +23,9 @@ public class Level extends State {
   private static boolean isPaused;
   private static boolean pausePressed;
   private static Light light;
+  private static Timer playerRespawnTimer;
+  private static final int RESPAWN_TIME = 3000;
+  private static boolean respawnTimerSet;
 
   public static Player player;
   public static Map map;
@@ -41,6 +44,8 @@ public class Level extends State {
     pausePressed = false;
     map = new Map();
     light = new Light();
+    playerRespawnTimer = new Timer();
+    respawnTimerSet = false;
     init();
   }
 
@@ -79,8 +84,18 @@ public class Level extends State {
       }
       light.update();
       if (player.isDead()) {
-        createPlayer(map, this);
+        if (!respawnTimerSet) {
+          playerRespawnTimer.reset();
+          respawnTimerSet = true;
+        }
+        if (playerRespawnTimer.hasElapsed(RESPAWN_TIME)) {
+          createPlayer(map, this);
+          respawnTimerSet = false;
+        }
       }
+      // track player
+      map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
+          Game.WINDOW_HEIGHT / 2 - player.getY()));
     }
     if (Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
@@ -115,12 +130,11 @@ public class Level extends State {
    * @param level The current level.
    */
   public void createPlayer(Map map, Level level) {
-    player = new Player(MobId.PLAYER);
+    player = new Player();
     player.setPosition(spawnLocation, true);
     player.setPlayerControlled(true);
-    map.setPositionInstantly(
-        new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
-            Game.WINDOW_HEIGHT / 2 - player.getY()));
+    map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
+        Game.WINDOW_HEIGHT / 2 - player.getY()));
   }
 
   /**
