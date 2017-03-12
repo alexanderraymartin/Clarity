@@ -12,18 +12,18 @@ public class MainMenu extends State {
   private static final String BACKGROUND_FILE_NAME = "mainMenu.png";
   private static final String MUSIC_FILE_NAME = "Vexento - We Are One (Original).mp3";
   private static final String MAP_FILE_NAME = "mapFileName";
-  private static final String START_FILE_NAME = "Play.png";
+  private static final String START_FILE_NAME = "NewGame.png";
   private static final String EXIT_FILE_NAME = "exit.png";
   private static final String SETTINGS_FILE_NAME = "Settings.png";
   private static final String HELP_FILE_NAME = "Help.png";
 
   private static final MenuItem START =
-      new MenuItem(START_FILE_NAME, "playHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 70);
+      new MenuItem(START_FILE_NAME, "NewGameHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 110);
   private static final MenuItem EXIT = new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", 10, 210);
   private static final MenuItem SETTINGS =
       new MenuItem(SETTINGS_FILE_NAME, "settingsHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 180);
   private static final MenuItem HELP =
-      new MenuItem(HELP_FILE_NAME, "helpHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 125);
+      new MenuItem(HELP_FILE_NAME, "helpHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 200);
 
   /**
    * @param manager The state manager.

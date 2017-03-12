@@ -17,8 +17,8 @@ public class MenuItem {
   private BufferedImage img;
   private BufferedImage img2;
   private BufferedImage img3;
-  private double height = 50;
-  private double width = 100;
+  private double height = 13;
+  private double width = 107;
   private static final String PATH = "/menuItems/";
 
   /**
