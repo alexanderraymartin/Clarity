@@ -20,7 +20,7 @@ public class SpriteSheet {
   public static final SpriteSheet PLAYER =
       new SpriteSheet(30, 30, new int[] {6, 8, 1, 1, 1, 1}, "/textures/characters/player.png");
   public static final SpriteSheet GHOST =
-      new SpriteSheet(30, 30, new int[] {1, 1, 1, 1, 1, 1}, "/textures/characters/ghost.png");
+      new SpriteSheet(30, 30, new int[] {1, 7, 1, 1, 1, 1}, "/textures/characters/ghost.png");
   public static final SpriteSheet SAIYAN =
       new SpriteSheet(30, 30, new int[] {1, 4, 1, 1, 1, 3}, "/textures/characters/saiyan.png");
   public static final SpriteSheet SKELETON =
