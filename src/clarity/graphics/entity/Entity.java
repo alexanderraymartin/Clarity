@@ -233,7 +233,7 @@ public abstract class Entity {
    */
   public void playSoundEffect(String soundEffectName) {
     if (onScreen()) {
-      Audio soundEffect = Audio.soundEffects.get(soundEffectName);
+      Audio soundEffect = Audio.getSoundEffects().get(soundEffectName);
       if (soundEffect != null) {
         soundEffect.play();
       }

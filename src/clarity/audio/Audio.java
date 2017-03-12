@@ -17,10 +17,7 @@ public class Audio {
   private FloatControl gainControl;
   private BooleanControl muteControl;
   private static final int MICRO_SECONDS = 1000000;
-  /**
-   * Sound effects for every entity in the game.
-   */
-  public static final Map<String, Audio> soundEffects = new HashMap<>();
+  private static final Map<String, Audio> soundEffects = new HashMap<>();
   /**
    * Music for the game.
    */
@@ -56,6 +53,7 @@ public class Audio {
     }
   }
 
+  // TODO: Implement this method
   public static void loadSoundEffects() {
     // soundEffects.put("name", new Audio("/sounds/soundEffects/pew.mp3"));
   }
@@ -72,6 +70,13 @@ public class Audio {
    */
   public static void resumeSongs() {
     music.forEach((name, song) -> song.resume());
+  }
+
+  /**
+   * Sound effects for every entity in the game.
+   */
+  public static Map<String, Audio> getSoundEffects() {
+    return soundEffects;
   }
 
   /**

@@ -122,11 +122,10 @@ public class Game extends JPanel {
     Timer titleTimer = new Timer();
     int frames = 0;
     int updates = 0;
-    boolean isRunning = true;
     requestFocus();
     manager = new StateManager();
 
-    while (isRunning == true) {
+    while (true) {
       if (gameLoopTimer.hasElapsed(1000.0 / 60.0)) { // update 60 times per second
         update();
         updates++;
