@@ -37,13 +37,6 @@ public class Background {
   }
 
   /**
-   * Update the background.
-   */
-  public void update() {
-    // TODO make moving background.
-  }
-
-  /**
    * Render the background.
    * 
    * @param graphics Graphics to render.
