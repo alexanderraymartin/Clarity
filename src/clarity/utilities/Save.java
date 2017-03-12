@@ -28,14 +28,13 @@ public class Save implements Serializable {
    */
   public void saveGame() {
     try {
-      System.out.println(DIRECTORY);
       FileOutputStream fileOutputStream = new FileOutputStream(DIRECTORY + SAVE_PATH);
       ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
       outputStream.writeObject(gameInfo);
       outputStream.close();
       fileOutputStream.close();
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 
@@ -55,8 +54,7 @@ public class Save implements Serializable {
       inputStream.close();
       fileInputStream.close();
     } catch (IOException | ClassNotFoundException exception) {
-      exception.printStackTrace();
-      System.out.println("Corrupted Save File");
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Corrupted Save File", exception);
     }
   }
 
@@ -70,7 +68,7 @@ public class Save implements Serializable {
         System.out.println("Creating: " + file);
         boolean successful = file.mkdirs();
         if (successful) {
-          System.out.println("Folders created!");
+          GameLogger.getLogger().log(java.util.logging.Level.FINE, "Folders created");
         }
       }
     }

@@ -1,6 +1,7 @@
 package clarity.ui;
 
 import clarity.main.Game;
+import clarity.utilities.GameLogger;
 import clarity.utilities.input.Mouse;
 
 import java.awt.Graphics2D;
@@ -25,7 +26,7 @@ public class MenuItem {
    * @param xcoord The x position.
    * @param ycoord The y position.
    */
-  public MenuItem(String fileName,String fileName2, double xcoord, double ycoord) {
+  public MenuItem(String fileName, String fileName2, double xcoord, double ycoord) {
     loadMenuItem(fileName, fileName2);
     img = img2;
     this.xcoord = xcoord;
@@ -37,7 +38,7 @@ public class MenuItem {
       img2 = ImageIO.read(getClass().getResourceAsStream(PATH + fileName));
       img3 = ImageIO.read(getClass().getResourceAsStream(PATH + fileName2));
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 
@@ -77,7 +78,7 @@ public class MenuItem {
 
     }
     img = img2;
-    
+
     return false;
   }
 

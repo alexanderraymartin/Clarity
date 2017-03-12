@@ -8,7 +8,6 @@ import clarity.graphics.entity.particle.Particle;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public abstract class State {

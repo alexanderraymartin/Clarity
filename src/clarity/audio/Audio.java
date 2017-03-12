@@ -140,7 +140,7 @@ public class Audio {
    */
   public void stop() {
     if (clip != null && clip.isRunning()) {
-        clip.stop();
+      clip.stop();
     }
   }
 

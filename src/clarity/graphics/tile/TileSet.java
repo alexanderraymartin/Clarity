@@ -1,5 +1,7 @@
 package clarity.graphics.tile;
 
+import clarity.utilities.GameLogger;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -88,7 +90,7 @@ public class TileSet {
         tiles[1][col] = new Tile(tile, Tile.COLLISION);
       }
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 }

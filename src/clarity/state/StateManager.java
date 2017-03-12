@@ -2,6 +2,7 @@ package clarity.state;
 
 import clarity.graphics.Background;
 import clarity.ui.MainMenu;
+import clarity.utilities.GameLogger;
 import clarity.utilities.Save;
 
 import java.awt.Graphics2D;
@@ -80,7 +81,7 @@ public class StateManager {
         }
         reader.close();
       } catch (Exception exception) {
-        exception.printStackTrace();
+        GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
       }
     }
     return levels;

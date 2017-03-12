@@ -7,6 +7,7 @@ import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
 import clarity.ui.MainMenu;
+import clarity.utilities.GameLogger;
 import clarity.utilities.Vector2d;
 import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
@@ -56,7 +57,7 @@ public class Level extends State {
       mapFileName = reader.readLine().trim();
 
     } catch (Exception exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 

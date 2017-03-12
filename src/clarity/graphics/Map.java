@@ -6,6 +6,7 @@ import clarity.graphics.tile.Tile;
 import clarity.graphics.tile.TileSet;
 import clarity.main.Game;
 import clarity.state.Level;
+import clarity.utilities.GameLogger;
 import clarity.utilities.Vector2d;
 import clarity.utilities.Vector2i;
 
@@ -94,7 +95,7 @@ public class Map {
       BufferedReader reader = new BufferedReader(new InputStreamReader(input));
       loadMap(reader);
     } catch (Exception exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 
@@ -140,7 +141,7 @@ public class Map {
       }
       reader.close();
     } catch (Exception exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 
@@ -268,7 +269,7 @@ public class Map {
         }
       }
     } catch (Exception exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 
