@@ -9,6 +9,8 @@ public class GameLogger {
 
   private static Logger log;
 
+  public static final String EXCEPTION = "Exception";
+
   /**
    * @return A logger to the console.
    */

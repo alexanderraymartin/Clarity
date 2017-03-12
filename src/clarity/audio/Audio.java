@@ -1,5 +1,7 @@
 package clarity.audio;
 
+import clarity.utilities.GameLogger;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,7 +52,7 @@ public class Audio {
       setGain(70);
 
     } catch (Exception exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 

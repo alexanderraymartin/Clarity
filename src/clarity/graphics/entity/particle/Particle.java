@@ -31,7 +31,7 @@ public class Particle extends Entity {
     this.ycoord = ycoord;
     this.size = size;
     this.color = color;
-    fallSpeed = 0.075;
+    setFallSpeed(0.075);
     maxFallSpeed = 4.0;
     collisionWidth = collisionHeight = size;
     this.life = life + (random.nextInt(1000));
@@ -51,7 +51,7 @@ public class Particle extends Entity {
       Level.getParticles().remove(this);
     }
     move();
-    dy += fallSpeed;
+    dy += getFallSpeed();
     if (dy > maxFallSpeed) {
       dy = maxFallSpeed;
     }

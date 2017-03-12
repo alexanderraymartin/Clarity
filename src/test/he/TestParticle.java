@@ -27,7 +27,7 @@ public class TestParticle {
   public void particleGetterFallSpeed() {
     Particle particle = new Particle(10, 10, 10, 10, Color.RED);
 
-    assertEquals((double) 0.075, particle.fallSpeed, 0);
+    assertEquals((double) 0.075, particle.getFallSpeed(), 0);
   }
 
 }

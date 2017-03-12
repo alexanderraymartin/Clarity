@@ -14,7 +14,7 @@ public class Player extends Entity {
   /**
    * Timer for tracking the temporary immunity of the player.
    */
-  public Timer tempImmunityTimer = new Timer();
+  public static final Timer tempImmunityTimer = new Timer();
 
   private double lightSource = 100;
 
@@ -37,8 +37,8 @@ public class Player extends Entity {
    * @param damage Amount of damage entity takes.
    */
   public void hit(int damage) {
-    if (!isImmune) {
-      isImmune = true;
+    if (!isImmune()) {
+      setImmune(true);
       tempImmunityTimer.reset();
       currentHealth -= damage;
       if (currentHealth <= 0) {
@@ -48,7 +48,7 @@ public class Player extends Entity {
     }
     // TODO Differentiate between temporary immunity from being hit and power up
     if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {
-      isImmune = false;
+      setImmune(false);
     }
   }
 
@@ -111,7 +111,7 @@ public class Player extends Entity {
     maxSpeed = 1.75;
     stopSpeed = 0.4;
     // falling speeds
-    fallSpeed = 0.15;
+    setFallSpeed(0.15);
     maxFallSpeed = 4.0;
     // jumping speeds
     jumpStart = -6.0;
@@ -119,7 +119,7 @@ public class Player extends Entity {
     facingRight = true;
     currentHealth = maxHealth = 100;
     currentEnergy = maxEnergy = 100;
-    isPlayerControlled = true;
+    setPlayerControlled(true);
   }
 
 }

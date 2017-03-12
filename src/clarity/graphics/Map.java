@@ -36,7 +36,7 @@ public class Map {
   private int width;
   private int height;
   // the map
-  private int[][] map;
+  private int[][] mapArray;
   // array of tile sets
   private TileSet[] tileSets;
   // offset based on how far player has moved
@@ -47,12 +47,6 @@ public class Map {
   private int numOfColsToDraw;
   // camera tracking speed
   private double moveSpeed = CAM_SCROLL_SPD;
-
-  // TODO: THIS CONSTRUCTOR IS JUST TO GET TESTS TO CORRECTLY COMPILE.
-  public Map(int width, int height) {
-    this.width = width;
-    this.height = height;
-  }
 
 
   /**
@@ -78,9 +72,9 @@ public class Map {
     } else {
       facingRight = false;
     }
-    int id = Integer.parseInt(token.substring(1, token.indexOf("(")));
-    double xcoord = Double.parseDouble(token.substring(token.indexOf("(") + 1, token.indexOf(",")));
-    double ycoord = Double.parseDouble(token.substring(token.indexOf(",") + 1, token.length() - 1));
+    int id = Integer.parseInt(token.substring(1, token.indexOf('(')));
+    double xcoord = Double.parseDouble(token.substring(token.indexOf('(') + 1, token.indexOf(',')));
+    double ycoord = Double.parseDouble(token.substring(token.indexOf(',') + 1, token.length() - 1));
     Entity entity = MobId.getEntity(id);
     entity.setPosition(new Vector2d(xcoord, ycoord), facingRight);
   }
@@ -95,7 +89,7 @@ public class Map {
       BufferedReader reader = new BufferedReader(new InputStreamReader(input));
       loadMap(reader);
     } catch (Exception exception) {
-      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
     }
   }
 
@@ -120,16 +114,18 @@ public class Map {
         for (int col = 0; col < tokens.length; col++) {
           String temp = tokens[col].trim();
           if (!hasEntities) {
-            if (temp.equals("#Entities#")) {
+            if ("#Entities#".equals(temp)) {
               hasEntities = true;
               break;
             }
             // map tiles
-            map[row][col] = Integer.parseInt(tokens[col]);
-            if (map[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 1) {
+            mapArray[row][col] = Integer.parseInt(tokens[col]);
+            if (mapArray[row][col]
+                % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 1) {
               Level.spawnLocation = new Vector2d((col + 1) * tileSize, row * tileSize);
             }
-            if (map[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 2) {
+            if (mapArray[row][col]
+                % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 2) {
               Level.winLocation = new Vector2d((col) * tileSize, row * tileSize);
             }
           } else {
@@ -141,7 +137,7 @@ public class Map {
       }
       reader.close();
     } catch (Exception exception) {
-      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
     }
   }
 
@@ -152,7 +148,7 @@ public class Map {
   public void initMap(int cols, int rows) {
     numOfCols = cols;
     numOfRows = rows;
-    map = new int[numOfRows][numOfCols];
+    mapArray = new int[numOfRows][numOfCols];
     width = numOfCols * tileSize;
     height = numOfRows * tileSize;
     xmin = Game.WIDTH - width;
@@ -172,7 +168,7 @@ public class Map {
       // bounds checking
       return Tile.NO_COLLISION;
     }
-    int value = map[row][col];
+    int value = mapArray[row][col];
     int index = value / (TileSet.getNumTilesAcross() * 2);
     int rowIndex = value / TileSet.getNumTilesAcross();
     int colIndex = value % TileSet.getNumTilesAcross();
@@ -255,13 +251,13 @@ public class Map {
           if (col >= numOfCols) {
             break;
           }
-          int temp = map[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+          int temp = mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
           if (temp == 0 || temp == 1 || temp == 2) {
             continue; // Clear block / spawn location / win location
           }
-          int value = map[row][col]; // number in map file
-          int index = (value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()));
-          int number = (value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()));
+          int value = mapArray[row][col]; // number in map file
+          int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+          int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
           int rowIndex = number / TileSet.getNumTilesAcross();
           int colIndex = number % TileSet.getNumTilesAcross();
           graphics.drawImage(tileSets[index].getTiles()[rowIndex][colIndex].getImage(),
@@ -269,7 +265,7 @@ public class Map {
         }
       }
     } catch (Exception exception) {
-      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
     }
   }
 

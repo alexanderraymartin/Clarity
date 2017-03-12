@@ -21,8 +21,8 @@ public abstract class Entity {
   // mod ID
   protected int mobId;
   // position and velocity
-  public double xcoord;
-  public double ycoord;
+  protected double xcoord;
+  protected double ycoord;
   protected double dx;
   protected double dy;
   protected Timer movementTimer;
@@ -66,31 +66,31 @@ public abstract class Entity {
   protected static final int ATTACKING = 4;
   protected static final int SPECIAL_ABILITY = 5;
   // movement
-  public boolean isRight;
-  public boolean isLeft;
-  public boolean isUp;
-  public boolean isDown;
-  public boolean isJumping;
-  public boolean isFalling;
-  public double moveSpeed;
-  public double maxSpeed;
-  public double stopSpeed;
+  protected boolean isRight;
+  protected boolean isLeft;
+  protected boolean isUp;
+  protected boolean isDown;
+  protected boolean isJumping;
+  protected boolean isFalling;
+  protected double moveSpeed;
+  protected double maxSpeed;
+  protected double stopSpeed;
 
-  public double fallSpeed;
-  public double maxFallSpeed;
-  public double jumpStart;
-  public double stopJumpSpeed;
+  private double fallSpeed;
+  protected double maxFallSpeed;
+  protected double jumpStart;
+  protected double stopJumpSpeed;
   // health and energy
-  public double currentHealth;
-  public double maxHealth;
-  public double currentEnergy;
-  public double maxEnergy;
-  public boolean isDead;
-  public boolean isImmune;
-  public int immunityTimer;
-  public boolean shouldExplode;
+  protected double currentHealth;
+  protected double maxHealth;
+  protected double currentEnergy;
+  protected double maxEnergy;
+  protected boolean isDead;
+  private boolean isImmune;
+  private int immunityTimer;
+  protected boolean shouldExplode;
   // player
-  public boolean isPlayerControlled;
+  private boolean isPlayerControlled;
 
 
   /**
@@ -103,7 +103,7 @@ public abstract class Entity {
     this.animation = new Animation();
     this.currentAction = IDLE;
     this.shouldExplode = true;
-    this.isPlayerControlled = false;
+    this.setPlayerControlled(false);
     this.movementTimer = new Timer();
     init();
     if (spriteSheet != null) {
@@ -167,7 +167,7 @@ public abstract class Entity {
    * @param damage Amount of damage entity takes.
    */
   public void hit(int damage) {
-    if (!isImmune) {
+    if (!isImmune()) {
       currentHealth -= damage;
       if (currentHealth <= 0) {
         isDead = true;
@@ -194,7 +194,7 @@ public abstract class Entity {
       }
     }
     if (isDown && isFalling) { // entity going down and falling
-      dy += fallSpeed;
+      dy += getFallSpeed();
     }
     if (!isLeft && !isRight) { // entity slowing down
       if (dx > 0) {
@@ -215,7 +215,7 @@ public abstract class Entity {
       isFalling = true;
     }
     if (isFalling) { // entity falling
-      dy += fallSpeed;
+      dy += getFallSpeed();
       if (dy > 0) {
         isJumping = false;
       }
@@ -316,7 +316,7 @@ public abstract class Entity {
       if (topLeft || topRight || topMiddle) {
         returnValue = true;
         dy = 0;
-        yposition = ((int) (ycoord - yoffset) / tileSize) * tileSize + collisionHeight / 2;
+        yposition = ((int) (ycoord - yoffset) / tileSize) * tileSize + collisionHeight / 2.0;
       } else {
         yposition += dy;
       }
@@ -325,7 +325,7 @@ public abstract class Entity {
       if (bottomLeft || bottomRight || bottomMiddle) {
         returnValue = true;
         dy = 0;
-        yposition = (((int) (ycoord + yoffset) / tileSize) + 1) * tileSize - collisionHeight / 2;
+        yposition = (((int) (ycoord + yoffset) / tileSize) + 1) * tileSize - collisionHeight / 2.0;
         isFalling = false;
       } else {
         yposition += dy;
@@ -336,7 +336,7 @@ public abstract class Entity {
       if (topLeft || bottomLeft || middleLeft) {
         returnValue = true;
         dx = 0;
-        xposition = ((int) (xcoord - xoffset) / tileSize) * tileSize + collisionWidth / 2;
+        xposition = ((int) (xcoord - xoffset) / tileSize) * tileSize + collisionWidth / 2.0;
       } else {
         xposition += dx;
       }
@@ -345,7 +345,7 @@ public abstract class Entity {
       if (topRight || bottomRight || middleRight) {
         returnValue = true;
         dx = 0;
-        xposition = (((int) (xcoord + xoffset) / tileSize) + 1) * tileSize - collisionWidth / 2;
+        xposition = (((int) (xcoord + xoffset) / tileSize) + 1) * tileSize - collisionWidth / 2.0;
       } else {
         xposition += dx;
       }
@@ -505,6 +505,13 @@ public abstract class Entity {
   }
 
   /**
+   * @param health The health.
+   */
+  public void setHealth(double health) {
+    this.currentHealth = health;
+  }
+
+  /**
    * @return Health of entity.
    */
   public double getHealth() {
@@ -526,11 +533,19 @@ public abstract class Entity {
   }
 
   /**
+   * @param energy The energy.
+   */
+  public void setEnergy(double energy) {
+    this.currentEnergy = energy;
+  }
+
+  /**
    * @return Max energy of entity.
    */
   public double getMaxEnergy() {
     return maxEnergy;
   }
+
 
   /**
    * @return True if the entity is dead.
@@ -544,6 +559,38 @@ public abstract class Entity {
    */
   public void setDead(boolean value) {
     isDead = value;
+  }
+
+  public double getFallSpeed() {
+    return fallSpeed;
+  }
+
+  public void setFallSpeed(double fallSpeed) {
+    this.fallSpeed = fallSpeed;
+  }
+
+  public boolean isImmune() {
+    return isImmune;
+  }
+
+  public void setImmune(boolean isImmune) {
+    this.isImmune = isImmune;
+  }
+
+  public int getImmunityTimer() {
+    return immunityTimer;
+  }
+
+  public void setImmunityTimer(int immunityTimer) {
+    this.immunityTimer = immunityTimer;
+  }
+
+  public boolean isPlayerControlled() {
+    return isPlayerControlled;
+  }
+
+  public void setPlayerControlled(boolean isPlayerControlled) {
+    this.isPlayerControlled = isPlayerControlled;
   }
 
 

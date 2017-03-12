@@ -78,7 +78,7 @@ public class Level extends State {
         getParticles().get(i).update();
       }
       light.update();
-      if (player.isDead) {
+      if (player.isDead()) {
         createPlayer(map, this);
       }
     }
@@ -117,7 +117,7 @@ public class Level extends State {
   public void createPlayer(Map map, Level level) {
     player = new Player(MobId.PLAYER);
     player.setPosition(spawnLocation, true);
-    player.isPlayerControlled = true;
+    player.setPlayerControlled(true);
     map.setPositionInstantly(
         new Vector2d(Game.WIDTH / 2 - player.getX(), Game.HEIGHT / 2 - player.getY()));
   }
@@ -144,7 +144,7 @@ public class Level extends State {
     }
   }
 
-  private void checkPause() {
+  private static void checkPause() {
     if (Keyboard.escapePressed() && !pausePressed) {
       if (!isPaused) {
         isPaused = true;
