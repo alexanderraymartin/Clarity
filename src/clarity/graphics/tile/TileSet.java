@@ -81,7 +81,6 @@ public class TileSet {
    */
   public void loadTiles(String path) {
     try {
-      System.out.println("path: " + path);
       allTiles = ImageIO.read(getClass().getResourceAsStream(path));
       tiles = new Tile[2][NUM_TILES_ACROSS];
       BufferedImage tile;
