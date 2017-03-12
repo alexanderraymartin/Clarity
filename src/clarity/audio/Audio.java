@@ -1,6 +1,7 @@
 package clarity.audio;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -17,11 +18,11 @@ public class Audio {
   /**
    * Sound effects for every entity in the game.
    */
-  public static HashMap<String, Audio> soundEffects = new HashMap<>();
+  public static final Map<String, Audio> soundEffects = new HashMap<>();
   /**
    * Music for the game.
    */
-  public static HashMap<String, Audio> music = new HashMap<>();
+  public static final Map<String, Audio> music = new HashMap<>();
 
   /**
    * @param path Path to the audio file.
@@ -138,10 +139,8 @@ public class Audio {
    * Stop the music.
    */
   public void stop() {
-    if (clip != null) {
-      if (clip.isRunning()) {
+    if (clip != null && clip.isRunning()) {
         clip.stop();
-      }
     }
   }
 
