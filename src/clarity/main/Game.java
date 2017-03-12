@@ -45,8 +45,10 @@ public class Game extends JPanel {
    * Set to true to enable full screen mode.
    */
   public static final boolean FULL_SCREEN_MODE = false;
-  public static final  int MONITOR_WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-  public static final int MONITOR_HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+  public static final int MONITOR_WIDTH =
+      (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+  public static final int MONITOR_HEIGHT =
+      (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
   public static final double MONITOR_SCALE =
       Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WINDOW_WIDTH;
 
@@ -104,12 +106,12 @@ public class Game extends JPanel {
       if (FULL_SCREEN_MODE) {
         // render image to screen
         graphics2.drawImage(splashScreen, (int) (MONITOR_WIDTH - WINDOW_WIDTH * MONITOR_SCALE) / 2,
-            (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2, (int) (WINDOW_WIDTH * MONITOR_SCALE),
-            (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
+            (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2,
+            (int) (WINDOW_WIDTH * MONITOR_SCALE), (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
       } else {
         // render image to screen
-        graphics2.drawImage(splashScreen, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE),
-            null);
+        graphics2.drawImage(splashScreen, 0, 0, (int) (WINDOW_WIDTH * SCALE),
+            (int) (WINDOW_HEIGHT * SCALE), null);
       }
       graphics2.dispose();
     } catch (IOException exception) {
@@ -155,11 +157,12 @@ public class Game extends JPanel {
     if (FULL_SCREEN_MODE) {
       // render image to screen
       graphics2.drawImage(image, (int) (MONITOR_WIDTH - WINDOW_WIDTH * MONITOR_SCALE) / 2,
-          (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2, (int) (WINDOW_WIDTH * MONITOR_SCALE),
-          (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
+          (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2,
+          (int) (WINDOW_WIDTH * MONITOR_SCALE), (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
     } else {
       // render image to screen
-      graphics2.drawImage(image, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE), null);
+      graphics2.drawImage(image, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE),
+          null);
     }
     graphics2.dispose(); // dispose of graphics from memory
   }
