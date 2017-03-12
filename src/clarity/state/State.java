@@ -8,7 +8,7 @@ import clarity.graphics.entity.particle.Particle;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 
 public abstract class State {
 
@@ -109,7 +109,7 @@ public abstract class State {
   public abstract void render(Graphics2D graphics);
 
   // Closes all music except music with same name as toKeep
-  protected void closeOtherMusic(HashMap<String, Audio> music, String toKeep) {
+  protected void closeOtherMusic(Map<String, Audio> music, String toKeep) {
     music.forEach((songName, song) -> {
       if (!songName.equals(toKeep)) {
         song.close();
@@ -117,7 +117,7 @@ public abstract class State {
     });
   }
 
-  protected void closeAllMusic(HashMap<String, Audio> audio) {
+  protected void closeAllMusic(Map<String, Audio> audio) {
     closeOtherMusic(audio, null);
   }
 

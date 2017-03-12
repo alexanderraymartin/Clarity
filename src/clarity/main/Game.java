@@ -2,6 +2,7 @@ package clarity.main;
 
 import clarity.graphics.entity.SpriteSheet;
 import clarity.state.StateManager;
+import clarity.utilities.GameLogger;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
@@ -112,7 +113,7 @@ public class Game extends JPanel {
       }
       graphics2.dispose();
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 

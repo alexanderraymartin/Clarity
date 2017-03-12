@@ -1,5 +1,7 @@
 package clarity.graphics.entity;
 
+import clarity.utilities.GameLogger;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +49,7 @@ public class SpriteSheet {
         sprites.add(image);
       }
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 

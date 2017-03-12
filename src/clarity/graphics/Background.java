@@ -1,6 +1,7 @@
 package clarity.graphics;
 
 import clarity.main.Game;
+import clarity.utilities.GameLogger;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -32,7 +33,7 @@ public class Background {
     try {
       image = ImageIO.read(getClass().getResourceAsStream(PATH + fileName));
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
   }
 
