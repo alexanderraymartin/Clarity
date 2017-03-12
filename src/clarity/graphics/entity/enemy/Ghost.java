@@ -38,8 +38,8 @@ public class Ghost extends Enemy {
     maxSpeed = 1.5;
     stopSpeed = 0.4;
     // falling speeds
-    fallSpeed = 0.15;
-    maxFallSpeed = 4.0;
+    fallSpeed = 0;
+    maxFallSpeed = 0;
     // jumping speeds
     jumpStart = -6.0;
     stopJumpSpeed = 0.5;
