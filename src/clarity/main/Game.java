@@ -45,9 +45,9 @@ public class Game extends JPanel {
    * Set to true to enable full screen mode.
    */
   public static final boolean FULL_SCREEN_MODE = true;
-  public final static int monitorWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-  public final static int monitorHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
-  public final static double monitorScale =
+  public static final  int MONITOR_WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+  public static final int MONITOR_HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+  public static final double MONITOR_SCALE =
       Toolkit.getDefaultToolkit().getScreenSize().getWidth() / WINDOW_WIDTH;
 
   private JFrame frame;
@@ -103,9 +103,9 @@ public class Game extends JPanel {
       Graphics graphics2 = getGraphics();
       if (FULL_SCREEN_MODE) {
         // render image to screen
-        graphics2.drawImage(splashScreen, (int) (monitorWidth - WINDOW_WIDTH * monitorScale) / 2,
-            (int) (monitorHeight - WINDOW_HEIGHT * monitorScale) / 2, (int) (WINDOW_WIDTH * monitorScale),
-            (int) (WINDOW_HEIGHT * monitorScale), null);
+        graphics2.drawImage(splashScreen, (int) (MONITOR_WIDTH - WINDOW_WIDTH * MONITOR_SCALE) / 2,
+            (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2, (int) (WINDOW_WIDTH * MONITOR_SCALE),
+            (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
       } else {
         // render image to screen
         graphics2.drawImage(splashScreen, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE),
@@ -126,7 +126,7 @@ public class Game extends JPanel {
     requestFocus();
     manager = new StateManager();
 
-    while (isRunning) {
+    while (isRunning == true) {
       if (gameLoopTimer.hasElapsed(1000.0 / 60.0)) { // update 60 times per second
         update();
         updates++;
@@ -155,9 +155,9 @@ public class Game extends JPanel {
     Graphics graphics2 = getGraphics(); // gets image to render
     if (FULL_SCREEN_MODE) {
       // render image to screen
-      graphics2.drawImage(image, (int) (monitorWidth - WINDOW_WIDTH * monitorScale) / 2,
-          (int) (monitorHeight - WINDOW_HEIGHT * monitorScale) / 2, (int) (WINDOW_WIDTH * monitorScale),
-          (int) (WINDOW_HEIGHT * monitorScale), null);
+      graphics2.drawImage(image, (int) (MONITOR_WIDTH - WINDOW_WIDTH * MONITOR_SCALE) / 2,
+          (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2, (int) (WINDOW_WIDTH * MONITOR_SCALE),
+          (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
     } else {
       // render image to screen
       graphics2.drawImage(image, 0, 0, (int) (WINDOW_WIDTH * SCALE), (int) (WINDOW_HEIGHT * SCALE), null);

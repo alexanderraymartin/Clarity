@@ -68,7 +68,7 @@ public class MenuItem {
   public boolean covered() {
     double scale = Game.SCALE;
     if (Game.FULL_SCREEN_MODE) {
-      scale = Game.monitorScale;
+      scale = Game.MONITOR_SCALE;
     }
     if (Mouse.getX() / scale < (xcoord + width) && Mouse.getX() / scale > xcoord
         && Mouse.getY() / scale > ycoord && Mouse.getY() / scale < (ycoord + height)) {
