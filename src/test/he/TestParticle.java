@@ -17,9 +17,17 @@ public class TestParticle {
     assertEquals((double) 10, particle.getX(), 0);
   }
 
+  @Test
   public void particleGetterY() {
     Particle particle = new Particle(10, 10, 10, 10, Color.RED);
     assertEquals((double) 10, particle.getY(), 0);
+  }
+  
+  @Test
+  public void particleGetterFallSpeed() {
+    Particle particle = new Particle(10, 10, 10, 10, Color.RED);
+
+    assertEquals((double) 0.075, particle.fallSpeed, 0);
   }
 
 }
