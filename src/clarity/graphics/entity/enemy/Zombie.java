@@ -24,16 +24,17 @@ public class Zombie extends Enemy {
         isLeft = false;
         isRight = true;
       }
-      double yDistance = Math.abs(Level.player.getY()) - Math.abs(ycoord);
+      double ydistance = Math.abs(Level.player.getY()) - Math.abs(ycoord);
       if ((checkTileCollision() && dy == 0 && changeX < 1)
-          || ((yDistance > TileSet.getTileSize() * MAX_JUMP_RANGE && yDistance < TileSet.getTileSize() * MIN_JUMP_RANGE  && yDistance < 0) )) {
-          setJumping(true);
-        } else {
-          setJumping(false);
-        }
-
-        previousX = xcoord;
+          || ((ydistance > TileSet.getTileSize() * MAX_JUMP_RANGE
+              && ydistance < TileSet.getTileSize() * MIN_JUMP_RANGE && ydistance < 0))) {
+        setJumping(true);
+      } else {
+        setJumping(false);
       }
+
+      previousX = xcoord;
+    }
   }
 
   @Override
@@ -43,14 +44,14 @@ public class Zombie extends Enemy {
     collisionHeight = 30;
     // movement speeds
     moveSpeed = 0.1;
-    maxSpeed = 1.5;
-    stopSpeed = 0.4;
+    maxSpeed = 1.75;
+    stopSpeed = 0.1;
     // falling speeds
     fallSpeed = 0.15;
     maxFallSpeed = 4.0;
     // jumping speeds
-    jumpStart = -9.0;
-    stopJumpSpeed = 0.5;
+    jumpStart = -10.0;
+    stopJumpSpeed = 0.1;
     facingRight = false;
     currentHealth = maxHealth = 100;
     // currentEnergy = maxEnergy = 100;
