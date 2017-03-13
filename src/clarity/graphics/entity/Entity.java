@@ -428,11 +428,11 @@ public abstract class Entity {
             (int) (xcoord + xmap - spriteWidth / 2 + spriteWidth),
             (int) (ycoord + ymap - spriteHeight / 2), -spriteWidth, spriteHeight, null);
       }
-      // g.setColor(Color.red);
+      // graphics.setColor(Color.red);
       // Rectangle rectangle = getRectangle();
-      // rectangle.x += xMap;
-      // rectangle.y += yMap;
-      // g.draw(rectangle);
+      // rectangle.x += xmap;
+      // rectangle.y += ymap;
+      // graphics.draw(rectangle);
     }
   }
 

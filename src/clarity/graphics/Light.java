@@ -9,7 +9,7 @@ public class Light {
 
 
   private static final float STARTING_DARKNESS_DEFAULT = 0f;
-  private static final float DARKNESS_ACCELERATION_DEFAULT = 0.0005f;
+  private static final float DARKNESS_ACCELERATION_DEFAULT = 0.0002f;
   private static final float THRESHOLD = 1f;
 
   /**

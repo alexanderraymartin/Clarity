@@ -19,8 +19,6 @@ public class Player extends Entity {
    */
   public static final Timer tempImmunityTimer = new Timer();
 
-  private double lightSource = 100;
-
   public Player() {
     super();
   }
@@ -111,18 +109,6 @@ public class Player extends Entity {
    */
   public void gainHealth(int boost) {
     currentHealth += boost;
-  }
-
-  /**
-   * @param light Value added to current lightSource value.
-   */
-  public void gainLightSource(int light) {
-    lightSource += light;
-  }
-
-
-  public double getLight() {
-    return lightSource;
   }
 
   protected void init() {
