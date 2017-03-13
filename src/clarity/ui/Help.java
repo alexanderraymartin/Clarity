@@ -14,9 +14,9 @@ public class Help extends State {
   private static final String MAP_FILE_NAME = "mapFileName";
   private static final String EXIT_FILE_NAME = "exit.png";
 
-  private static final MenuItem EXIT = 
+  private static final MenuItem EXIT =
       new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", Game.WINDOW_WIDTH / 2 + 15, 200);
-  private static final MenuItem BACK = 
+  private static final MenuItem BACK =
       new MenuItem("back.png", "backHighlight.png", Game.WINDOW_WIDTH / 2 - 135, 200);
 
   /**
@@ -34,7 +34,7 @@ public class Help extends State {
    */
   public void update() {
     if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
-      System.exit(0);
+      Game.exitGame();
     } else if (BACK.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
     }

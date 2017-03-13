@@ -37,10 +37,12 @@ public class Game extends JPanel {
    */
   public static final String TITLE = "Clarity";
 
+  private static boolean isRunning;
+
   /**
    * Set to true to enable full screen mode.
    */
-  public static final boolean FULL_SCREEN_MODE = false;
+  public static final boolean FULL_SCREEN_MODE = true;
   public static final int MONITOR_WIDTH =
       (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
   public static final int MONITOR_HEIGHT =
@@ -86,6 +88,7 @@ public class Game extends JPanel {
       frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
     }
     frame.setVisible(true);
+    isRunning = true;
     run();
   }
 
@@ -97,7 +100,7 @@ public class Game extends JPanel {
     requestFocus();
     manager = new StateManager();
 
-    while (true) {
+    while (isRunning) {
       if (gameLoopTimer.hasElapsed(1000.0 / 60.0)) { // update 60 times per second
         update();
         updates++;
@@ -135,6 +138,13 @@ public class Game extends JPanel {
           null);
     }
     graphics2.dispose(); // dispose of graphics from memory
+  }
+
+  /**
+   * Exit the game.
+   */
+  public static void exitGame() {
+    isRunning = false;
   }
 
 }

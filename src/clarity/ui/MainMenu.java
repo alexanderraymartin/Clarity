@@ -24,7 +24,7 @@ public class MainMenu extends State {
       new MenuItem(HELP_FILE_NAME, "HelpHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 130);
   private static final MenuItem SETTINGS =
       new MenuItem(SETTINGS_FILE_NAME, "SettingsHighLight.png", Game.WINDOW_WIDTH / 2 - 50, 150);
-  private static final MenuItem EXIT = 
+  private static final MenuItem EXIT =
       new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 170);
 
   /**
@@ -46,7 +46,7 @@ public class MainMenu extends State {
     if (START.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new LevelMenu(manager));
     } else if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
-      System.exit(0);
+      Game.exitGame();
     } else if (SETTINGS.covered() && Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new Settings(manager));
     } else if (HELP.covered() && Mouse.buttonClickAndRelease()) {
