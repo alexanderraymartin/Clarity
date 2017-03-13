@@ -21,9 +21,9 @@ public class MainMenu extends State {
       new MenuItem(START_FILE_NAME, "NewGameHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 110);
   private static final MenuItem EXIT = new MenuItem(EXIT_FILE_NAME, "exitHighlight.png", 10, 210);
   private static final MenuItem SETTINGS =
-      new MenuItem(SETTINGS_FILE_NAME, "settingsHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 180);
+      new MenuItem(SETTINGS_FILE_NAME, "SettingsHighLight.png", Game.WINDOW_WIDTH / 2 - 50, 170);
   private static final MenuItem HELP =
-      new MenuItem(HELP_FILE_NAME, "helpHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 200);
+      new MenuItem(HELP_FILE_NAME, "HelpHighlight.png", Game.WINDOW_WIDTH / 2 - 50, 150);
 
   /**
    * @param manager The state manager.
