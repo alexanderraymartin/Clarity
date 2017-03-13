@@ -17,7 +17,7 @@ public class Player extends Entity {
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
    */
-  private static final int TEMP_IMMUNITY_DURATION = 2000; // milliseconds
+  private static final int TEMP_IMMUNITY_DURATION = 500; // milliseconds
 
   /**
    * Amount of energy regained per game tick.
@@ -27,7 +27,7 @@ public class Player extends Entity {
   /**
    * Timer for tracking the temporary immunity of the player.
    */
-  public static final Timer tempImmunityTimer = new Timer();
+  public static final Timer TEMP_IMMUNITY_TIMER = new Timer();
 
   public Player() {
     super();
@@ -59,7 +59,7 @@ public class Player extends Entity {
   }
 
   private void checkImmunity() {
-    if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {
+    if (TEMP_IMMUNITY_TIMER.hasElapsed(TEMP_IMMUNITY_DURATION)) {
       setImmune(false);
     }
   }
@@ -76,7 +76,7 @@ public class Player extends Entity {
   public void hit(int damage) {
     if (!isImmune() && !isDead) {
       setImmune(true);
-      tempImmunityTimer.reset();
+      TEMP_IMMUNITY_TIMER.reset();
       currentHealth -= damage;
       if (currentHealth <= 0) {
         isDead = true;

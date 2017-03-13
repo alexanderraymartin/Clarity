@@ -15,11 +15,9 @@ public class MobId {
   public static final int ZOMBIE = 3;
   public static final int TORCH = 4;
   public static final int FIREBALL = 5;
-  protected static final int[] MOB_IDS =
-      {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH, FIREBALL};
+  protected static final int[] MOB_IDS = {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH, FIREBALL};
 
-  private MobId() {
-  }
+  private MobId() {}
 
   /**
    * @param key The key of the entity.
