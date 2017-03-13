@@ -4,6 +4,7 @@ import clarity.audio.Audio;
 import clarity.graphics.Map;
 import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.entity.particle.ParticleSpawner;
+import clarity.graphics.entity.projectile.Projectile;
 import clarity.graphics.tile.Tile;
 import clarity.main.Game;
 import clarity.state.Level;

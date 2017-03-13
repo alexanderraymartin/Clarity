@@ -3,8 +3,8 @@ package clarity.state;
 import clarity.audio.Audio;
 import clarity.graphics.Background;
 import clarity.graphics.entity.Entity;
-import clarity.graphics.entity.Projectile;
 import clarity.graphics.entity.particle.Particle;
+import clarity.graphics.entity.projectile.Projectile;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;

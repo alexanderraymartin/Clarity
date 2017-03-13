@@ -1,7 +1,7 @@
 package clarity.graphics.entity;
 
 import clarity.graphics.entity.particle.ParticleSpawner;
-import clarity.graphics.entity.powerup.Fireball;
+import clarity.graphics.entity.projectile.Fireball;
 import clarity.state.Level;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;

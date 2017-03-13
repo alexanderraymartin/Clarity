@@ -1,5 +1,6 @@
-package clarity.graphics.entity;
+package clarity.graphics.entity.projectile;
 
+import clarity.graphics.entity.Entity;
 import clarity.state.State;
 import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
@@ -19,8 +20,8 @@ public abstract class Projectile extends Entity {
   public Projectile(Entity source, int mobId) {
     super(mobId);
     this.source = source;
-    setPosition(new Vector2d((source.getX() + source.collisionWidth),
-        (source.getY()) + source.collisionHeight), source.isFacingRight());
+    setPosition(new Vector2d((source.getX() + source.getCollisionWidth()), (source.getY())),
+        source.isFacingRight());
     if (source.isFacingRight()) {
       isRight = true;
     } else {
@@ -47,6 +48,8 @@ public abstract class Projectile extends Entity {
     if (isLeft) {
       facingRight = false;
     }
+    setAnimation(IDLE);
+    animation.update();
   }
 
   /**
