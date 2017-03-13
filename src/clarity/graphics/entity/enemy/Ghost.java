@@ -49,7 +49,7 @@ public class Ghost extends Enemy {
     stopJumpSpeed = 0.5;
     facingRight = false;
     currentHealth = maxHealth = 100;
-//    currentEnergy = maxEnergy = 100;
+    // currentEnergy = maxEnergy = 100;
   }
 
 }

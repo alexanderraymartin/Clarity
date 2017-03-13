@@ -5,6 +5,7 @@ import clarity.graphics.entity.powerup.Fireball;
 import clarity.state.Level;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
+import clarity.utilities.input.Mouse;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -19,9 +20,9 @@ public class Player extends Entity {
   private static final int TEMP_IMMUNITY_DURATION = 2000; // milliseconds
 
   /**
-   * Amount of energy regained per game tick
+   * Amount of energy regained per game tick.
    */
-  private static final double ENERGY_GAIN_RATE = 0.3;
+  private static final double ENERGY_GAIN_RATE = 0.2;
 
   /**
    * Timer for tracking the temporary immunity of the player.
@@ -117,7 +118,7 @@ public class Player extends Entity {
 
   private void checkAbilities() {
     // Shooting a fireball
-    if (Keyboard.qpressed()) {
+    if (Mouse.buttonClickAndRelease()) {
       if (this.getEnergy() - Fireball.ENERGY_COST >= 0) {
         this.setEnergy(this.getEnergy() - Fireball.ENERGY_COST);
         MobId.getEntity(MobId.FIREBALL);
@@ -140,7 +141,7 @@ public class Player extends Entity {
 
 
   /**
-   * @return Player's energy
+   * @return Player's energy.
    */
   public double getEnergy() {
     return currentEnergy;

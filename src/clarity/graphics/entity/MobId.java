@@ -5,7 +5,6 @@ import clarity.graphics.entity.enemy.Saiyan;
 import clarity.graphics.entity.enemy.Skeleton;
 import clarity.graphics.entity.enemy.Zombie;
 import clarity.graphics.entity.powerup.Fireball;
-import clarity.state.Level;
 
 public class MobId {
 
@@ -17,7 +16,7 @@ public class MobId {
   public static final int TORCH = 4;
   public static final int FIREBALL = 5;
   protected static final int[] MOB_IDS =
-    {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH, FIREBALL};
+      {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH, FIREBALL};
 
   private MobId() {
   }

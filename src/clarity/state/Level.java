@@ -3,8 +3,6 @@ package clarity.state;
 import clarity.graphics.Background;
 import clarity.graphics.Light;
 import clarity.graphics.Map;
-import clarity.graphics.entity.Entity;
-import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
 import clarity.ui.UserInterface;
@@ -12,7 +10,6 @@ import clarity.utilities.GameLogger;
 import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
 import clarity.utilities.input.Keyboard;
-import clarity.utilities.input.Mouse;
 
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
@@ -100,11 +97,6 @@ public class Level extends State {
       // track player
       map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
           Game.WINDOW_HEIGHT / 2 - player.getY()));
-    }
-    // TODO remove
-    if (Mouse.buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(-1);
-      manager.loadNextState(new Loading(manager));
     }
   }
 

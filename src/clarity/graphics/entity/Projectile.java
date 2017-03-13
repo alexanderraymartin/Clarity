@@ -2,21 +2,31 @@ package clarity.graphics.entity;
 
 import clarity.state.Level;
 import clarity.state.State;
+import clarity.utilities.Timer;
+
 import java.util.ArrayList;
 
 public abstract class Projectile extends Entity {
 
   protected Entity source;
   protected double damage;
+  private Timer life;
+
+  private static final int DURATION = 10000; // 10 sedonds
 
   public Projectile(int mobId) {
     super(mobId);
+    life = new Timer();
   }
 
   @Override
   public void update() {
+    if (life.hasElapsed(DURATION)) {
+      isDead = true;
+    }
+    getNextPosition();
     if (!checkTileCollision()) {
-      if (this.facingRight) {
+      if (facingRight) {
         isRight = true;
         isLeft = false;
       } else {
@@ -25,12 +35,15 @@ public abstract class Projectile extends Entity {
       }
 
     } else {
-      this.isDead = true;
-      System.out.println("Colliding with tile");
+      isDead = true;
     }
     enemyCollisionCheck();
+    super.update();
   }
 
+  /**
+   * Check for collision.
+   */
   public void enemyCollisionCheck() {
     ArrayList<Entity> allEntities = State.getEntities();
 
@@ -40,6 +53,5 @@ public abstract class Projectile extends Entity {
         this.isDead = true;
       }
     });
-    super.update();
   }
 }

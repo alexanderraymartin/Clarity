@@ -23,10 +23,10 @@ public class Fireball extends Projectile {
     this.spriteSheet = SpriteSheet.TORCH;
     this.collisionWidth = this.collisionHeight = 15;
     this.facingRight = this.source.isFacingRight();
-    this.damage = 20;
+    this.damage = 50;
 
-    this.moveSpeed = 0.5;
-    this.maxSpeed = 2;
+    this.moveSpeed = 1;
+    this.maxSpeed = 5;
     this.stopSpeed = 5;
     this.fallSpeed = 0;
     this.maxFallSpeed = 0;

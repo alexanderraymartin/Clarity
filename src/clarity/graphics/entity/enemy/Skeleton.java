@@ -3,7 +3,7 @@ package clarity.graphics.entity.enemy;
 import clarity.graphics.entity.SpriteSheet;
 
 public class Skeleton extends Enemy {
-  
+
   private static final int DAMAGE = 40;
 
   public Skeleton(int mobId) {
@@ -33,7 +33,7 @@ public class Skeleton extends Enemy {
     stopJumpSpeed = 0.5;
     facingRight = false;
     currentHealth = maxHealth = 100;
-//    currentEnergy = maxEnergy = 100;
+    // currentEnergy = maxEnergy = 100;
   }
 
 }
