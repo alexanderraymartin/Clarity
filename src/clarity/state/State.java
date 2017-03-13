@@ -8,7 +8,6 @@ import clarity.graphics.entity.particle.Particle;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Map;
 
 public abstract class State {
 
@@ -108,20 +107,16 @@ public abstract class State {
    */
   public abstract void render(Graphics2D graphics);
 
-  protected void closeAllMusic(Map<String, Audio> audio) {
-    audio.forEach((songName, song) -> {
-      song.close();
-    });
-  }
 
   protected void playMusic() {
-    closeAllMusic(Audio.getMusic());
-    Audio.getMusic().put(musicFileName, new Audio("/sounds/music/" + musicFileName));
-    
-    if (!Audio.getMusic().get(musicFileName).isPlaying()) {
-      Audio.getMusic().get(musicFileName).loop();
+    if (Audio.getCurrentSongPath() != musicFileName) {
+      if (Audio.getMusic() != null) {
+        Audio.getMusic().close();
+      }
+      Audio.setMusic(new Audio("/sounds/music/" + musicFileName));
+      Audio.getMusic().loop();
     }
+    Audio.setCurrentSongName(musicFileName);
   }
-
 
 }
