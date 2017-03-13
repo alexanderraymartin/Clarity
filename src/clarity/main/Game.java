@@ -44,7 +44,7 @@ public class Game extends JPanel {
   /**
    * Set to true to enable full screen mode.
    */
-  public static final boolean FULL_SCREEN_MODE = false;
+  public static final boolean FULL_SCREEN_MODE = true;
   public static final int MONITOR_WIDTH =
       (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
   public static final int MONITOR_HEIGHT =

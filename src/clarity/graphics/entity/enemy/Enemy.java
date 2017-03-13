@@ -38,6 +38,7 @@ public abstract class Enemy extends Entity {
   public void playerCollisionCheck() {
     if (intersection(Level.player)) {
       Level.player.hit(attackDamage);
+      isAttacking = true;
     }
   }
 

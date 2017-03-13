@@ -6,6 +6,7 @@ import clarity.graphics.Map;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
 import clarity.ui.MainMenu;
+import clarity.ui.UserInterface;
 import clarity.utilities.GameLogger;
 import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
@@ -26,6 +27,7 @@ public class Level extends State {
   private static Timer playerRespawnTimer;
   private static final int RESPAWN_TIME = 3000;
   private boolean respawnTimerSet;
+  private static UserInterface userInterface;
 
   public static Player player;
   public static Map map;
@@ -89,14 +91,16 @@ public class Level extends State {
           respawnTimerSet = true;
         }
         if (playerRespawnTimer.hasElapsed(RESPAWN_TIME)) {
-          createPlayer(map, this);
+          manager.loadNextState(new Level(manager));
           respawnTimerSet = false;
         }
       }
+      userInterface.update();
       // track player
       map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
           Game.WINDOW_HEIGHT / 2 - player.getY()));
     }
+    // TODO remove
     if (Mouse.buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
     }
@@ -120,6 +124,7 @@ public class Level extends State {
       getParticles().get(i).render(graphics);
     }
     getLight().render(graphics);
+    userInterface.render(graphics);
     if (isPaused) {
       pauseScreen.render(graphics);
     }
@@ -133,6 +138,7 @@ public class Level extends State {
     player = new Player();
     player.setPosition(spawnLocation, true);
     player.setPlayerControlled(true);
+    Level.light.resetDarkness();
     map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
         Game.WINDOW_HEIGHT / 2 - player.getY()));
   }
@@ -148,6 +154,7 @@ public class Level extends State {
     map.setPosition(spawnLocation);
     // creates player
     createPlayer(map, this);
+    userInterface = new UserInterface(player);
     playMusic(null);
     levelComplete = false;
   }

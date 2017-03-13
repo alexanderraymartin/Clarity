@@ -61,7 +61,7 @@ public class Player extends Entity {
       }
     }
   }
-
+  
   private void movePlayer() {
     if (Keyboard.leftPressed() && !Keyboard.rightPressed()) {
       setLeft(true);

@@ -73,6 +73,7 @@ public abstract class Entity {
   protected boolean isDown;
   protected boolean isJumping;
   protected boolean isFalling;
+  protected boolean isAttacking;
   protected double moveSpeed;
   protected double maxSpeed;
   protected double stopSpeed;
@@ -104,6 +105,7 @@ public abstract class Entity {
     this.animation = new Animation();
     this.currentAction = IDLE;
     this.shouldExplode = true;
+    this.isAttacking = false;
     this.setPlayerControlled(false);
     this.movementTimer = new Timer();
     init();
@@ -397,6 +399,9 @@ public abstract class Entity {
         tempAnimation = WALKING;
       } else {
         tempAnimation = IDLE;
+      }
+      if (isAttacking) {
+        tempAnimation = ATTACKING;
       }
       setAnimation(tempAnimation);
       animation.update();
