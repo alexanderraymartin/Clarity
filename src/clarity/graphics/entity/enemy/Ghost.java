@@ -1,6 +1,8 @@
 package clarity.graphics.entity.enemy;
 
 import clarity.graphics.entity.SpriteSheet;
+import clarity.graphics.tile.TileSet;
+import clarity.state.Level;
 
 public class Ghost extends Enemy {
 
@@ -16,13 +18,17 @@ public class Ghost extends Enemy {
    */
   @Override
   public void move() {
-    if (checkTileCollision() && dy == 0) {
-      if (isLeft) {
-        isLeft = false;
-        isRight = true;
-      } else {
-        isLeft = true;
-        isRight = false;
+
+    if(Math.abs(Level.player.getX() - xcoord) < TileSet.TILE_SIZE * 10) {      
+      if (checkTileCollision()) {
+        System.out.println("here");
+        if (isLeft) {
+          isLeft = false;
+          isRight = true;
+        } else {
+          isLeft = true;
+          isRight = false;
+        }
       }
     }
 

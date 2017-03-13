@@ -1,18 +1,48 @@
 package clarity.graphics.entity.enemy;
 
 import clarity.graphics.entity.SpriteSheet;
+import clarity.graphics.tile.TileSet;
+import clarity.state.Level;
+
+import java.util.Random;
 
 public class Saiyan extends Enemy {
 
   private static final int DAMAGE = 40;
-
+  private int counter = 0;
+  
   public Saiyan(int mobId) {
     super(mobId, DAMAGE);
   }
 
   @Override
   public void move() {
-    // TODO Auto-generated method stub
+    if(Math.abs(Level.player.getX() - xcoord) < TileSet.TILE_SIZE * 10) {
+      counter += 1;
+      if (counter == 10) {
+        counter = 0;
+        Random rand = new Random();
+        int movement = rand.nextInt(6);
+        if (movement == 0) {
+          isRight = false;
+          isLeft = true;
+          setJumping(false);
+        }
+        if (movement == 1) {
+          isLeft = false;
+          isRight = true;
+          setJumping(false);
+        }
+        if (movement == 2) {
+          setJumping(true);
+        }
+      }      
+    }
+    else {
+      isLeft = false;
+      isRight = false;
+      setJumping(false);
+    }
 
   }
 
