@@ -85,8 +85,6 @@ public abstract class Entity {
   // health and energy
   protected double currentHealth;
   protected double maxHealth;
-  protected double currentEnergy;
-  protected double maxEnergy;
   protected boolean isDead;
   private boolean isImmune;
   private int immunityTimer;
@@ -533,28 +531,6 @@ public abstract class Entity {
   public double getMaxHealth() {
     return maxHealth;
   }
-
-  /**
-   * @return Energy of entity.
-   */
-  public double getEnergy() {
-    return currentEnergy;
-  }
-
-  /**
-   * @param energy The energy.
-   */
-  public void setEnergy(double energy) {
-    this.currentEnergy = energy;
-  }
-
-  /**
-   * @return Max energy of entity.
-   */
-  public double getMaxEnergy() {
-    return maxEnergy;
-  }
-
 
   /**
    * @return True if the entity is dead.

@@ -54,9 +54,8 @@ public class Torch extends Entity {
     // jumping speeds
     stopJumpSpeed = 0;
     facingRight = true;
-    currentHealth = maxHealth = 100;
-    currentEnergy = maxEnergy = 100;
     setImmune(true);
+    currentHealth = maxHealth = 100;
   }
 
 }

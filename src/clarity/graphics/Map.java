@@ -67,18 +67,13 @@ public class Map {
    */
   private void addEntity(String token) {
     boolean facingRight;
-    if (token.charAt(0) == 'R') {
-      facingRight = true;
-    } else {
-      facingRight = false;
-    }
+    facingRight = (token.charAt(0) == 'R');
     int id = Integer.parseInt(token.substring(1, token.indexOf('(')));
     double xcoord = Double.parseDouble(token.substring(token.indexOf('(') + 1, token.indexOf(',')));
     double ycoord = Double.parseDouble(token.substring(token.indexOf(',') + 1, token.length() - 1));
     Entity entity = MobId.getEntity(id);
     entity.setPosition(new Vector2d(xcoord, ycoord), facingRight);
   }
-
 
   /**
    * @param path Path of the map file.

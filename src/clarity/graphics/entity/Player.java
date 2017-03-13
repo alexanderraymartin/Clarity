@@ -1,6 +1,7 @@
 package clarity.graphics.entity;
 
 import clarity.graphics.entity.particle.ParticleSpawner;
+import clarity.graphics.entity.powerup.Fireball;
 import clarity.state.Level;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
@@ -9,10 +10,18 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Player extends Entity {
+
+  protected double currentEnergy;
+  protected double maxEnergy;
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
    */
   private static final int TEMP_IMMUNITY_DURATION = 2000; // milliseconds
+
+  /**
+   * Amount of energy regained per game tick
+   */
+  private static final double ENERGY_GAIN_RATE = 0.3;
 
   /**
    * Timer for tracking the temporary immunity of the player.
@@ -32,6 +41,8 @@ public class Player extends Entity {
     checkWin();
     checkImmunity();
     movePlayer();
+    checkAbilities();
+    rechargeEnergy();
     super.update();
   }
 
@@ -104,12 +115,52 @@ public class Player extends Entity {
     }
   }
 
+  private void checkAbilities() {
+    // Shooting a fireball
+    if (Keyboard.qpressed()) {
+      if (this.getEnergy() - Fireball.ENERGY_COST >= 0) {
+        this.setEnergy(this.getEnergy() - Fireball.ENERGY_COST);
+        MobId.getEntity(MobId.FIREBALL);
+      }
+    }
+  }
+
   /**
    * @param boost The amount of health gained.
    */
   public void gainHealth(int boost) {
     currentHealth += boost;
   }
+
+  private void rechargeEnergy() {
+    if (this.getEnergy() < maxEnergy) {
+      currentEnergy += ENERGY_GAIN_RATE;
+    }
+  }
+
+
+  /**
+   * @return Player's energy
+   */
+  public double getEnergy() {
+    return currentEnergy;
+  }
+
+  /**
+   * @param energy The energy.
+   */
+  public void setEnergy(double energy) {
+    this.currentEnergy = energy;
+  }
+
+  /**
+   * @return Max energy of entity.
+   */
+  public double getMaxEnergy() {
+    return maxEnergy;
+  }
+
+
 
   protected void init() {
     spriteSheet = SpriteSheet.PLAYER;

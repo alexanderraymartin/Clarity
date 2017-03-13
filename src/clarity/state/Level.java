@@ -3,6 +3,8 @@ package clarity.state;
 import clarity.graphics.Background;
 import clarity.graphics.Light;
 import clarity.graphics.Map;
+import clarity.graphics.entity.Entity;
+import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
 import clarity.ui.UserInterface;
@@ -24,7 +26,7 @@ public class Level extends State {
   private static boolean pausePressed;
   private static Light light;
   private static Timer playerRespawnTimer;
-  private static final int RESPAWN_TIME = 3000;
+  private static final int RESPAWN_TIME = 1500;
   private boolean respawnTimerSet;
   private static UserInterface userInterface;
 
