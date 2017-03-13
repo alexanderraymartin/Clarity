@@ -1,6 +1,7 @@
 package clarity.graphics;
 
 import clarity.main.Game;
+import clarity.state.Level;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -9,7 +10,7 @@ public class Light {
 
 
   private static final float STARTING_DARKNESS_DEFAULT = 0f;
-  private static final float DARKNESS_ACCELERATION_DEFAULT = 0.0002f;
+  private static final float DARKNESS_ACCELERATION_DEFAULT = 0.0005f;
   private static final float THRESHOLD = 1f;
 
   /**
@@ -68,6 +69,10 @@ public class Light {
   public void update() {
     currentDarkness += darknessAcceleration;
     currentDarkness = Math.min(currentDarkness, 1);
+    if (currentDarkness == 1) {
+      currentDarkness = 0;
+      Level.player.setDead(true);
+    }
   }
 
   /**
