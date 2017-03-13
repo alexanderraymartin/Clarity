@@ -24,12 +24,13 @@ public class Zombie extends Enemy {
         isLeft = false;
         isRight = true;
       }
-      if (checkTileCollision()) {
+      if (checkTileCollision() || Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * JUMP_RANGE) {
         if (dy == 0 && changeX < 1) {
           setJumping(true);
         } else {
           setJumping(false);
         }
+
         previousX = xcoord;
       }
 
