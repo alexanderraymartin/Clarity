@@ -6,6 +6,7 @@ import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 public class Player extends Entity {
   /**
@@ -31,8 +32,32 @@ public class Player extends Entity {
    */
   public void update() {
     checkWin();
+    checkImmunity();
     movePlayer();
     super.update();
+  }
+
+  /**
+   * @param graphics The graphics.
+   */
+  public void render(Graphics2D graphics) {
+    super.render(graphics);
+    if (isImmune()) {
+      displayImmunity(graphics);
+    }
+
+  }
+
+  private void checkImmunity() {
+    if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {
+      setImmune(false);
+    }
+  }
+
+  private void displayImmunity(Graphics2D graphics) {
+    graphics.setColor(Color.WHITE);
+    graphics.drawOval((int) (xcoord + xmap - spriteWidth / 2),
+        (int) (ycoord + ymap - spriteHeight / 2), spriteWidth, spriteHeight);
   }
 
   /**
@@ -48,10 +73,6 @@ public class Player extends Entity {
       }
       new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10, Color.RED, Color.RED, Color.RED);
     }
-    // TODO Differentiate between temporary immunity from being hit and power up
-    if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {
-      setImmune(false);
-    }
   }
 
   private void checkWin() {
@@ -61,7 +82,7 @@ public class Player extends Entity {
       }
     }
   }
-  
+
   private void movePlayer() {
     if (Keyboard.leftPressed() && !Keyboard.rightPressed()) {
       setLeft(true);

@@ -2,10 +2,14 @@ package clarity.graphics.entity.enemy;
 
 import clarity.graphics.entity.Entity;
 import clarity.state.Level;
+import clarity.utilities.Timer;
 
 public abstract class Enemy extends Entity {
 
+  private static final int ATTACK_DURATION = 1000; // milliseconds
+
   private int attackDamage;
+  private Timer attackTimer;
 
   /**
    * @param mobId The mob ID.
@@ -14,6 +18,7 @@ public abstract class Enemy extends Entity {
   public Enemy(int mobId, int attackDamage) {
     super(mobId);
     this.attackDamage = attackDamage;
+    attackTimer = new Timer();
   }
 
   /**
@@ -28,6 +33,9 @@ public abstract class Enemy extends Entity {
    */
   public void update() {
     playerCollisionCheck();
+    if (attackTimer.hasElapsed(ATTACK_DURATION)) {
+      isAttacking = false;
+    }
     move();
     super.update();
   }
@@ -37,8 +45,11 @@ public abstract class Enemy extends Entity {
    */
   public void playerCollisionCheck() {
     if (intersection(Level.player)) {
+      if (!Level.player.isImmune() && !Level.player.isDead()) {
+        isAttacking = true;
+        attackTimer.reset();
+      }
       Level.player.hit(attackDamage);
-      isAttacking = true;
     }
   }
 
