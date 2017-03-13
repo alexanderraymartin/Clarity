@@ -16,8 +16,8 @@ public class Keyboard implements KeyListener {
   private static boolean spaceBar;
   private static boolean escape;
   private static boolean control;
-  private static boolean Q;
-  private static boolean S;
+  private static boolean qKey;
+  private static boolean sKey;
 
   /**
    * @return True if key is pressed.
@@ -79,14 +79,14 @@ public class Keyboard implements KeyListener {
    * @return True if key is pressed.
    */
   public static boolean qpressed() {
-    return Q;
+    return qKey;
   }
 
   /**
    * @return True if key is pressed.
    */
   public static boolean spressed() {
-    return S;
+    return sKey;
   }
 
   /**
@@ -101,8 +101,8 @@ public class Keyboard implements KeyListener {
     spaceBar = keys[KeyEvent.VK_SPACE];
     escape = keys[KeyEvent.VK_ESCAPE];
     control = keys[KeyEvent.VK_CONTROL];
-    Q = keys[KeyEvent.VK_Q];
-    S = keys[KeyEvent.VK_S];
+    qKey = keys[KeyEvent.VK_Q];
+    sKey = keys[KeyEvent.VK_S];
   }
 
   /**
@@ -132,5 +132,6 @@ public class Keyboard implements KeyListener {
    * 
    * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
    */
+  @Override
   public void keyTyped(KeyEvent event) {}
 }

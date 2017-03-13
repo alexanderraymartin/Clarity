@@ -25,7 +25,7 @@ public class Level extends State {
   private static Light light;
   private static Timer playerRespawnTimer;
   private static final int RESPAWN_TIME = 3000;
-  private static boolean respawnTimerSet;
+  private boolean respawnTimerSet;
 
   public static Player player;
   public static Map map;
@@ -129,7 +129,7 @@ public class Level extends State {
    * @param map The current map.
    * @param level The current level.
    */
-  public void createPlayer(Map map, Level level) {
+  public static void createPlayer(Map map, Level level) {
     player = new Player();
     player.setPosition(spawnLocation, true);
     player.setPlayerControlled(true);
