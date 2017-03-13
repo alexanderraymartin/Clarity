@@ -10,19 +10,21 @@ import java.awt.Graphics2D;
 
 public class LevelMenu extends State {
 
-  private static final String BACKGROUND_FILE_NAME = "mainMenu.png";
+  private static final String BACKGROUND_FILE_NAME = "LevelSelect.png";
   private static final String MUSIC_FILE_NAME = "Vexento - We Are One (Original).mp3";
   private static final String MAP_FILE_NAME = "mapFileName";
-  private static final MenuItem LEVEL1 = new MenuItem("level1.png", "level1Highlight.png", 50, 50);
+  private static final MenuItem LEVEL1 = 
+      new MenuItem("level1.png", "level1Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 100);
   private static final MenuItem LEVEL2 =
-      new MenuItem("level2.png", "level2Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 50);
+      new MenuItem("level2.png", "level2Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 120);
   private static final MenuItem LEVEL3 =
-      new MenuItem("level3.png", "level3Highlight.png", Game.WINDOW_WIDTH - 150, 50);
-  private static final MenuItem LEVEL4 = new MenuItem("level4.png", "level4Highlight.png", 50, 150);
+      new MenuItem("level3.png", "level3Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 140);
+  private static final MenuItem LEVEL4 = 
+      new MenuItem("level4.png", "level4Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 160);
   private static final MenuItem LEVEL5 =
-      new MenuItem("level5.png", "level5Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 150);
+      new MenuItem("level5.png", "level5Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 180);
   private static final MenuItem LEVEL6 =
-      new MenuItem("level6.png", "level6Highlight.png", Game.WINDOW_WIDTH - 150, 150);
+      new MenuItem("level6.png", "level6Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 200);
 
   /**
    * @param manager The state manager.
