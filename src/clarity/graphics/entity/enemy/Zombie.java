@@ -49,7 +49,7 @@ public class Zombie extends Enemy {
     fallSpeed = 0.15;
     maxFallSpeed = 4.0;
     // jumping speeds
-    jumpStart = -6.0;
+    jumpStart = -9.0;
     stopJumpSpeed = 0.5;
     facingRight = false;
     currentHealth = maxHealth = 100;
