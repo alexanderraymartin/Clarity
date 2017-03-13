@@ -19,7 +19,7 @@ public class Audio {
   private static final int MICRO_SECONDS = 1000000;
   private static final Map<String, Audio> soundEffects = new HashMap<>();
   private static Audio music;
-  private static String currentSongPath;
+  private static String currentSongName;
 
   /**
    * @param path Path to the audio file.
@@ -189,14 +189,17 @@ public class Audio {
   /**
    * @return The currentSongPath.
    */
-  public static String getCurrentSongPath() {
-    return currentSongPath;
+  public static String getCurrentSongName() {
+    if (currentSongName == null) {
+      return "dummy";
+    }
+    return currentSongName;
   }
 
   /**
-   * @param currentSongPath The currentSongPath to set.
+   * @param currentSongName The currentSongPath to set.
    */
-  public static void setCurrentSongName(String currentSongPath) {
-    Audio.currentSongPath = currentSongPath;
+  public static void setCurrentSongName(String currentSongName) {
+    Audio.currentSongName = currentSongName;
   }
 }

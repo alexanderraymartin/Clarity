@@ -109,7 +109,7 @@ public abstract class State {
 
 
   protected void playMusic() {
-    if (Audio.getCurrentSongPath() != musicFileName) {
+    if (!Audio.getCurrentSongName().equals(musicFileName)) {
       if (Audio.getMusic() != null) {
         Audio.getMusic().close();
       }
