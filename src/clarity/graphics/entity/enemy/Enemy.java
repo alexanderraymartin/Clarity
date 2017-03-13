@@ -12,7 +12,8 @@ public abstract class Enemy extends Entity {
   private Timer attackTimer;
 
   protected static final int CHASE_RANGE = 15;
-  protected static final int JUMP_RANGE = 3;
+  protected static final int MAX_JUMP_RANGE = 4;
+  protected static final int MIN_JUMP_RANGE = 2;
 
   /**
    * @param mobId The mob ID.
