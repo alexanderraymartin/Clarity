@@ -1,7 +1,6 @@
 package clarity.state;
 
 import clarity.graphics.Background;
-import clarity.ui.MainMenu;
 import clarity.utilities.GameLogger;
 import clarity.utilities.Save;
 
@@ -25,8 +24,8 @@ public class StateManager {
    * Create the state manager.
    */
   public StateManager() {
-    this.currentState = new MainMenu(this);
-    this.currentLevelIndex = 0;
+    this.currentLevelIndex = -1;
+    this.currentState = new Loading(this);
     StateManager.saveData = new Save();
     getLevels();
   }

@@ -8,7 +8,6 @@ import clarity.graphics.entity.particle.Particle;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Map;
 
 public abstract class State {
 
@@ -108,31 +107,16 @@ public abstract class State {
    */
   public abstract void render(Graphics2D graphics);
 
-  // Closes all music except music with same name as toKeep
-  protected void closeOtherMusic(Map<String, Audio> music, String toKeep) {
-    music.forEach((songName, song) -> {
-      if (!songName.equals(toKeep)) {
-        song.close();
+
+  protected void playMusic() {
+    if (!Audio.getCurrentSongName().equals(musicFileName)) {
+      if (Audio.getMusic() != null) {
+        Audio.getMusic().close();
       }
-    });
-  }
-
-  protected void closeAllMusic(Map<String, Audio> audio) {
-    closeOtherMusic(audio, null);
-  }
-
-  // Pass in name of some music to keep it loaded and close all other music
-  protected void playMusic(String otherSong) {
-    if (otherSong != null) {
-      closeOtherMusic(Audio.getMusic(), musicFileName);
+      Audio.setMusic(new Audio("/sounds/music/" + musicFileName));
+      Audio.getMusic().loop();
     }
-
-    if (musicFileName != null) {
-      if (!Audio.getMusic().containsKey(musicFileName)) {
-        Audio.getMusic().put(musicFileName, new Audio("/sounds/music/" + musicFileName));
-        Audio.getMusic().get(musicFileName).loop();
-      }
-    }
+    Audio.setCurrentSongName(musicFileName);
   }
 
 }

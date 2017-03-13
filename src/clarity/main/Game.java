@@ -1,8 +1,6 @@
 package clarity.main;
 
-import clarity.graphics.entity.SpriteSheet;
 import clarity.state.StateManager;
-import clarity.utilities.GameLogger;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
@@ -12,9 +10,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -90,33 +86,7 @@ public class Game extends JPanel {
       frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
     }
     frame.setVisible(true);
-    createSplashScreen();
     run();
-  }
-
-  /**
-   * Creates the splash screen on startup.
-   */
-  private void createSplashScreen() {
-    BufferedImage splashScreen;
-    try {
-      splashScreen = ImageIO
-          .read(SpriteSheet.class.getResourceAsStream("/textures/backgrounds/splashScreen.png"));
-      Graphics graphics2 = getGraphics();
-      if (FULL_SCREEN_MODE) {
-        // render image to screen
-        graphics2.drawImage(splashScreen, (int) (MONITOR_WIDTH - WINDOW_WIDTH * MONITOR_SCALE) / 2,
-            (int) (MONITOR_HEIGHT - WINDOW_HEIGHT * MONITOR_SCALE) / 2,
-            (int) (WINDOW_WIDTH * MONITOR_SCALE), (int) (WINDOW_HEIGHT * MONITOR_SCALE), null);
-      } else {
-        // render image to screen
-        graphics2.drawImage(splashScreen, 0, 0, (int) (WINDOW_WIDTH * SCALE),
-            (int) (WINDOW_HEIGHT * SCALE), null);
-      }
-      graphics2.dispose();
-    } catch (IOException exception) {
-      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
-    }
   }
 
   private void run() {

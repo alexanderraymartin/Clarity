@@ -73,6 +73,7 @@ public abstract class Entity {
   protected boolean isDown;
   protected boolean isJumping;
   protected boolean isFalling;
+  protected boolean isAttacking;
   protected double moveSpeed;
   protected double maxSpeed;
   protected double stopSpeed;
@@ -104,6 +105,7 @@ public abstract class Entity {
     this.animation = new Animation();
     this.currentAction = IDLE;
     this.shouldExplode = true;
+    this.isAttacking = false;
     this.setPlayerControlled(false);
     this.movementTimer = new Timer();
     init();
@@ -398,6 +400,9 @@ public abstract class Entity {
       } else {
         tempAnimation = IDLE;
       }
+      if (isAttacking) {
+        tempAnimation = ATTACKING;
+      }
       setAnimation(tempAnimation);
       animation.update();
     }
@@ -423,11 +428,11 @@ public abstract class Entity {
             (int) (xcoord + xmap - spriteWidth / 2 + spriteWidth),
             (int) (ycoord + ymap - spriteHeight / 2), -spriteWidth, spriteHeight, null);
       }
-      // g.setColor(Color.red);
+      // graphics.setColor(Color.red);
       // Rectangle rectangle = getRectangle();
-      // rectangle.x += xMap;
-      // rectangle.y += yMap;
-      // g.draw(rectangle);
+      // rectangle.x += xmap;
+      // rectangle.y += ymap;
+      // graphics.draw(rectangle);
     }
   }
 

@@ -18,7 +18,8 @@ public class Audio {
   private BooleanControl muteControl;
   private static final int MICRO_SECONDS = 1000000;
   private static final Map<String, Audio> soundEffects = new HashMap<>();
-  private static final Map<String, Audio> music = new HashMap<>();
+  private static Audio music;
+  private static String currentSongName;
 
   /**
    * @param path Path to the audio file.
@@ -59,14 +60,14 @@ public class Audio {
    * Pause the music.
    */
   public static void pauseSongs() {
-    getMusic().forEach((name, song) -> song.stop());
+    getMusic().stop();
   }
 
   /**
    * Resume the music.
    */
   public static void resumeSongs() {
-    getMusic().forEach((name, song) -> song.resume());
+    getMusic().resume();
   }
 
   /**
@@ -79,8 +80,17 @@ public class Audio {
   /**
    * Music for the game.
    */
-  public static Map<String, Audio> getMusic() {
+  public static Audio getMusic() {
     return music;
+  }
+
+  /**
+   * Music for the game.
+   * 
+   * @param audio The music.
+   */
+  public static void setMusic(Audio audio) {
+    music = audio;
   }
 
   /**
@@ -174,5 +184,22 @@ public class Audio {
       stop();
       clip.close();
     }
+  }
+
+  /**
+   * @return The currentSongPath.
+   */
+  public static String getCurrentSongName() {
+    if (currentSongName == null) {
+      return "dummy";
+    }
+    return currentSongName;
+  }
+
+  /**
+   * @param currentSongName The currentSongPath to set.
+   */
+  public static void setCurrentSongName(String currentSongName) {
+    Audio.currentSongName = currentSongName;
   }
 }

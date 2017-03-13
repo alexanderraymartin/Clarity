@@ -20,11 +20,4 @@ public class TestPlayer {
     assertEquals((double) newHealth, player.getHealth(), 0);
   }
 
-  @Test
-  public void testLight() {
-    Player player = new Player();
-    player.gainLightSource(10);
-
-    assertEquals((double) player.getLight(), 110, 0);
-  }
 }
