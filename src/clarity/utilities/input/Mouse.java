@@ -43,26 +43,33 @@ public class Mouse implements MouseListener, MouseMotionListener {
     mouseReleased = false;
     return temp;
   }
+
   @Override
   public void mouseDragged(MouseEvent event) {
     mouseX = event.getX();
     mouseY = event.getY();
   }
+
   @Override
   public void mouseMoved(MouseEvent event) {
     mouseX = event.getX();
     mouseY = event.getY();
   }
+
   @Override
   public void mouseClicked(MouseEvent event) {}
+
   @Override
   public void mouseEntered(MouseEvent event) {}
+
   @Override
   public void mouseExited(MouseEvent event) {}
+
   @Override
   public void mousePressed(MouseEvent event) {
     mouseB = event.getButton();
   }
+
   @Override
   public void mouseReleased(MouseEvent event) {
     mouseB = -1;
