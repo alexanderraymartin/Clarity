@@ -1,0 +1,10 @@
+Loop Testing
+
+We have three loops in total in our project: getLevel method under StateManager, LoadTiles method under Tile class, and 
+
+GetLevel Loop:
+ The purpose of this method is read in all the levels that we have made and keep level names in the ArrayList. So far, there is only one state manager in our project that that does not initialize the Level ArrayList. Unless we purposefully make the no level, one level, or a specified number of tests, there is no way to test the method.
+
+
+LoadTiles:
+	The purpose of this method is load the tiles from the asset and drew it out on the game. However, the assets that we have are fixed. Same as the getlevel, it is almost impossible to do the loop test unless we change our assets
