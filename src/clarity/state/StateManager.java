@@ -19,7 +19,7 @@ public class StateManager {
   private ArrayList<String> levels;
   private int currentLevelIndex;
   public static final Background loadingScreen = new Background(LOADING_SCREEN_PATH);
-  public static Save saveData;
+  protected static Save saveData;
 
   /**
    * Create the state manager.

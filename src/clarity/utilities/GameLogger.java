@@ -10,6 +10,10 @@ public class GameLogger {
   private static Logger log;
 
   public static final String EXCEPTION = "Exception";
+  
+  private GameLogger(){
+    
+  }
 
   /**
    * @return A logger to the console.
@@ -25,5 +29,7 @@ public class GameLogger {
     }
     return log;
   }
+  
+
 
 }

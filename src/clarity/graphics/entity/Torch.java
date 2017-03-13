@@ -7,7 +7,7 @@ import java.awt.Color;
 
 public class Torch extends Entity {
 
-  private static final float LIGHT_AMOUNT = 20f;
+  private static final float LIGHT_AMOUNT = 0.5f;
 
   public Torch(int mobId) {
     super(mobId);
