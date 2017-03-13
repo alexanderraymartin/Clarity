@@ -1,10 +1,11 @@
 package clarity.state;
 
+import clarity.ui.MainMenu;
+
 import java.awt.Graphics2D;
 
 public class Loading extends State {
 
-  private Level nextLevel;
   private boolean isRendered;
 
   public Loading(StateManager manager) {
@@ -15,10 +16,12 @@ public class Loading extends State {
   @Override
   public void update() {
     if (isRendered) {
-      // TODO: Currently hard-coded to 0 for testing purposes
-      manager.setCurrentLevelIndex(0);
-      nextLevel = new Level(this.manager);
-      manager.loadNextState(this.nextLevel);
+      if (manager.getCurrentLevelIndex() == manager.getLevels().size()
+          || manager.getCurrentLevelIndex() == -1) {
+        manager.loadNextState(new MainMenu(manager));
+      } else {
+        manager.loadNextState(new Level(manager));
+      }
     }
   }
 

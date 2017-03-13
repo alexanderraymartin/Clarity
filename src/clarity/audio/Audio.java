@@ -123,6 +123,10 @@ public class Audio {
     }
   }
 
+  public boolean isPlaying() {
+    return clip.isRunning();
+  }
+
   /**
    * Play the music.
    */

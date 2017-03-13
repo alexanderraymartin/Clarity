@@ -108,31 +108,20 @@ public abstract class State {
    */
   public abstract void render(Graphics2D graphics);
 
-  // Closes all music except music with same name as toKeep
-  protected void closeOtherMusic(Map<String, Audio> music, String toKeep) {
-    music.forEach((songName, song) -> {
-      if (!songName.equals(toKeep)) {
-        song.close();
-      }
+  protected void closeAllMusic(Map<String, Audio> audio) {
+    audio.forEach((songName, song) -> {
+      song.close();
     });
   }
 
-  protected void closeAllMusic(Map<String, Audio> audio) {
-    closeOtherMusic(audio, null);
-  }
-
-  // Pass in name of some music to keep it loaded and close all other music
-  protected void playMusic(String otherSong) {
-    if (otherSong != null) {
-      closeOtherMusic(Audio.getMusic(), musicFileName);
-    }
-
-    if (musicFileName != null) {
-      if (!Audio.getMusic().containsKey(musicFileName)) {
-        Audio.getMusic().put(musicFileName, new Audio("/sounds/music/" + musicFileName));
-        Audio.getMusic().get(musicFileName).loop();
-      }
+  protected void playMusic() {
+    closeAllMusic(Audio.getMusic());
+    Audio.getMusic().put(musicFileName, new Audio("/sounds/music/" + musicFileName));
+    
+    if (!Audio.getMusic().get(musicFileName).isPlaying()) {
+      Audio.getMusic().get(musicFileName).loop();
     }
   }
+
 
 }

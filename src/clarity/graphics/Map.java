@@ -167,7 +167,7 @@ public class Map {
     if (row < 0 || row >= numOfRows || col < 0 || col >= numOfCols) {
       // bounds checking
       return Tile.NO_COLLISION;
-    } 
+    }
     int value = mapArray[row][col]; // number in map file
     int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
     int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
@@ -253,8 +253,8 @@ public class Map {
             break;
           }
           int temp = mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-          if (temp == 0 || temp == 1 || temp == 2) {
-            continue; // Clear block / spawn location / win location
+          if (temp == 0 || temp == 1) {
+            continue; // Clear block / spawn location
           }
           int value = mapArray[row][col]; // number in map file
           int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());

@@ -39,16 +39,22 @@ public class LevelMenu extends State {
    */
   public void update() {
     if (LEVEL1.covered() && Mouse.buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(0);
       manager.loadNextState(new Loading(manager));
     } else if (LEVEL2.covered() && Mouse.buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(1);
       manager.loadNextState(new Loading(manager));
     } else if (LEVEL3.covered() && Mouse.buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(2);
       manager.loadNextState(new Loading(manager));
     } else if (LEVEL4.covered() && Mouse.buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(3);
       manager.loadNextState(new Loading(manager));
     } else if (LEVEL5.covered() && Mouse.buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(4);
       manager.loadNextState(new Loading(manager));
     } else if (LEVEL6.covered() && Mouse.buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(5);
       manager.loadNextState(new Loading(manager));
     }
 

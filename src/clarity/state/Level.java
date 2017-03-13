@@ -5,7 +5,6 @@ import clarity.graphics.Light;
 import clarity.graphics.Map;
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
-import clarity.ui.MainMenu;
 import clarity.ui.UserInterface;
 import clarity.utilities.GameLogger;
 import clarity.utilities.Timer;
@@ -102,7 +101,8 @@ public class Level extends State {
     }
     // TODO remove
     if (Mouse.buttonClickAndRelease()) {
-      manager.loadNextState(new MainMenu(manager));
+      manager.setCurrentLevelIndex(-1);
+      manager.loadNextState(new Loading(manager));
     }
   }
 
@@ -155,14 +155,15 @@ public class Level extends State {
     // creates player
     createPlayer(map, this);
     userInterface = new UserInterface(player);
-    playMusic(null);
+    playMusic();
     levelComplete = false;
   }
 
 
   private void checkLevelComplete() {
     if (levelComplete) {
-      // TODO
+      manager.setCurrentLevelIndex(manager.getCurrentLevelIndex() + 1);
+      manager.loadNextState(new Loading(manager));
     }
   }
 
