@@ -167,11 +167,12 @@ public class Map {
     if (row < 0 || row >= numOfRows || col < 0 || col >= numOfCols) {
       // bounds checking
       return Tile.NO_COLLISION;
-    }
-    int value = mapArray[row][col];
-    int index = value / (TileSet.getNumTilesAcross() * 2);
-    int rowIndex = value / TileSet.getNumTilesAcross();
-    int colIndex = value % TileSet.getNumTilesAcross();
+    } 
+    int value = mapArray[row][col]; // number in map file
+    int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+    int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+    int rowIndex = number / TileSet.getNumTilesAcross();
+    int colIndex = number % TileSet.getNumTilesAcross();
     return tileSets[index].getTiles()[rowIndex][colIndex].getType();
   }
 

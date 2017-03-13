@@ -13,7 +13,7 @@ public class TileSet {
   /**
    * Size of tile in pixels.
    */
-  public static final int TILE_SIZE = 30;
+  private static final int TILE_SIZE = 30;
   /**
    * Number of tiles across in the png.
    */

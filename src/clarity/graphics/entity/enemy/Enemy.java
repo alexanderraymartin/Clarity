@@ -11,6 +11,8 @@ public abstract class Enemy extends Entity {
   private int attackDamage;
   private Timer attackTimer;
 
+  protected static final int CHASE_RANGE = 15;
+
   /**
    * @param mobId The mob ID.
    * @param attackDamage The amount of damage that the enemy does to the player.

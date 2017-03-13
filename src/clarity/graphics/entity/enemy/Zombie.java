@@ -4,8 +4,6 @@ import clarity.graphics.entity.SpriteSheet;
 import clarity.graphics.tile.TileSet;
 import clarity.state.Level;
 
-import java.util.Random;
-
 public class Zombie extends Enemy {
 
   private static final int DAMAGE = 40;
@@ -17,27 +15,25 @@ public class Zombie extends Enemy {
 
   @Override
   public void move() {
-    if(Math.abs(Level.player.getX() - xcoord) < TileSet.TILE_SIZE * 10) {
+    if (Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
       double changeX = Math.abs(previousX - xcoord);
-      if (Level.player.getX() < xcoord){
-          isRight = false;
-          isLeft = true;
+      if (Level.player.getX() < xcoord) {
+        isRight = false;
+        isLeft = true;
+      } else {
+        isLeft = false;
+        isRight = true;
       }
-      else {
-          isLeft = false;
-          isRight = true;
-      }
-      if(checkTileCollision()) {
+      if (checkTileCollision()) {
         if (dy == 0 && changeX < 1) {
           setJumping(true);
-        }
-        else {
+        } else {
           setJumping(false);
         }
         previousX = xcoord;
       }
-   
-    }      
+
+    }
   }
 
   @Override
@@ -53,7 +49,7 @@ public class Zombie extends Enemy {
     fallSpeed = 0.15;
     maxFallSpeed = 4.0;
     // jumping speeds
-    jumpStart = -20.0;
+    jumpStart = -6.0;
     stopJumpSpeed = 0.5;
     facingRight = false;
     currentHealth = maxHealth = 100;

@@ -18,10 +18,8 @@ public class Ghost extends Enemy {
    */
   @Override
   public void move() {
-
-    if(Math.abs(Level.player.getX() - xcoord) < TileSet.TILE_SIZE * 10) {      
+    if (Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
       if (checkTileCollision()) {
-        System.out.println("here");
         if (isLeft) {
           isLeft = false;
           isRight = true;

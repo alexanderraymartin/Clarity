@@ -10,14 +10,14 @@ public class Saiyan extends Enemy {
 
   private static final int DAMAGE = 40;
   private int counter = 0;
-  
+
   public Saiyan(int mobId) {
     super(mobId, DAMAGE);
   }
 
   @Override
   public void move() {
-    if(Math.abs(Level.player.getX() - xcoord) < TileSet.TILE_SIZE * 10) {
+    if (Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
       counter += 1;
       if (counter == 10) {
         counter = 0;
@@ -36,9 +36,8 @@ public class Saiyan extends Enemy {
         if (movement == 2) {
           setJumping(true);
         }
-      }      
-    }
-    else {
+      }
+    } else {
       isLeft = false;
       isRight = false;
       setJumping(false);
