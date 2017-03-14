@@ -1,3 +1,4 @@
+
 package test.loop;
 
 import static org.junit.Assert.assertEquals;
@@ -6,7 +7,7 @@ import clarity.graphics.tile.TileSet;
 
 import org.junit.Test;
 
-public class TestTileSet {
+public class TileSetTest {
   @Test
   public void testLoadTiles() {
     TileSet ts = new TileSet();
