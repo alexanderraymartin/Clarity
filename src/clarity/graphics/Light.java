@@ -69,7 +69,7 @@ public class Light {
   public void update() {
     currentDarkness += darknessAcceleration;
     currentDarkness = Math.min(currentDarkness, 1);
-    if (currentDarkness == 1.0) {
+    if ((int) currentDarkness == 1) {
       currentDarkness = 0;
       Level.player.setDead(true);
     }
