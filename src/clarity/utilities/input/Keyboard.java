@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Keyboard implements KeyListener {
 
   private static final int NUM_KEYS = 120;
-  private static final boolean[] KEYS = new boolean[NUM_KEYS];
+  private final boolean[] keys = new boolean[NUM_KEYS];
   
   private boolean up;
   private boolean down;
@@ -93,16 +93,16 @@ public class Keyboard implements KeyListener {
    * Updates key values.
    */
   public void update() {
-    up = KEYS[KeyEvent.VK_UP] || KEYS[KeyEvent.VK_W];
-    left = KEYS[KeyEvent.VK_LEFT] || KEYS[KeyEvent.VK_A];
-    down = KEYS[KeyEvent.VK_DOWN] || KEYS[KeyEvent.VK_S];
-    right = KEYS[KeyEvent.VK_RIGHT] || KEYS[KeyEvent.VK_D];
-    enter = KEYS[KeyEvent.VK_ENTER];
-    spaceBar = KEYS[KeyEvent.VK_SPACE];
-    escape = KEYS[KeyEvent.VK_ESCAPE];
-    rkey = KEYS[KeyEvent.VK_R];
-    qkey = KEYS[KeyEvent.VK_Q];
-    skey = KEYS[KeyEvent.VK_S];
+    up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
+    left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
+    down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
+    right = keys[KeyEvent.VK_RIGHT] || keys[KeyEvent.VK_D];
+    enter = keys[KeyEvent.VK_ENTER];
+    spaceBar = keys[KeyEvent.VK_SPACE];
+    escape = keys[KeyEvent.VK_ESCAPE];
+    rkey = keys[KeyEvent.VK_R];
+    qkey = keys[KeyEvent.VK_Q];
+    skey = keys[KeyEvent.VK_S];
   }
 
   /**
@@ -113,7 +113,7 @@ public class Keyboard implements KeyListener {
   @Override
   public void keyPressed(KeyEvent event) {
     if (event.getKeyCode() <= NUM_KEYS) {
-      KEYS[event.getKeyCode()] = true;
+      keys[event.getKeyCode()] = true;
     }
   }
 
@@ -125,7 +125,7 @@ public class Keyboard implements KeyListener {
   @Override
   public void keyReleased(KeyEvent event) {
     if (event.getKeyCode() <= NUM_KEYS) {
-      KEYS[event.getKeyCode()] = false;
+      keys[event.getKeyCode()] = false;
     }
   }
 

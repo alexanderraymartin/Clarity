@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 public class UserInterface {
 
   private BufferedImage ui;
-  private static final String path = "/textures/backgrounds/healthAndEnergyBars.png";
+  private static final String PATH = "/textures/backgrounds/healthAndEnergyBars.png";
   private Player player;
   private Rectangle health;
   private Rectangle energy;
@@ -35,7 +35,7 @@ public class UserInterface {
     energy = new Rectangle(ENERGY_POSITION.getX(), ENERGY_POSITION.getY(), ENERGY_SIZE.getX(),
         ENERGY_SIZE.getY());
     try {
-      ui = ImageIO.read(getClass().getResourceAsStream(path));
+      ui = ImageIO.read(getClass().getResourceAsStream(PATH));
     } catch (IOException exception) {
       GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
     }
