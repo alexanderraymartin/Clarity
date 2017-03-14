@@ -18,7 +18,6 @@ public class Audio {
   private FloatControl gainControl;
   private BooleanControl muteControl;
   private static final int MICRO_SECONDS = 1000000;
-  private static final Map<String, Audio> soundEffects = new HashMap<>();
   private static Audio music;
   private static String currentSongName;
 
@@ -55,11 +54,6 @@ public class Audio {
     clip.open(decodedAudioInput);
   }
 
-  // TODO: Implement this method
-  public static void loadSoundEffects() {
-    // soundEffects.put("name", new Audio("/sounds/soundEffects/pew.mp3"));
-  }
-
   /**
    * Pause the music.
    */
@@ -72,13 +66,6 @@ public class Audio {
    */
   public static void resumeSongs() {
     getMusic().resume();
-  }
-
-  /**
-   * Sound effects for every entity in the game.
-   */
-  public static Map<String, Audio> getSoundEffects() {
-    return soundEffects;
   }
 
   /**
