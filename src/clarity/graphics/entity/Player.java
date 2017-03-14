@@ -122,13 +122,6 @@ public class Player extends Entity {
     }
   }
 
-  /**
-   * @param boost The amount of health gained.
-   */
-  public void gainHealth(int boost) {
-    currentHealth += boost;
-  }
-
   @Override
   protected void defineSpriteSheet() {
     spriteSheet = SpriteSheet.PLAYER;
