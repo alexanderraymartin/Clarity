@@ -311,7 +311,8 @@ public abstract class Entity {
     return returnValue;
   }
 
-  private boolean checkTileCollisionYHelper(int yoffset, boolean returnValue) {
+  private boolean checkTileCollisionYHelper(int yoffset, boolean value) {
+    boolean returnValue = value;
     if (dy < 0) {
       if (topLeft || topRight || topMiddle) {
         returnValue = true;
@@ -334,7 +335,8 @@ public abstract class Entity {
     return returnValue;
   }
 
-  private boolean checkTileCollisionXHelper(int xoffset, boolean returnValue) {
+  private boolean checkTileCollisionXHelper(int xoffset, boolean value) {
+    boolean returnValue = value;
     if (dx < 0) {
       if (topLeft || bottomLeft || middleLeft) {
         returnValue = true;
