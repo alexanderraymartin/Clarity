@@ -25,7 +25,8 @@ public class Zombie extends Enemy {
         isRight = true;
       }
       double ydistance = Math.abs(Level.player.getY()) - Math.abs(ycoord);
-      boolean ycheck = ydistance > TileSet.getTileSize() * MAX_JUMP_RANGE && ydistance < TileSet.getTileSize() * MIN_JUMP_RANGE && ydistance < 0;
+      boolean ycheck = ydistance > TileSet.getTileSize() * MAX_JUMP_RANGE
+          && ydistance < TileSet.getTileSize() * MIN_JUMP_RANGE && ydistance < 0;
       if ((checkTileCollision() && dy == 0 && changeX < 1) || ycheck) {
         setJumping(true);
       } else {

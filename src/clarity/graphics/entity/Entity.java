@@ -15,7 +15,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Entity {
 
@@ -35,7 +35,7 @@ public abstract class Entity {
   // sprite
   protected int spriteWidth;
   protected int spriteHeight;
-  protected ArrayList<BufferedImage[]> sprites;
+  protected List<BufferedImage[]> sprites;
   protected SpriteSheet spriteSheet;
   // collision
   protected int collisionWidth;
@@ -186,7 +186,7 @@ public abstract class Entity {
     ymap = map.getMapY();
   }
 
-  protected void getNextPosition() {
+  protected void getNextPosition() { // TODO
     if (isLeft) { // entity going left
       dx -= moveSpeed;
       if (dx < -maxSpeed) {
@@ -216,7 +216,6 @@ public abstract class Entity {
       }
     }
     if (isJumping && !isFalling) { // entity jumping
-      // playSoundEffect("jump"); // TODO
       dy = jumpStart;
       isFalling = true;
     }
@@ -297,15 +296,22 @@ public abstract class Entity {
   /**
    * @return True if the entity is colliding with a tile.
    */
-  public boolean checkTileCollision() {
-    boolean returnValue = false;
-    int xoffset = collisionWidth / tileSize;
-    int yoffset = collisionHeight / tileSize;
+  public boolean checkTileCollision() { // TODO
     xdestination = xcoord + dx;
     ydestination = ycoord + dy;
     xposition = xcoord;
     yposition = ycoord;
+    boolean returnValue = false;
+    int yoffset = collisionHeight / tileSize;
     checkCorners(new Vector2d(xcoord, ydestination)); // check ycoord axis
+    returnValue = checkTileCollisionYHelper(yoffset, returnValue);
+    int xoffset = collisionWidth / tileSize;
+    checkCorners(new Vector2d(xdestination, ycoord)); // check xcoord axis
+    returnValue = checkTileCollisionXHelper(xoffset, returnValue);
+    return returnValue;
+  }
+
+  private boolean checkTileCollisionYHelper(int yoffset, boolean returnValue) {
     if (dy < 0) {
       if (topLeft || topRight || topMiddle) {
         returnValue = true;
@@ -325,7 +331,10 @@ public abstract class Entity {
         yposition += dy;
       }
     }
-    checkCorners(new Vector2d(xdestination, ycoord)); // check xcoord axis
+    return returnValue;
+  }
+
+  private boolean checkTileCollisionXHelper(int xoffset, boolean returnValue) {
     if (dx < 0) {
       if (topLeft || bottomLeft || middleLeft) {
         returnValue = true;
@@ -360,7 +369,7 @@ public abstract class Entity {
   /**
    * Update the entity.
    */
-  public void update() {
+  public void update() { // TODO
     if (currentHealth <= 0) {
       isDead = true;
     }
