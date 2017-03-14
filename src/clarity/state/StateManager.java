@@ -64,7 +64,7 @@ public class StateManager {
     if (levels != null) {
       return levels;
     }
-    levels = new ArrayList<String>();
+    levels = new ArrayList<>();
     try {
       InputStream input = getClass().getResourceAsStream(LEVELS_PATH);
       BufferedReader reader = new BufferedReader(new InputStreamReader(input));
