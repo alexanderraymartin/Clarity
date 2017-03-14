@@ -100,7 +100,7 @@ public class Map {
 
       String line = "";
       int row = 0;
-      while (line != null) {
+      while (!line.equals(null)) {
         line = reader.readLine();
         if (line == null || line.isEmpty()) {
           break;

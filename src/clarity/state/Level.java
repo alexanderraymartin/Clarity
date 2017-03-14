@@ -161,7 +161,7 @@ public class Level extends State {
   }
 
 
-  private void checkLevelComplete() {
+  private static void checkLevelComplete() {
     if (isLevelComplete()) {
       manager.setCurrentLevelIndex(manager.getCurrentLevelIndex() + 1);
       manager.loadNextState(new Loading(manager));

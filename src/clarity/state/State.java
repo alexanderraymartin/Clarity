@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class State {
 
-  protected StateManager manager;
+  protected static StateManager manager;
   protected static Background background;
 
   protected static String backgroundFileName;
@@ -34,7 +34,7 @@ public abstract class State {
    */
   public State(StateManager manager, String backgroundFileName, String musicFileName,
       String mapFileName) {
-    this.manager = manager;
+    State.manager = manager;
     State.backgroundFileName = backgroundFileName;
     State.musicFileName = musicFileName;
     State.mapFileName = mapFileName;
@@ -46,7 +46,7 @@ public abstract class State {
    * @param manager The state manager.
    */
   public State(StateManager manager) {
-    this.manager = manager;
+    State.manager = manager;
   }
 
   /**
