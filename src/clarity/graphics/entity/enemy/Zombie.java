@@ -25,8 +25,7 @@ public class Zombie extends Enemy {
         isRight = true;
       }
       double ydistance = Math.abs(Level.player.getY()) - Math.abs(ycoord);
-      boolean ycheck = (ydistance > TileSet.getTileSize() * MAX_JUMP_RANGE
-          && ydistance < TileSet.getTileSize() * MIN_JUMP_RANGE && ydistance < 0);
+      boolean ycheck = ydistance > TileSet.getTileSize() * MAX_JUMP_RANGE && ydistance < TileSet.getTileSize() * MIN_JUMP_RANGE && ydistance < 0;
       if ((checkTileCollision() && dy == 0 && changeX < 1) || ycheck) {
         setJumping(true);
       } else {
@@ -42,18 +41,15 @@ public class Zombie extends Enemy {
     spriteSheet = SpriteSheet.ZOMBIE;
     collisionWidth = 20;
     collisionHeight = 30;
-    // movement speeds
     moveSpeed = 0.1;
     maxSpeed = 1.75;
     stopSpeed = 0.1;
-    // falling speeds
     fallSpeed = 0.15;
     maxFallSpeed = 4.0;
-    // jumping speeds
     jumpStart = -10.0;
     stopJumpSpeed = 0.1;
     facingRight = false;
     currentHealth = maxHealth = 100;
-    // currentEnergy = maxEnergy = 100;
+    currentEnergy = maxEnergy = 100;
   }
 }
