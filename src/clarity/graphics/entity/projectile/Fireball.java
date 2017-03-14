@@ -18,15 +18,11 @@ public class Fireball extends Projectile {
     super(Level.getPlayer(), MobId.DUMMY);
     setSpeedValues(1.0, 5.0, 5.0, 0, 0, -6.0, 0.5);
     setSpriteValues(SpriteSheet.FIREBALL, 15, 15, 100, 100);
+    setDamage(100);
   }
 
   @Override
   protected void createParticleSpawner() {
     new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 10, new Color[] {Color.RED});
-  }
-
-  @Override
-  protected void defineDamage() {
-    damage = 100;
   }
 }

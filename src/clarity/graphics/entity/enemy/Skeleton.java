@@ -20,6 +20,7 @@ public class Skeleton extends Enemy {
     super(mobId);
     setSpeedValues(0.2, 1.5, 0.4, 0.15, 4.0, -6.0, 0.5);
     setSpriteValues(SpriteSheet.SKELETON, 20, 30, 100, 100);
+    setAttackDamage(10);
     boneAttackTimer = new Timer();
   }
 
@@ -46,10 +47,5 @@ public class Skeleton extends Enemy {
       new Bone(this, MobId.DUMMY);
       boneAttackTimer.reset();
     }
-  }
-
-  @Override
-  protected void defineAttackDamage() {
-    attackDamage = 10;
   }
 }

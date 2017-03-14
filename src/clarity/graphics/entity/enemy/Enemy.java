@@ -20,7 +20,6 @@ public abstract class Enemy extends Entity {
    */
   public Enemy(int mobId) {
     super(mobId);
-    defineAttackDamage();
     attackTimer = new Timer();
   }
 
@@ -56,6 +55,8 @@ public abstract class Enemy extends Entity {
     }
   }
 
-  protected abstract void defineAttackDamage();
+  protected void setAttackDamage(int attackDamage) {
+    this.attackDamage = attackDamage;
+  }
 
 }

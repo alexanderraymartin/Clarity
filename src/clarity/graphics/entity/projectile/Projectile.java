@@ -20,7 +20,6 @@ public abstract class Projectile extends Entity {
   public Projectile(Entity source, int mobId) {
     super(mobId);
     this.source = source;
-    defineDamage();
     if (source.isFacingRight()) {
       setPosition(new Vector2d(source.getX() + source.getCollisionWidth(), source.getY()),
           source.isFacingRight());
@@ -72,5 +71,7 @@ public abstract class Projectile extends Entity {
     return false;
   }
 
-  protected abstract void defineDamage();
+  protected void setDamage(int damage) {
+    this.damage = damage;
+  }
 }

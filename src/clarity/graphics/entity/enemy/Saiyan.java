@@ -17,6 +17,7 @@ public class Saiyan extends Enemy {
     super(mobId);
     setSpeedValues(0.2, 1.5, 0.4, 0.15, 4.0, -6.0, 0.5);
     setSpriteValues(SpriteSheet.SAIYAN, 15, 30, 100, 100);
+    setAttackDamage(100);
   }
 
   @Override
@@ -47,10 +48,5 @@ public class Saiyan extends Enemy {
       setJumping(false);
     }
 
-  }
-
-  @Override
-  protected void defineAttackDamage() {
-    attackDamage = 100;
   }
 }

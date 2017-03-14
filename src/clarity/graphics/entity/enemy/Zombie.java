@@ -15,6 +15,7 @@ public class Zombie extends Enemy {
     super(mobId);
     setSpeedValues(0.1, 1.75, 0.1, 0.15, 4.0, -10.0, 0.1);
     setSpriteValues(SpriteSheet.ZOMBIE, 20, 30, 100, 100);
+    setAttackDamage(30);
   }
 
   @Override
@@ -39,10 +40,5 @@ public class Zombie extends Enemy {
 
       previousX = xcoord;
     }
-  }
-
-  @Override
-  protected void defineAttackDamage() {
-    attackDamage = 30;
   }
 }
