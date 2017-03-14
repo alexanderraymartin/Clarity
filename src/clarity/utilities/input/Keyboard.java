@@ -15,7 +15,7 @@ public class Keyboard implements KeyListener {
   private static boolean enter;
   private static boolean spaceBar;
   private static boolean escape;
-  private static boolean control;
+  private static boolean rKey;
   private static boolean qKey;
   private static boolean sKey;
 
@@ -71,8 +71,8 @@ public class Keyboard implements KeyListener {
   /**
    * @return True if key is pressed.
    */
-  public static boolean controlPressed() {
-    return control;
+  public static boolean rpressed() {
+    return rKey;
   }
 
   /**
@@ -100,7 +100,7 @@ public class Keyboard implements KeyListener {
     enter = keys[KeyEvent.VK_ENTER];
     spaceBar = keys[KeyEvent.VK_SPACE];
     escape = keys[KeyEvent.VK_ESCAPE];
-    control = keys[KeyEvent.VK_CONTROL];
+    rKey = keys[KeyEvent.VK_R];
     qKey = keys[KeyEvent.VK_Q];
     sKey = keys[KeyEvent.VK_S];
   }
