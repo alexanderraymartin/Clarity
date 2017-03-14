@@ -56,7 +56,6 @@ public class Game extends JPanel {
   private StateManager manager;
 
   private Keyboard keyboard;
-  private Mouse mouse;
 
   /**
    * Game constructor.
@@ -66,10 +65,9 @@ public class Game extends JPanel {
     setFocusable(true);
     requestFocus();
     keyboard = new Keyboard();
-    mouse = new Mouse();
     addKeyListener(keyboard);
-    addMouseListener(mouse);
-    addMouseMotionListener(mouse);
+    addMouseListener(Mouse.getMouse());
+    addMouseMotionListener(Mouse.getMouse());
 
     image = new BufferedImage(WINDOW_WIDTH, WINDOW_HEIGHT, BufferedImage.TYPE_INT_RGB);
     graphics = (Graphics2D) image.getGraphics();

@@ -40,11 +40,11 @@ public class MainMenu extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
-    if (START.covered() && Mouse.buttonClickAndRelease()) {
+    if (START.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.loadNextState(new LevelMenu(manager));
-    } else if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (EXIT.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       Game.exitGame();
-    } else if (HELP.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (HELP.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.loadNextState(new Help(manager));
     }
   }

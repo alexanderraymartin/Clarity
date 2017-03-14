@@ -33,9 +33,9 @@ public class Settings extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
-    if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
+    if (EXIT.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       Game.exitGame();
-    } else if (BACK.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (BACK.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
     }
   }

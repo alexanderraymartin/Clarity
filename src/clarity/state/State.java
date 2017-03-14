@@ -8,6 +8,7 @@ import clarity.graphics.entity.projectile.Projectile;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class State {
 
@@ -18,9 +19,9 @@ public abstract class State {
   protected static String musicFileName;
   protected static String mapFileName;
 
-  private static ArrayList<Entity> entities;
-  private static ArrayList<Projectile> projectiles;
-  private static ArrayList<Particle> particles;
+  private static List<Entity> entities;
+  private static List<Projectile> projectiles;
+  private static List<Particle> particles;
 
 
   /**
@@ -61,7 +62,7 @@ public abstract class State {
   /**
    * @return The arrayList of entities.
    */
-  public static ArrayList<Entity> getEntities() {
+  public static List<Entity> getEntities() {
     if (entities == null) {
       entities = new ArrayList<Entity>();
     }
@@ -71,7 +72,7 @@ public abstract class State {
   /**
    * @return The arrayList of projectiles.
    */
-  public static ArrayList<Projectile> getProjectiles() {
+  public static List<Projectile> getProjectiles() {
     if (projectiles == null) {
       projectiles = new ArrayList<Projectile>();
     }
@@ -81,7 +82,7 @@ public abstract class State {
   /**
    * @return The arrayList of particles.
    */
-  public static ArrayList<Particle> getParticles() {
+  public static List<Particle> getParticles() {
     if (particles == null) {
       particles = new ArrayList<Particle>();
     }

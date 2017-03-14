@@ -108,7 +108,7 @@ public class Player extends Entity {
 
   private void checkAbilities() {
     // Shooting a fireball
-    if (Mouse.buttonClickAndRelease() && getEnergy() - Fireball.ENERGY_COST >= 0) {
+    if (Mouse.getMouse().buttonClickAndRelease() && getEnergy() - Fireball.ENERGY_COST >= 0) {
       setEnergy(getEnergy() - Fireball.ENERGY_COST);
       new Fireball();
     }

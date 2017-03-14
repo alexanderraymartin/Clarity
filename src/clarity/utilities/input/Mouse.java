@@ -5,24 +5,30 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 public class Mouse implements MouseListener, MouseMotionListener {
-  private static int mouseX = -1;
-  private static int mouseY = -1;
-  private static int mouseB = -1;
-  private static boolean mouseClicked = false;
-  private static boolean mouseReleased = false;
+  private static final Mouse MOUSE = new Mouse();
+  private int mouseX = -1;
+  private int mouseY = -1;
+  private int mouseB = -1;
+  private boolean mouseClicked = false;
+  private boolean mouseReleased = false;
 
-  public static int getX() {
+
+  public static Mouse getMouse() {
+    return MOUSE;
+  }
+
+  public int getX() {
     return mouseX;
   }
 
-  public static int getY() {
+  public int getY() {
     return mouseY;
   }
 
   /**
    * @return State of the button.
    */
-  public static int getButton() {
+  public int getButton() {
     if (mouseB != -1) {
       mouseClicked = true;
       mouseReleased = false;
@@ -37,8 +43,8 @@ public class Mouse implements MouseListener, MouseMotionListener {
   /**
    * @return True if button clicked and released.
    */
-  public static boolean buttonClickAndRelease() {
-    Mouse.getButton();
+  public boolean buttonClickAndRelease() {
+    getButton();
     boolean temp = mouseReleased;
     mouseReleased = false;
     return temp;

@@ -13,13 +13,13 @@ public class LevelMenu extends State {
   private static final String BACKGROUND_FILE_NAME = "LevelSelect.png";
   private static final String MUSIC_FILE_NAME = "Vexento - We Are One (Original).mp3";
   private static final String MAP_FILE_NAME = "mapFileName";
-  private static final MenuItem LEVEL1 = 
+  private static final MenuItem LEVEL1 =
       new MenuItem("level1.png", "level1Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 70);
   private static final MenuItem LEVEL2 =
       new MenuItem("level2.png", "level2Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 90);
   private static final MenuItem LEVEL3 =
       new MenuItem("level3.png", "level3Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 110);
-  private static final MenuItem LEVEL4 = 
+  private static final MenuItem LEVEL4 =
       new MenuItem("level4.png", "level4Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 130);
   private static final MenuItem LEVEL5 =
       new MenuItem("level5.png", "level5Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 150);
@@ -44,27 +44,27 @@ public class LevelMenu extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
-    if (LEVEL1.covered() && Mouse.buttonClickAndRelease()) {
+    if (LEVEL1.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(0);
       manager.loadNextState(new Loading(manager));
-    } else if (LEVEL2.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL2.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(1);
       manager.loadNextState(new Loading(manager));
-    } else if (LEVEL3.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL3.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(2);
       manager.loadNextState(new Loading(manager));
-    } else if (LEVEL4.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL4.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(3);
       manager.loadNextState(new Loading(manager));
-    } else if (LEVEL5.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL5.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(4);
       manager.loadNextState(new Loading(manager));
-    } else if (LEVEL6.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (LEVEL6.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(5);
       manager.loadNextState(new Loading(manager));
-    } else if (BACK.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (BACK.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
-    } else if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
+    } else if (EXIT.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       Game.exitGame();
     }
   }

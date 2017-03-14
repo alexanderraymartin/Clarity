@@ -9,7 +9,7 @@ import clarity.state.StateManager;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class TestState {
 
@@ -23,7 +23,7 @@ public class TestState {
 
   @Test
   public void testGetEntities() {
-    ArrayList<Entity> entities = null;
+    List<Entity> entities = null;
     entities = State.getEntities();
 
     assert (entities != null);
@@ -31,7 +31,7 @@ public class TestState {
 
   @Test
   public void testGetProjectiles() {
-    ArrayList<Projectile> projectiles = null;
+    List<Projectile> projectiles = null;
     projectiles = State.getProjectiles();
 
     assert (projectiles != null);
@@ -39,7 +39,7 @@ public class TestState {
 
   @Test
   public void testGetParticles() {
-    ArrayList<Particle> particles = null;
+    List<Particle> particles = null;
     particles = State.getParticles();
 
     assert (particles != null);

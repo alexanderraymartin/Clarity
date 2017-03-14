@@ -70,8 +70,9 @@ public class MenuItem {
     if (Game.FULL_SCREEN_MODE) {
       scale = Game.MONITOR_SCALE;
     }
-    if (Mouse.getX() / scale < (xcoord + width) && Mouse.getX() / scale > xcoord
-        && Mouse.getY() / scale > ycoord && Mouse.getY() / scale < (ycoord + height)) {
+    if (Mouse.getMouse().getX() / scale < (xcoord + width)
+        && Mouse.getMouse().getX() / scale > xcoord && Mouse.getMouse().getY() / scale > ycoord
+        && Mouse.getMouse().getY() / scale < (ycoord + height)) {
       img = img3;
 
       return true;
