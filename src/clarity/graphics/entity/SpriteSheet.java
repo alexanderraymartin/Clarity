@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class SpriteSheet {
   private int spriteWidth;
   private int spriteHeight;
-  private ArrayList<BufferedImage[]> sprites;
+  private List<BufferedImage[]> sprites;
 
   public static final SpriteSheet DUMMY =
       new SpriteSheet(10, 10, new int[] {1, 1}, "/textures/projectiles/dummy.png");
