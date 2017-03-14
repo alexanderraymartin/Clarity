@@ -14,7 +14,7 @@ public class Player extends Entity {
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
    */
-  private static final int TEMP_IMMUNITY_DURATION = 750; // milliseconds
+  private static final int TEMP_IMMUNITY_DURATION = 1000; // milliseconds
 
   /**
    * Timer for tracking the temporary immunity of the player.
