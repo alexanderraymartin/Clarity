@@ -63,13 +63,19 @@ public class Mouse implements MouseListener, MouseMotionListener {
   }
 
   @Override
-  public void mouseClicked(MouseEvent event) {}
+  public void mouseClicked(MouseEvent event) {
+    // SonarQube
+  }
 
   @Override
-  public void mouseEntered(MouseEvent event) {}
+  public void mouseEntered(MouseEvent event) {
+    // SonarQube
+  }
 
   @Override
-  public void mouseExited(MouseEvent event) {}
+  public void mouseExited(MouseEvent event) {
+    // SonarQube
+  }
 
   @Override
   public void mousePressed(MouseEvent event) {
