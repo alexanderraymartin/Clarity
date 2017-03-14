@@ -9,7 +9,6 @@ import clarity.ui.UserInterface;
 import clarity.utilities.GameLogger;
 import clarity.utilities.Timer;
 import clarity.utilities.Vector2d;
-import clarity.utilities.input.Keyboard;
 
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
@@ -92,10 +91,10 @@ public class Level extends State {
       getMap().setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - getPlayer().getX(),
           Game.WINDOW_HEIGHT / 2 - getPlayer().getY()));
     } else {
-      if (Keyboard.qpressed()) {
+      if (manager.getKeyboard().qpressed()) {
         manager.setCurrentLevelIndex(-1);
         manager.loadNextState(new Loading(manager));
-      } else if (Keyboard.rpressed()) {
+      } else if (manager.getKeyboard().rpressed()) {
         manager.loadNextState(new Level(manager));
       }
     }
@@ -142,7 +141,7 @@ public class Level extends State {
    * @param map The current map.
    */
   public static void createPlayer(Map map) {
-    setPlayer(new Player());
+    setPlayer(new Player(manager));
     getPlayer().setPosition(getSpawnLocation(), true);
     getPlayer().setPlayerControlled(true);
     Level.light.resetDarkness();
@@ -169,14 +168,14 @@ public class Level extends State {
   }
 
   private static void checkPause() {
-    if (Keyboard.escapePressed() && !pausePressed) {
+    if (manager.getKeyboard().escapePressed() && !pausePressed) {
       if (!isPaused) {
         isPaused = true;
       } else {
         isPaused = false;
       }
       pausePressed = true;
-    } else if (!Keyboard.escapePressed()) {
+    } else if (!manager.getKeyboard().escapePressed()) {
       pausePressed = false;
     }
   }

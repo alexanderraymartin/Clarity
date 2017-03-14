@@ -2,6 +2,7 @@ package clarity.state;
 
 import clarity.graphics.Background;
 import clarity.utilities.GameLogger;
+import clarity.utilities.input.Keyboard;
 
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
@@ -17,12 +18,14 @@ public class StateManager {
   private State currentState;
   private List<String> levels;
   private int currentLevelIndex;
+  private Keyboard keyboard;
   public static final Background loadingScreen = new Background(LOADING_SCREEN_PATH);
 
   /**
    * Create the state manager.
    */
-  public StateManager() {
+  public StateManager(Keyboard keyboard) {
+    this.keyboard = keyboard;
     this.currentLevelIndex = -1;
     this.currentState = new Loading(this);
     getLevels();
@@ -109,5 +112,13 @@ public class StateManager {
       currentState.render(graphics);
     }
   }
+
+  /**
+   * @return The keyboard.
+   */
+  public Keyboard getKeyboard() {
+    return keyboard;
+  }
+
 
 }

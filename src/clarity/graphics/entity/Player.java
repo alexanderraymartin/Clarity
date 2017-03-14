@@ -3,8 +3,8 @@ package clarity.graphics.entity;
 import clarity.graphics.entity.particle.ParticleSpawner;
 import clarity.graphics.entity.projectile.Fireball;
 import clarity.state.Level;
+import clarity.state.StateManager;
 import clarity.utilities.Timer;
-import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
 
 import java.awt.Color;
@@ -21,11 +21,14 @@ public class Player extends Entity {
    */
   public static final Timer TEMP_IMMUNITY_TIMER = new Timer();
 
+  private StateManager manager;
+
   /**
    * Player constructor.
    */
-  public Player() {
+  public Player(StateManager manager) {
     super();
+    this.manager = manager;
     facingRight = true;
     setPlayerControlled(true);
   }
@@ -89,22 +92,22 @@ public class Player extends Entity {
   }
 
   private void movePlayer() {
-    if (Keyboard.leftPressed() && !Keyboard.rightPressed()) {
+    if (manager.getKeyboard().leftPressed() && !manager.getKeyboard().rightPressed()) {
       setLeft(true);
     } else {
       setLeft(false);
     }
-    if (Keyboard.rightPressed() && !Keyboard.leftPressed()) {
+    if (manager.getKeyboard().rightPressed() && !manager.getKeyboard().leftPressed()) {
       setRight(true);
     } else {
       setRight(false);
     }
-    if (Keyboard.upPressed()) {
+    if (manager.getKeyboard().upPressed()) {
       setJumping(true);
     } else {
       setJumping(false);
     }
-    if (Keyboard.downPressed()) {
+    if (manager.getKeyboard().downPressed()) {
       setDown(true);
     } else {
       setDown(false);
