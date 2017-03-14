@@ -20,11 +20,14 @@ public abstract class Projectile extends Entity {
   public Projectile(Entity source, int mobId) {
     super(mobId);
     this.source = source;
-    setPosition(new Vector2d((source.getX() + source.getCollisionWidth()), (source.getY())),
-        source.isFacingRight());
+
     if (source.isFacingRight()) {
+      setPosition(new Vector2d((source.getX() + source.getCollisionWidth()), (source.getY())),
+          source.isFacingRight());
       isRight = true;
     } else {
+      setPosition(new Vector2d((source.getX() - source.getCollisionWidth()), (source.getY())),
+          source.isFacingRight());
       isLeft = true;
     }
     life = new Timer();

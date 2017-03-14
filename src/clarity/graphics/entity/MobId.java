@@ -4,8 +4,6 @@ import clarity.graphics.entity.enemy.Ghost;
 import clarity.graphics.entity.enemy.Saiyan;
 import clarity.graphics.entity.enemy.Skeleton;
 import clarity.graphics.entity.enemy.Zombie;
-import clarity.graphics.entity.projectile.Bone;
-import clarity.graphics.entity.projectile.Fireball;
 
 public class MobId {
 
@@ -15,9 +13,7 @@ public class MobId {
   public static final int SKELETON = 2;
   public static final int ZOMBIE = 3;
   public static final int TORCH = 4;
-  public static final int FIREBALL = 5;
-  public static final int BONE = 6;
-  protected static final int[] MOB_IDS = {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH, FIREBALL, BONE};
+  protected static final int[] MOB_IDS = {GHOST, SAIYAN, SKELETON, ZOMBIE, TORCH};
 
   private MobId() {}
 
@@ -39,10 +35,6 @@ public class MobId {
         return new Zombie(ZOMBIE);
       case TORCH:
         return new Torch(TORCH);
-      case FIREBALL:
-        return new Fireball(FIREBALL);
-      case BONE:
-        return new Bone(BONE);
       default:
         break;
 

@@ -1,5 +1,6 @@
 package clarity.graphics.entity.projectile;
 
+import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.SpriteSheet;
 import clarity.graphics.entity.particle.ParticleSpawner;
 import clarity.state.Level;
@@ -10,8 +11,8 @@ public class Fireball extends Projectile {
 
   public static final int ENERGY_COST = 20;
 
-  public Fireball(int mobId) {
-    super(Level.player, mobId);
+  public Fireball() {
+    super(Level.player, MobId.DUMMY);
     init();
   }
 
@@ -32,6 +33,6 @@ public class Fireball extends Projectile {
 
   @Override
   protected void createParticleSpawner() {
-    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 10, Color.RED, Color.RED, Color.RED);
+    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 3, Color.RED, Color.RED, Color.RED);
   }
 }

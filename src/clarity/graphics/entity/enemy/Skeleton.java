@@ -8,9 +8,11 @@ import clarity.state.Level;
 import clarity.utilities.Timer;
 
 public class Skeleton extends Enemy {
-  private static final int DAMAGE = 40;
+
+  private static final int DAMAGE = 10;
+  private static final int DELAY = 1000;
+  
   private Timer boneAttackTimer = new Timer();
-  private static final int DELAY = 500;
 
   public Skeleton(int mobId) {
     super(mobId, DAMAGE);
@@ -36,11 +38,10 @@ public class Skeleton extends Enemy {
   }
 
   private void throwBone() {
-    if (getEnergy() - Bone.ENERGY_COST >= 0) {
-      setEnergy(getEnergy() - Bone.ENERGY_COST);
-      MobId.getEntity(MobId.BONE);
+    if (boneAttackTimer.hasElapsed(DELAY)) {
+      new Bone(this, MobId.DUMMY);
+      boneAttackTimer.reset();
     }
-
   }
 
   @Override
@@ -60,7 +61,7 @@ public class Skeleton extends Enemy {
     stopJumpSpeed = 0.5;
     facingRight = false;
     currentHealth = maxHealth = 100;
-    // currentEnergy = maxEnergy = 100;
+    currentEnergy = maxEnergy = 100;
   }
 
 }

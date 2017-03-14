@@ -93,6 +93,7 @@ public abstract class Entity {
   private int immunityTimer;
   protected boolean shouldExplode;
   private static final double ENERGY_GAIN_RATE = 0.2;
+  private static final double HEALTH_GAIN_RATE = 0.02;
 
   // player
   private boolean isPlayerControlled;
@@ -409,6 +410,7 @@ public abstract class Entity {
       setAnimation(tempAnimation);
       animation.update();
       rechargeEnergy();
+      regenHealth();
     }
     if (isRight) {
       facingRight = true;
@@ -539,11 +541,17 @@ public abstract class Entity {
   }
 
   private void rechargeEnergy() {
-    if (this.getEnergy() < maxEnergy) {
+    if (currentEnergy < maxEnergy) {
       currentEnergy += ENERGY_GAIN_RATE;
     }
   }
 
+
+  private void regenHealth() {
+    if (currentHealth < maxHealth) {
+      currentHealth += HEALTH_GAIN_RATE;
+    }
+  }
 
   /**
    * @return The current energy.

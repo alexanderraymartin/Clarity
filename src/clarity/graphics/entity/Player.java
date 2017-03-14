@@ -14,7 +14,7 @@ public class Player extends Entity {
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
    */
-  private static final int TEMP_IMMUNITY_DURATION = 500; // milliseconds
+  private static final int TEMP_IMMUNITY_DURATION = 750; // milliseconds
 
   /**
    * Timer for tracking the temporary immunity of the player.
@@ -72,7 +72,7 @@ public class Player extends Entity {
       if (currentHealth <= 0) {
         isDead = true;
       }
-      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10, Color.RED, Color.RED, Color.RED);
+      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 3, Color.RED, Color.RED, Color.RED);
     }
   }
 
@@ -112,7 +112,7 @@ public class Player extends Entity {
     if (Mouse.buttonClickAndRelease()) {
       if (getEnergy() - Fireball.ENERGY_COST >= 0) {
         setEnergy(getEnergy() - Fireball.ENERGY_COST);
-        MobId.getEntity(MobId.FIREBALL);
+        new Fireball();
       }
     }
   }
