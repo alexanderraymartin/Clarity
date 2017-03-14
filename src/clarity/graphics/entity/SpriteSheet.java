@@ -5,6 +5,7 @@ import clarity.utilities.GameLogger;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -74,9 +75,9 @@ public class SpriteSheet {
   }
 
   /**
-   * @return ArrayList of sprites.
+   * @return List of sprites.
    */
-  public ArrayList<BufferedImage[]> getSprites() {
+  public List<BufferedImage[]> getSprites() {
     return sprites;
   }
 }
