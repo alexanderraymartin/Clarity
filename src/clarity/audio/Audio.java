@@ -25,16 +25,18 @@ public class Audio {
    * @param path Path to the audio file.
    */
   public Audio(String path) {
+    AudioInputStream rawAudioInput = null;
+    AudioInputStream decodedAudioInput = null;
     try {
       // raw input
-      AudioInputStream rawAudioInput =
+      rawAudioInput =
           AudioSystem.getAudioInputStream(getClass().getResourceAsStream(path));
       AudioFormat rawFormat = rawAudioInput.getFormat();
       // decoded input
       AudioFormat decodedFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
           rawFormat.getSampleRate(), 16, rawFormat.getChannels(), rawFormat.getChannels() * 2,
           rawFormat.getSampleRate(), false);
-      AudioInputStream decodedAudioInput =
+      decodedAudioInput =
           AudioSystem.getAudioInputStream(decodedFormat, rawAudioInput);
       // clip
       clip = AudioSystem.getClip();
@@ -43,13 +45,26 @@ public class Audio {
       gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
       muteControl = (BooleanControl) clip.getControl(BooleanControl.Type.MUTE);
 
-      rawAudioInput.close();
-      decodedAudioInput.close();
       // TODO Remove set gain and add volume control
       setGain(70);
 
     } catch (Exception exception) {
       GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+    } finally {
+      try {
+        if (rawAudioInput != null) {
+          rawAudioInput.close();
+        }
+      } catch (Exception exception) {
+        GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+      }
+      try {
+        if (decodedAudioInput != null) {
+          decodedAudioInput.close();
+        }
+      } catch (Exception exception) {
+        GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+      }
     }
   }
 
