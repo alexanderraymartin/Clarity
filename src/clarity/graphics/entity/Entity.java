@@ -320,6 +320,12 @@ public abstract class Entity {
     int xoffset = collisionWidth / tileSize;
     checkCorners(new Vector2d(xdestination, ycoord)); // check xcoord axis
     returnValue = checkTileCollisionXHelper(xoffset, returnValue);
+    if (!isFalling) {
+      checkCorners(new Vector2d(xcoord, ydestination + 1));
+      if (!bottomLeft && !bottomRight && !bottomMiddle) {
+        isFalling = true;
+      }
+    }
     return returnValue;
   }
 
@@ -365,12 +371,6 @@ public abstract class Entity {
         xposition = (((int) (xcoord + xoffset) / tileSize) + 1) * tileSize - collisionWidth / 2.0;
       } else {
         xposition += dx;
-      }
-    }
-    if (!isFalling) {
-      checkCorners(new Vector2d(xcoord, ydestination + 1));
-      if (!bottomLeft && !bottomRight && !bottomMiddle) {
-        isFalling = true;
       }
     }
     return returnValue;
