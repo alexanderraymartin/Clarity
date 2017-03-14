@@ -9,8 +9,13 @@ public class Torch extends Entity {
 
   private static final float LIGHT_AMOUNT = 1f;
 
+  /**
+   * @param mobId The mob ID.
+   */
   public Torch(int mobId) {
     super(mobId);
+    facingRight = true;
+    setImmune(true);
   }
 
   /**
@@ -39,22 +44,63 @@ public class Torch extends Entity {
   }
 
   @Override
-  protected void init() {
+  protected void defineSpriteSheet() {
     spriteSheet = SpriteSheet.TORCH;
+  }
+
+  @Override
+  protected void defineCollisionWidth() {
     collisionWidth = 15;
+  }
+
+  @Override
+  protected void defineCollisionHeight() {
     collisionHeight = 30;
-    // movement speeds
+  }
+
+  @Override
+  protected void defineMoveSpeed() {
     moveSpeed = 0;
+  }
+
+  @Override
+  protected void defineMaxSpeed() {
     maxSpeed = 0;
+  }
+
+  @Override
+  protected void defineStopSpeed() {
     stopSpeed = 0;
-    // falling speeds
+  }
+
+  @Override
+  protected void defineFallSpeed() {
     fallSpeed = 0;
+  }
+
+  @Override
+  protected void defineMaxFallSpeed() {
     maxFallSpeed = 0;
-    // jumping speeds
+  }
+
+  @Override
+  protected void defineJumpStart() {
+    jumpStart = 0;
+  }
+
+  @Override
+  protected void defineStopJumpSpeed() {
     stopJumpSpeed = 0;
-    facingRight = true;
-    setImmune(true);
+  }
+
+  @Override
+  protected void defineCurrentAndMaxHealth() {
     currentHealth = maxHealth = 100;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxEnergy() {
+    currentEnergy = maxEnergy = 100;
   }
 
 }

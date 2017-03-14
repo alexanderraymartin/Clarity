@@ -21,8 +21,13 @@ public class Player extends Entity {
    */
   public static final Timer TEMP_IMMUNITY_TIMER = new Timer();
 
+  /**
+   * Player constructor.
+   */
   public Player() {
     super();
+    facingRight = true;
+    setPlayerControlled(true);
   }
 
   /**
@@ -122,23 +127,66 @@ public class Player extends Entity {
   }
 
   protected void init() {
+  }
+
+  @Override
+  protected void defineSpriteSheet() {
     spriteSheet = SpriteSheet.PLAYER;
+  }
+
+  @Override
+  protected void defineCollisionWidth() {
     collisionWidth = 18;
+  }
+
+  @Override
+  protected void defineCollisionHeight() {
     collisionHeight = 30;
-    // movement speeds
+  }
+
+  @Override
+  protected void defineMoveSpeed() {
     moveSpeed = 0.3;
+  }
+
+  @Override
+  protected void defineMaxSpeed() {
     maxSpeed = 1.75;
+  }
+
+  @Override
+  protected void defineStopSpeed() {
     stopSpeed = 0.4;
-    // falling speeds
+  }
+
+  @Override
+  protected void defineFallSpeed() {
     fallSpeed = 0.18;
+  }
+
+  @Override
+  protected void defineMaxFallSpeed() {
     maxFallSpeed = 4.0;
-    // jumping speeds
+  }
+
+  @Override
+  protected void defineJumpStart() {
     jumpStart = -6.0;
+  }
+
+  @Override
+  protected void defineStopJumpSpeed() {
     stopJumpSpeed = 0.5;
-    facingRight = true;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxHealth() {
     currentHealth = maxHealth = 100;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxEnergy() {
     currentEnergy = maxEnergy = 100;
-    setPlayerControlled(true);
   }
 
 }

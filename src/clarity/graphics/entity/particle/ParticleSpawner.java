@@ -29,17 +29,72 @@ public class ParticleSpawner extends Entity {
   }
 
   @Override
-  protected void init() {
-    // SonarQube
-  }
-
-  @Override
   public void update() {
     // SonarQube
   }
 
   @Override
   public void render(Graphics2D graphics) {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineSpriteSheet() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineCollisionWidth() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineCollisionHeight() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineMoveSpeed() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineMaxSpeed() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineStopSpeed() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineFallSpeed() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineMaxFallSpeed() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineJumpStart() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineStopJumpSpeed() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineCurrentAndMaxHealth() {
+    // SonarQube
+  }
+
+  @Override
+  protected void defineCurrentAndMaxEnergy() {
     // SonarQube
   }
 }

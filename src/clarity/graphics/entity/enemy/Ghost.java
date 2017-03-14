@@ -4,10 +4,8 @@ import clarity.graphics.entity.SpriteSheet;
 
 public class Ghost extends Enemy {
 
-  private static final int DAMAGE = 40;
-
   public Ghost(int mobId) {
-    super(mobId, DAMAGE);
+    super(mobId);
     isRight = true;
   }
 
@@ -29,22 +27,67 @@ public class Ghost extends Enemy {
   }
 
   @Override
-  protected void init() {
+  protected void defineAttackDamage() {
+    attackDamage = 40;
+  }
+
+  @Override
+  protected void defineSpriteSheet() {
     spriteSheet = SpriteSheet.GHOST;
+  }
+
+  @Override
+  protected void defineCollisionWidth() {
     collisionWidth = 20;
+  }
+
+  @Override
+  protected void defineCollisionHeight() {
     collisionHeight = 30;
-    // movement speeds
+  }
+
+  @Override
+  protected void defineMoveSpeed() {
     moveSpeed = 0.2;
+  }
+
+  @Override
+  protected void defineMaxSpeed() {
     maxSpeed = 1.5;
+  }
+
+  @Override
+  protected void defineStopSpeed() {
     stopSpeed = 0.4;
-    // falling speeds
+  }
+
+  @Override
+  protected void defineFallSpeed() {
     fallSpeed = 0;
+  }
+
+  @Override
+  protected void defineMaxFallSpeed() {
     maxFallSpeed = 0;
-    // jumping speeds
+  }
+
+  @Override
+  protected void defineJumpStart() {
     jumpStart = -6.0;
+  }
+
+  @Override
+  protected void defineStopJumpSpeed() {
     stopJumpSpeed = 0.5;
-    facingRight = false;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxHealth() {
     currentHealth = maxHealth = 100;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxEnergy() {
     currentEnergy = maxEnergy = 100;
   }
 

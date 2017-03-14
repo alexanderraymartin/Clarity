@@ -130,9 +130,44 @@ public abstract class Entity {
     this(MobId.DUMMY);
   }
 
-  protected abstract void init();
+  private void init() {
+    defineSpriteSheet();
+    defineCollisionWidth();
+    defineCollisionHeight();
+    defineMoveSpeed();
+    defineMaxSpeed();
+    defineStopSpeed();
+    defineFallSpeed();
+    defineMaxFallSpeed();
+    defineJumpStart();
+    defineStopJumpSpeed();
+    defineCurrentAndMaxHealth();
+    defineCurrentAndMaxEnergy();
+  }
 
+  protected abstract void defineSpriteSheet();
 
+  protected abstract void defineCollisionWidth();
+
+  protected abstract void defineCollisionHeight();
+
+  protected abstract void defineMoveSpeed();
+
+  protected abstract void defineMaxSpeed();
+
+  protected abstract void defineStopSpeed();
+
+  protected abstract void defineFallSpeed();
+
+  protected abstract void defineMaxFallSpeed();
+
+  protected abstract void defineJumpStart();
+
+  protected abstract void defineStopJumpSpeed();
+
+  protected abstract void defineCurrentAndMaxHealth();
+
+  protected abstract void defineCurrentAndMaxEnergy();
 
   /**
    * @param entity The entity to check for collision.

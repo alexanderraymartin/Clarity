@@ -6,11 +6,10 @@ import clarity.state.Level;
 
 public class Zombie extends Enemy {
 
-  private static final int DAMAGE = 30;
   private double previousX = 0;
 
   public Zombie(int mobId) {
-    super(mobId, DAMAGE);
+    super(mobId);
   }
 
   @Override
@@ -38,19 +37,67 @@ public class Zombie extends Enemy {
   }
 
   @Override
-  protected void init() {
+  protected void defineAttackDamage() {
+    attackDamage = 30;
+  }
+
+  @Override
+  protected void defineSpriteSheet() {
     spriteSheet = SpriteSheet.ZOMBIE;
+  }
+
+  @Override
+  protected void defineCollisionWidth() {
     collisionWidth = 20;
+  }
+
+  @Override
+  protected void defineCollisionHeight() {
     collisionHeight = 30;
+  }
+
+  @Override
+  protected void defineMoveSpeed() {
     moveSpeed = 0.1;
+  }
+
+  @Override
+  protected void defineMaxSpeed() {
     maxSpeed = 1.75;
+  }
+
+  @Override
+  protected void defineStopSpeed() {
     stopSpeed = 0.1;
+  }
+
+  @Override
+  protected void defineFallSpeed() {
     fallSpeed = 0.15;
+  }
+
+  @Override
+  protected void defineMaxFallSpeed() {
     maxFallSpeed = 4.0;
+  }
+
+  @Override
+  protected void defineJumpStart() {
     jumpStart = -10.0;
+  }
+
+  @Override
+  protected void defineStopJumpSpeed() {
     stopJumpSpeed = 0.1;
-    facingRight = false;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxHealth() {
     currentHealth = maxHealth = 100;
+  }
+
+  @Override
+  protected void defineCurrentAndMaxEnergy() {
     currentEnergy = maxEnergy = 100;
   }
 }

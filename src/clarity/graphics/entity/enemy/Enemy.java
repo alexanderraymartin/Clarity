@@ -8,7 +8,7 @@ public abstract class Enemy extends Entity {
 
   private static final int ATTACK_DURATION = 1000; // milliseconds
 
-  private int attackDamage;
+  protected int attackDamage;
   private Timer attackTimer;
 
   protected static final int CHASE_RANGE = 10;
@@ -17,11 +17,10 @@ public abstract class Enemy extends Entity {
 
   /**
    * @param mobId The mob ID.
-   * @param attackDamage The amount of damage that the enemy does to the player.
    */
-  public Enemy(int mobId, int attackDamage) {
+  public Enemy(int mobId) {
     super(mobId);
-    this.attackDamage = attackDamage;
+    defineAttackDamage();
     attackTimer = new Timer();
   }
 
@@ -56,5 +55,7 @@ public abstract class Enemy extends Entity {
       Level.getPlayer().hit(attackDamage);
     }
   }
+
+  protected abstract void defineAttackDamage();
 
 }
