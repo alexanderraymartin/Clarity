@@ -1,7 +1,7 @@
 package clarity.graphics.entity;
 
 import clarity.graphics.entity.particle.ParticleSpawner;
-import clarity.graphics.entity.powerup.Fireball;
+import clarity.graphics.entity.projectile.Fireball;
 import clarity.state.Level;
 import clarity.utilities.Timer;
 import clarity.utilities.input.Keyboard;
@@ -11,23 +11,15 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Player extends Entity {
-
-  protected double currentEnergy;
-  protected double maxEnergy;
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
    */
-  private static final int TEMP_IMMUNITY_DURATION = 2000; // milliseconds
-
-  /**
-   * Amount of energy regained per game tick.
-   */
-  private static final double ENERGY_GAIN_RATE = 0.2;
+  private static final int TEMP_IMMUNITY_DURATION = 1000; // milliseconds
 
   /**
    * Timer for tracking the temporary immunity of the player.
    */
-  public static final Timer tempImmunityTimer = new Timer();
+  public static final Timer TEMP_IMMUNITY_TIMER = new Timer();
 
   public Player() {
     super();
@@ -43,7 +35,6 @@ public class Player extends Entity {
     checkImmunity();
     movePlayer();
     checkAbilities();
-    rechargeEnergy();
     super.update();
   }
 
@@ -59,7 +50,7 @@ public class Player extends Entity {
   }
 
   private void checkImmunity() {
-    if (tempImmunityTimer.hasElapsed(TEMP_IMMUNITY_DURATION)) {
+    if (TEMP_IMMUNITY_TIMER.hasElapsed(TEMP_IMMUNITY_DURATION)) {
       setImmune(false);
     }
   }
@@ -76,12 +67,12 @@ public class Player extends Entity {
   public void hit(int damage) {
     if (!isImmune() && !isDead) {
       setImmune(true);
-      tempImmunityTimer.reset();
+      TEMP_IMMUNITY_TIMER.reset();
       currentHealth -= damage;
       if (currentHealth <= 0) {
         isDead = true;
       }
-      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10, Color.RED, Color.RED, Color.RED);
+      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 3, Color.RED, Color.RED, Color.RED);
     }
   }
 
@@ -119,9 +110,9 @@ public class Player extends Entity {
   private void checkAbilities() {
     // Shooting a fireball
     if (Mouse.buttonClickAndRelease()) {
-      if (this.getEnergy() - Fireball.ENERGY_COST >= 0) {
-        this.setEnergy(this.getEnergy() - Fireball.ENERGY_COST);
-        MobId.getEntity(MobId.FIREBALL);
+      if (getEnergy() - Fireball.ENERGY_COST >= 0) {
+        setEnergy(getEnergy() - Fireball.ENERGY_COST);
+        new Fireball();
       }
     }
   }
@@ -132,36 +123,6 @@ public class Player extends Entity {
   public void gainHealth(int boost) {
     currentHealth += boost;
   }
-
-  private void rechargeEnergy() {
-    if (this.getEnergy() < maxEnergy) {
-      currentEnergy += ENERGY_GAIN_RATE;
-    }
-  }
-
-
-  /**
-   * @return Player's energy.
-   */
-  public double getEnergy() {
-    return currentEnergy;
-  }
-
-  /**
-   * @param energy The energy.
-   */
-  public void setEnergy(double energy) {
-    this.currentEnergy = energy;
-  }
-
-  /**
-   * @return Max energy of entity.
-   */
-  public double getMaxEnergy() {
-    return maxEnergy;
-  }
-
-
 
   protected void init() {
     spriteSheet = SpriteSheet.PLAYER;

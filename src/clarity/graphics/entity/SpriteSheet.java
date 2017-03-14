@@ -29,6 +29,10 @@ public class SpriteSheet {
       new SpriteSheet(30, 30, new int[] {1, 4, 1, 1, 2, 1}, "/textures/characters/zombie.png");
   public static final SpriteSheet TORCH =
       new SpriteSheet(30, 30, new int[] {6, 1, 1, 1, 1, 1}, "/textures/characters/torch.png");
+  public static final SpriteSheet FIREBALL =
+      new SpriteSheet(30, 30, new int[] {6}, "/textures/projectiles/fireball.png");
+  public static final SpriteSheet BONE =
+      new SpriteSheet(30, 30, new int[] {6}, "/textures/projectiles/bone.png");
 
   /**
    * @param spriteWidth The width of the sprite.

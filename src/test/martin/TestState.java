@@ -1,8 +1,8 @@
 package test.martin;
 
 import clarity.graphics.entity.Entity;
-import clarity.graphics.entity.Projectile;
 import clarity.graphics.entity.particle.Particle;
+import clarity.graphics.entity.projectile.Projectile;
 import clarity.state.Level;
 import clarity.state.State;
 import clarity.state.StateManager;

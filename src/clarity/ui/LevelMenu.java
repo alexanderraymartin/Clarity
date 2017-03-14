@@ -14,17 +14,21 @@ public class LevelMenu extends State {
   private static final String MUSIC_FILE_NAME = "Vexento - We Are One (Original).mp3";
   private static final String MAP_FILE_NAME = "mapFileName";
   private static final MenuItem LEVEL1 = 
-      new MenuItem("level1.png", "level1Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 100);
+      new MenuItem("level1.png", "level1Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 70);
   private static final MenuItem LEVEL2 =
-      new MenuItem("level2.png", "level2Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 120);
+      new MenuItem("level2.png", "level2Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 90);
   private static final MenuItem LEVEL3 =
-      new MenuItem("level3.png", "level3Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 140);
+      new MenuItem("level3.png", "level3Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 110);
   private static final MenuItem LEVEL4 = 
-      new MenuItem("level4.png", "level4Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 160);
+      new MenuItem("level4.png", "level4Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 130);
   private static final MenuItem LEVEL5 =
-      new MenuItem("level5.png", "level5Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 180);
+      new MenuItem("level5.png", "level5Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 150);
   private static final MenuItem LEVEL6 =
-      new MenuItem("level6.png", "level6Highlight.png", Game.WINDOW_WIDTH / 2 - 50, 200);
+      new MenuItem("level6.png", "level6Highlight.png", Game.WINDOW_WIDTH / 2 - 60, 170);
+  private static final MenuItem EXIT =
+      new MenuItem("exit.png", "exitHighlight.png", Game.WINDOW_WIDTH / 2 + 15, 200);
+  private static final MenuItem BACK =
+      new MenuItem("back.png", "backHighlight.png", Game.WINDOW_WIDTH / 2 - 135, 200);
 
   /**
    * @param manager The state manager.
@@ -58,8 +62,11 @@ public class LevelMenu extends State {
     } else if (LEVEL6.covered() && Mouse.buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(5);
       manager.loadNextState(new Loading(manager));
+    } else if (BACK.covered() && Mouse.buttonClickAndRelease()) {
+      manager.loadNextState(new MainMenu(manager));
+    } else if (EXIT.covered() && Mouse.buttonClickAndRelease()) {
+      Game.exitGame();
     }
-
   }
 
   @Override
@@ -71,7 +78,8 @@ public class LevelMenu extends State {
     LEVEL4.render(graphics);
     LEVEL5.render(graphics);
     LEVEL6.render(graphics);
-
+    BACK.render(graphics);
+    EXIT.render(graphics);
 
   }
 }

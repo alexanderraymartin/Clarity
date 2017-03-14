@@ -4,6 +4,7 @@ import clarity.audio.Audio;
 import clarity.graphics.Map;
 import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.entity.particle.ParticleSpawner;
+import clarity.graphics.entity.projectile.Projectile;
 import clarity.graphics.tile.Tile;
 import clarity.main.Game;
 import clarity.state.Level;
@@ -85,10 +86,15 @@ public abstract class Entity {
   // health and energy
   protected double currentHealth;
   protected double maxHealth;
+  protected double currentEnergy;
+  protected double maxEnergy;
   protected boolean isDead;
   private boolean isImmune;
   private int immunityTimer;
   protected boolean shouldExplode;
+  private static final double ENERGY_GAIN_RATE = 0.2;
+  private static final double HEALTH_GAIN_RATE = 0.02;
+
   // player
   private boolean isPlayerControlled;
 
@@ -403,6 +409,8 @@ public abstract class Entity {
       }
       setAnimation(tempAnimation);
       animation.update();
+      rechargeEnergy();
+      regenHealth();
     }
     if (isRight) {
       facingRight = true;
@@ -530,6 +538,40 @@ public abstract class Entity {
    */
   public double getMaxHealth() {
     return maxHealth;
+  }
+
+  private void rechargeEnergy() {
+    if (currentEnergy < maxEnergy) {
+      currentEnergy += ENERGY_GAIN_RATE;
+    }
+  }
+
+
+  private void regenHealth() {
+    if (currentHealth < maxHealth) {
+      currentHealth += HEALTH_GAIN_RATE;
+    }
+  }
+
+  /**
+   * @return The current energy.
+   */
+  public double getEnergy() {
+    return currentEnergy;
+  }
+
+  /**
+   * @param energy The energy.
+   */
+  public void setEnergy(double energy) {
+    this.currentEnergy = energy;
+  }
+
+  /**
+   * @return Max energy of entity.
+   */
+  public double getMaxEnergy() {
+    return maxEnergy;
   }
 
   /**

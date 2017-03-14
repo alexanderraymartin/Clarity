@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Saiyan extends Enemy {
 
-  private static final int DAMAGE = 40;
+  private static final int DAMAGE = 100;
   private int counter = 0;
 
   public Saiyan(int mobId) {
