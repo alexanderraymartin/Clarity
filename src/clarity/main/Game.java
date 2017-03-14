@@ -118,7 +118,7 @@ public class Game extends JPanel {
   }
 
   private void update() {
-    keyboard.update();
+    Keyboard.update();
     manager.update();
   }
 
