@@ -133,7 +133,6 @@ public class Level extends State {
 
   /**
    * @param map The current map.
-   * @param level The current level.
    */
   public static void createPlayer(Map map) {
     player = new Player();
