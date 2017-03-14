@@ -26,7 +26,7 @@ public abstract class Projectile extends Entity {
           source.isFacingRight());
       isRight = true;
     } else {
-      setPosition(new Vector2d((source.getX() - source.getCollisionWidth()), (source.getY())),
+      setPosition(new Vector2d(source.getX() - source.getCollisionWidth(), (source.getY())),
           source.isFacingRight());
       isLeft = true;
     }

@@ -67,7 +67,7 @@ public class Map {
    */
   private void addEntity(String token) {
     boolean facingRight;
-    facingRight = (token.charAt(0) == 'R');
+    facingRight = token.charAt(0) == 'R';
     int id = Integer.parseInt(token.substring(1, token.indexOf('(')));
     double xcoord = Double.parseDouble(token.substring(token.indexOf('(') + 1, token.indexOf(',')));
     double ycoord = Double.parseDouble(token.substring(token.indexOf(',') + 1, token.length() - 1));
