@@ -98,7 +98,7 @@ public class Map {
       numOfRows = Integer.parseInt(reader.readLine());
       initMap(numOfCols, numOfRows);
 
-      String line = "";
+      String line;
       int row = 0;
 
       while ((line = reader.readLine()) != null && !line.isEmpty()) {

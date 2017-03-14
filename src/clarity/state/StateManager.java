@@ -71,7 +71,7 @@ public class StateManager {
     try {
       InputStream input = getClass().getResourceAsStream(LEVELS_PATH);
       BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-      String line = "";
+      String line;
       while ((line = reader.readLine()) != null && !line.isEmpty()) {
         levels.add(line);
       }
