@@ -46,7 +46,7 @@ public class SpriteSheet {
       this.spriteWidth = spriteWidth;
       this.spriteHeight = spriteHeight;
       BufferedImage spriteSheet = ImageIO.read(SpriteSheet.class.getResourceAsStream(filePath));
-      sprites = new ArrayList<BufferedImage[]>();
+      sprites = new ArrayList<>();
       for (int y = 0; y < numFrames.length; y++) {
         BufferedImage[] image = new BufferedImage[numFrames[y]];
         for (int x = 0; x < numFrames[y]; x++) {
