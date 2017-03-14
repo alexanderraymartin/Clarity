@@ -1,6 +1,6 @@
 package test.loop;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.entity.particle.ParticleSpawner;
 

@@ -12,7 +12,6 @@ public class StateManagerTest {
 
   @Test
   public void testgetLevels() {
-    StateManager statemanager = new StateManager();
     ArrayList<String> actual = new ArrayList<String>();
     actual.add("level1.level");
     actual.add("level2.level");
@@ -20,6 +19,7 @@ public class StateManagerTest {
     actual.add("level4.level");
     actual.add("level5.level");
     actual.add("level6.level");
+    StateManager statemanager = new StateManager();
     assertEquals(actual, statemanager.getLevels());
   }
 

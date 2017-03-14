@@ -18,7 +18,6 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 public abstract class Entity {
-
   // mod ID
   protected int mobId;
   // position and velocity
@@ -186,7 +185,7 @@ public abstract class Entity {
     ymap = map.getMapY();
   }
 
-  protected void getNextPosition() { // TODO
+  private void getNextPositionHelperMove() {
     if (isLeft) { // entity going left
       dx -= moveSpeed;
       if (dx < -maxSpeed) {
@@ -199,6 +198,10 @@ public abstract class Entity {
         dx = maxSpeed;
       }
     }
+  }
+
+
+  private void getNextPositionHelperDownFall() {
     if (isDown && isFalling) { // entity going down and falling
       dy += getFallSpeed();
     }
@@ -215,6 +218,9 @@ public abstract class Entity {
         }
       }
     }
+  }
+
+  private void getNextPositionHelperJumpFall() {
     if (isJumping && !isFalling) { // entity jumping
       dy = jumpStart;
       isFalling = true;
@@ -231,6 +237,12 @@ public abstract class Entity {
         dy = maxFallSpeed;
       }
     }
+  }
+
+  protected void getNextPosition() {
+    getNextPositionHelperMove();
+    getNextPositionHelperDownFall();
+    getNextPositionHelperJumpFall();
   }
 
   /**
@@ -296,7 +308,7 @@ public abstract class Entity {
   /**
    * @return True if the entity is colliding with a tile.
    */
-  public boolean checkTileCollision() { // TODO
+  public boolean checkTileCollision() {
     xdestination = xcoord + dx;
     ydestination = ycoord + dy;
     xposition = xcoord;
@@ -371,44 +383,14 @@ public abstract class Entity {
   /**
    * Update the entity.
    */
-  public void update() { // TODO
+  public void update() {
     if (currentHealth <= 0) {
       isDead = true;
     }
     if (isDead) {
-      // death animation
-      if (shouldExplode) {
-        createParticleSpawner();
-        shouldExplode = false;
-      }
-      if (this instanceof Projectile) {
-        State.getProjectiles().remove((Projectile) this);
-      } else if (this instanceof Particle) {
-        State.getParticles().remove((Particle) this);
-      } else {
-        State.getEntities().remove(this);
-      }
+      updateHelperDead();
     } else {
-      getNextPosition();
-      checkTileCollision();
-      setPosition(new Vector2d(xposition, yposition));
-      int tempAnimation;
-      if (dy > 0) {
-        tempAnimation = FALLING;
-      } else if (dy < 0) {
-        tempAnimation = JUMPING;
-      } else if (isLeft || isRight) {
-        tempAnimation = WALKING;
-      } else {
-        tempAnimation = IDLE;
-      }
-      if (isAttacking) {
-        tempAnimation = ATTACKING;
-      }
-      setAnimation(tempAnimation);
-      animation.update();
-      rechargeEnergy();
-      regenHealth();
+      updateHelperAlive();
     }
     if (isRight) {
       facingRight = true;
@@ -416,6 +398,44 @@ public abstract class Entity {
     if (isLeft) {
       facingRight = false;
     }
+  }
+
+  private void updateHelperDead() {
+    // death animation
+    if (shouldExplode) {
+      createParticleSpawner();
+      shouldExplode = false;
+    }
+    if (this instanceof Projectile) {
+      State.getProjectiles().remove((Projectile) this);
+    } else if (this instanceof Particle) {
+      State.getParticles().remove((Particle) this);
+    } else {
+      State.getEntities().remove(this);
+    }
+  }
+
+  private void updateHelperAlive() {
+    getNextPosition();
+    checkTileCollision();
+    setPosition(new Vector2d(xposition, yposition));
+    int tempAnimation;
+    if (dy > 0) {
+      tempAnimation = FALLING;
+    } else if (dy < 0) {
+      tempAnimation = JUMPING;
+    } else if (isLeft || isRight) {
+      tempAnimation = WALKING;
+    } else {
+      tempAnimation = IDLE;
+    }
+    if (isAttacking) {
+      tempAnimation = ATTACKING;
+    }
+    setAnimation(tempAnimation);
+    animation.update();
+    rechargeEnergy();
+    regenHealth();
   }
 
   /**
@@ -432,11 +452,6 @@ public abstract class Entity {
             (int) (xcoord + xmap - spriteWidth / 2 + spriteWidth),
             (int) (ycoord + ymap - spriteHeight / 2), -spriteWidth, spriteHeight, null);
       }
-      // graphics.setColor(Color.red);
-      // Rectangle rectangle = getRectangle();
-      // rectangle.x += xmap;
-      // rectangle.y += ymap;
-      // graphics.draw(rectangle);
     }
   }
 
