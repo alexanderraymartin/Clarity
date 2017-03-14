@@ -119,6 +119,9 @@ public class Audio {
     return gainControl.getValue();
   }
 
+  public boolean isMuted() {
+    return muteControl.getValue();
+  }
 
   public void setMute(boolean mute) {
     muteControl.setValue(mute);

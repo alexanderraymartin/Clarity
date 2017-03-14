@@ -1,6 +1,6 @@
 package test.cheung;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import clarity.audio.Audio;
 
@@ -12,8 +12,7 @@ public class TestMute {
   public void testMute() {
     Audio audio = new Audio("/sounds/soundEffects/bizarre-guitar-daniel_simon.mp3");
     audio.setMute(true);
-    float curVolume = audio.getVolume();
-    assertEquals((float) 0, curVolume, 0);
+    assertTrue(audio.isMuted());
   }
 
 }
