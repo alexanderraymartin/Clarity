@@ -5,6 +5,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({TestSave.class, TestMap.class})
+@SuiteClasses({TestMap.class})
 public class SaveSuite {
 }

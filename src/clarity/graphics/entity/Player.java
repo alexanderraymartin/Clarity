@@ -77,8 +77,9 @@ public class Player extends Entity {
   }
 
   private void checkWin() {
-    if ( (int) (xcoord / tileSize) == Level.getWinLocation().getX() / tileSize && (int) (ycoord / tileSize) == Level.getWinLocation().getY() / tileSize) {
-        Level.levelComplete = true;
+    if ((int) (xcoord / tileSize) == Level.getWinLocation().getX() / tileSize
+        && (int) (ycoord / tileSize) == Level.getWinLocation().getY() / tileSize) {
+      Level.levelComplete = true;
     }
   }
 
