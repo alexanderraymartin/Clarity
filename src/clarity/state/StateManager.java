@@ -46,7 +46,6 @@ public class StateManager {
    * @param state The next state.
    */
   public void loadNextState(State state) {
-    currentState.close();
     currentState = state;
   }
 

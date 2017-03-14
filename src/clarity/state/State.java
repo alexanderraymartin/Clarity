@@ -89,13 +89,6 @@ public abstract class State {
   }
 
   /**
-   * Close the state.
-   */
-  public void close() {
-    // TODO
-  }
-
-  /**
    * Update the current state.
    */
   public abstract void update();

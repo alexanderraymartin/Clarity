@@ -99,7 +99,8 @@ public class Level extends State {
           Game.WINDOW_HEIGHT / 2 - player.getY()));
     } else {
       if (Keyboard.qpressed()) {
-        Game.exitGame();
+        manager.setCurrentLevelIndex(-1);
+        manager.loadNextState(new Loading(manager));
       } else if (Keyboard.rpressed()) {
         manager.loadNextState(new Level(manager));
       }
