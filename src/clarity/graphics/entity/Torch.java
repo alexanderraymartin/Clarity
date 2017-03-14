@@ -14,6 +14,8 @@ public class Torch extends Entity {
    */
   public Torch(int mobId) {
     super(mobId);
+    setSpeedValues(0, 0, 0, 0, 0, 0, 0);
+    setSpriteValues(SpriteSheet.TORCH, 15, 30, 100, 100);
     facingRight = true;
     setImmune(true);
   }
@@ -42,65 +44,4 @@ public class Torch extends Entity {
   protected void createParticleSpawner() {
     new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 600, new Color[] {Color.YELLOW});
   }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.TORCH;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 15;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 30;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 0;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 0;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 0;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = 0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
-  }
-
 }

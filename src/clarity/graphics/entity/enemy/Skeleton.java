@@ -13,8 +13,13 @@ public class Skeleton extends Enemy {
 
   private Timer boneAttackTimer = new Timer();
 
+  /**
+   * @param mobId The mobID.
+   */
   public Skeleton(int mobId) {
     super(mobId);
+    setSpeedValues(0.2, 1.5, 0.4, 0.15, 4.0, -6.0, 0.5);
+    setSpriteValues(SpriteSheet.SKELETON, 20, 30, 100, 100);
     boneAttackTimer = new Timer();
   }
 
@@ -46,65 +51,5 @@ public class Skeleton extends Enemy {
   @Override
   protected void defineAttackDamage() {
     attackDamage = 10;
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.SKELETON;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 20;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 30;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 0.2;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 1.5;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 0.4;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0.15;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 4.0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = -6.0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0.5;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
   }
 }

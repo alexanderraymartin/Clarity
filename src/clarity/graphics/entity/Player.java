@@ -31,6 +31,9 @@ public class Player extends Entity {
     this.manager = manager;
     facingRight = true;
     setPlayerControlled(true);
+    setSpeedValues(0.3, 1.75, 0.4, 0.18, 4.0, -6.0, 0.5);
+    setSpriteValues(SpriteSheet.PLAYER, 18, 30, 100, 100);
+
   }
 
   /**
@@ -120,66 +123,6 @@ public class Player extends Entity {
       setEnergy(getEnergy() - Fireball.ENERGY_COST);
       new Fireball();
     }
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.PLAYER;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 18;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 30;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 0.3;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 1.75;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 0.4;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0.18;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 4.0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = -6.0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0.5;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
   }
 
 }
