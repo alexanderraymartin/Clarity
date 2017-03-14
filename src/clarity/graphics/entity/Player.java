@@ -126,9 +126,6 @@ public class Player extends Entity {
     currentHealth += boost;
   }
 
-  protected void init() {
-  }
-
   @Override
   protected void defineSpriteSheet() {
     spriteSheet = SpriteSheet.PLAYER;

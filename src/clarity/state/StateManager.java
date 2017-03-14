@@ -8,13 +8,14 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StateManager {
   private static final String LEVELS_PATH = "/levels/levels.txt";
   private static final String LOADING_SCREEN_PATH = "loadingScreen.png";
 
   private State currentState;
-  private ArrayList<String> levels;
+  private List<String> levels;
   private int currentLevelIndex;
   public static final Background loadingScreen = new Background(LOADING_SCREEN_PATH);
 
@@ -59,24 +60,25 @@ public class StateManager {
   /**
    * @return The list of levels.
    */
-  public ArrayList<String> getLevels() {
-    if (levels == null) {
-      levels = new ArrayList<String>();
-      try {
-        InputStream input = getClass().getResourceAsStream(LEVELS_PATH);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-        String line = "";
-        while (line != null) {
-          line = reader.readLine();
-          if (line == null || line.isEmpty()) {
-            break;
-          }
-          levels.add(line);
+  public List<String> getLevels() {
+    if (levels != null) {
+      return levels;
+    }
+    levels = new ArrayList<String>();
+    try {
+      InputStream input = getClass().getResourceAsStream(LEVELS_PATH);
+      BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+      String line = "";
+      while (!line.equals(null)) {
+        line = reader.readLine();
+        if (line == null || line.isEmpty()) {
+          break;
         }
-        reader.close();
-      } catch (Exception exception) {
-        GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
+        levels.add(line);
       }
+      reader.close();
+    } catch (Exception exception) {
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
     }
     return levels;
   }

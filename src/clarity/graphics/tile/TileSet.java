@@ -8,7 +8,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class TileSet {
-  private BufferedImage allTiles;
   private Tile[][] tiles;
   /**
    * Size of tile in pixels.
@@ -33,7 +32,9 @@ public class TileSet {
   /* ------------------------------------------ */
   private static TileSet[] tileSets;
 
-  public TileSet() {}
+  public TileSet() {
+    // SonarQube
+  }
 
   private static void init() {
     for (int i = 0; i < TILE_PATHS.length; i++) {
@@ -81,6 +82,7 @@ public class TileSet {
    * @param path The file path.
    */
   public void loadTiles(String path) {
+    BufferedImage allTiles;
     try {
       allTiles = ImageIO.read(getClass().getResourceAsStream(path));
       tiles = new Tile[2][NUM_TILES_ACROSS];

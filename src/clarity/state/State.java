@@ -54,9 +54,9 @@ public abstract class State {
    */
   protected void init() {
     background = new Background(backgroundFileName);
-    entities = new ArrayList<Entity>();
-    projectiles = new ArrayList<Projectile>();
-    particles = new ArrayList<Particle>();
+    entities = new ArrayList<>();
+    projectiles = new ArrayList<>();
+    particles = new ArrayList<>();
   }
 
   /**
@@ -64,7 +64,7 @@ public abstract class State {
    */
   public static List<Entity> getEntities() {
     if (entities == null) {
-      entities = new ArrayList<Entity>();
+      entities = new ArrayList<>();
     }
     return entities;
   }
@@ -74,7 +74,7 @@ public abstract class State {
    */
   public static List<Projectile> getProjectiles() {
     if (projectiles == null) {
-      projectiles = new ArrayList<Projectile>();
+      projectiles = new ArrayList<>();
     }
     return projectiles;
   }
@@ -84,7 +84,7 @@ public abstract class State {
    */
   public static List<Particle> getParticles() {
     if (particles == null) {
-      particles = new ArrayList<Particle>();
+      particles = new ArrayList<>();
     }
     return particles;
   }

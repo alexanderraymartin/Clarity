@@ -44,7 +44,13 @@ public class LevelMenu extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
-    updateHelper();
+    checkLevelSelect(LEVEL1, 0);
+    checkLevelSelect(LEVEL2, 1);
+    checkLevelSelect(LEVEL3, 2);
+    checkLevelSelect(LEVEL4, 3);
+    checkLevelSelect(LEVEL5, 4);
+    checkLevelSelect(LEVEL6, 5);
+
     if (BACK.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.loadNextState(new MainMenu(manager));
     } else if (EXIT.covered() && Mouse.getMouse().buttonClickAndRelease()) {
@@ -52,24 +58,9 @@ public class LevelMenu extends State {
     }
   }
 
-  private void updateHelper() {
-    if (LEVEL1.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(0);
-      manager.loadNextState(new Loading(manager));
-    } else if (LEVEL2.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(1);
-      manager.loadNextState(new Loading(manager));
-    } else if (LEVEL3.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(2);
-      manager.loadNextState(new Loading(manager));
-    } else if (LEVEL4.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(3);
-      manager.loadNextState(new Loading(manager));
-    } else if (LEVEL5.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(4);
-      manager.loadNextState(new Loading(manager));
-    } else if (LEVEL6.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.setCurrentLevelIndex(5);
+  private void checkLevelSelect(MenuItem menuItem, int menuItemIndex) {
+    if (menuItem.covered() && Mouse.getMouse().buttonClickAndRelease()) {
+      manager.setCurrentLevelIndex(menuItemIndex);
       manager.loadNextState(new Loading(manager));
     }
   }

@@ -2,6 +2,7 @@ package clarity.ui;
 
 import clarity.graphics.entity.Player;
 import clarity.main.Game;
+import clarity.utilities.GameLogger;
 import clarity.utilities.Vector2i;
 
 import java.awt.Color;
@@ -15,7 +16,7 @@ import javax.imageio.ImageIO;
 public class UserInterface {
 
   private BufferedImage ui;
-  private final String path = "/textures/backgrounds/healthAndEnergyBars.png";
+  private static final String path = "/textures/backgrounds/healthAndEnergyBars.png";
   private Player player;
   private Rectangle health;
   private Rectangle energy;
@@ -36,7 +37,7 @@ public class UserInterface {
     try {
       ui = ImageIO.read(getClass().getResourceAsStream(path));
     } catch (IOException exception) {
-      exception.printStackTrace();
+      GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
     }
   }
 

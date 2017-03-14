@@ -1,8 +1,8 @@
 package clarity.utilities;
 
 public class Timer {
-  private final double ns = 1000000000; // 10^9 nanoseconds in a second
-  private final double ms = 1000; // 1000 milliseconds in a second
+  private static final double ns = 1000000000; // 10^9 nanoseconds in a second
+  private static final double ms = 1000; // 1000 milliseconds in a second
   private long oldTime;
 
   public Timer() {
