@@ -134,7 +134,7 @@ public class Level extends State {
    * @param map The current map.
    * @param level The current level.
    */
-  public static void createPlayer(Map map, Level level) {
+  public static void createPlayer(Map map) {
     player = new Player();
     player.setPosition(spawnLocation, true);
     player.setPlayerControlled(true);
@@ -153,7 +153,7 @@ public class Level extends State {
     map.loadMap("/maps/" + mapFileName);
     map.setPosition(spawnLocation);
     // creates player
-    createPlayer(map, this);
+    createPlayer(map);
     userInterface = new UserInterface(player);
     playMusic();
     levelComplete = false;
