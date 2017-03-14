@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class Keyboard implements KeyListener {
 
   private static final int NUM_KEYS = 120;
-  private boolean[] keys = new boolean[NUM_KEYS];
+  private static boolean[] keys = new boolean[NUM_KEYS];
 
   private static boolean up;
   private static boolean down;
@@ -92,7 +92,7 @@ public class Keyboard implements KeyListener {
   /**
    * Updates key values.
    */
-  public void update() {
+  public static synchronized void update() {
     up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
     left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
     down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
