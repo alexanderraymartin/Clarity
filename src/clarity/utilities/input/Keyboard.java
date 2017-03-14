@@ -110,6 +110,7 @@ public class Keyboard implements KeyListener {
    * 
    * @param event Key event
    */
+  @Override
   public void keyPressed(KeyEvent event) {
     if (event.getKeyCode() <= NUM_KEYS) {
       keys[event.getKeyCode()] = true;
@@ -121,6 +122,7 @@ public class Keyboard implements KeyListener {
    * 
    * @param event Key event
    */
+  @Override
   public void keyReleased(KeyEvent event) {
     if (event.getKeyCode() <= NUM_KEYS) {
       keys[event.getKeyCode()] = false;
@@ -133,5 +135,7 @@ public class Keyboard implements KeyListener {
    * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
    */
   @Override
-  public void keyTyped(KeyEvent event) {}
+  public void keyTyped(KeyEvent event) {
+    //required comment for SonarQube empty function code smell
+  }
 }
