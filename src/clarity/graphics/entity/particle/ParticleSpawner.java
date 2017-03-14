@@ -34,11 +34,18 @@ public class ParticleSpawner extends Entity {
     Level.getEntities().remove(this);
   }
 
-  protected void init() {}
+  @Override
+  protected void init() {
+    // SonarQube
+  }
 
-  public void update() {}
+  @Override
+  public void update() {
+    // SonarQube
+  }
 
+  @Override
   public void render(Graphics2D graphics) {
-
+    // SonarQube
   }
 }
