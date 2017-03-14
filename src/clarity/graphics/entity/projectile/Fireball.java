@@ -33,6 +33,6 @@ public class Fireball extends Projectile {
 
   @Override
   protected void createParticleSpawner() {
-    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 3, Color.RED, Color.RED, Color.RED);
+    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 10, new Color[] {Color.RED});
   }
 }

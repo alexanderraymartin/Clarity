@@ -261,16 +261,15 @@ public class Map {
         break;
       }
       int temp = mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-      if (temp == 0 || temp == 1) {
-        continue; // Clear block / spawn location
+      if (temp != 0 && temp != 1) {
+        int value = mapArray[row][col]; // number in map file
+        int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+        int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+        int rowIndex = number / TileSet.getNumTilesAcross();
+        int colIndex = number % TileSet.getNumTilesAcross();
+        graphics.drawImage(tileSets[index].getTiles()[rowIndex][colIndex].getImage(),
+            (int) xmap + col * tileSize, (int) ymap + row * tileSize, null);
       }
-      int value = mapArray[row][col]; // number in map file
-      int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-      int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-      int rowIndex = number / TileSet.getNumTilesAcross();
-      int colIndex = number % TileSet.getNumTilesAcross();
-      graphics.drawImage(tileSets[index].getTiles()[rowIndex][colIndex].getImage(),
-          (int) xmap + col * tileSize, (int) ymap + row * tileSize, null);
     }
   }
 

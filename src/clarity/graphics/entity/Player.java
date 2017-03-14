@@ -72,7 +72,7 @@ public class Player extends Entity {
       if (currentHealth <= 0) {
         isDead = true;
       }
-      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 3, Color.RED, Color.RED, Color.RED);
+      new ParticleSpawner((int) xcoord, (int) ycoord, 1000, 1, 10, new Color[] {Color.RED});
     }
   }
 

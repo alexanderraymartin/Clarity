@@ -14,22 +14,16 @@ public class ParticleSpawner extends Entity {
    * @param life The life of the particle.
    * @param size The size in pixels.
    * @param amount The number of particles.
-   * @param colorOne The color of the first group of particle.
-   * @param colorTwo The color of the second group of particles.
-   * @param colorThree The color of the third group of particle.
+   * @param colors The colors of each group of particles.
    */
-  public ParticleSpawner(int xcoord, int ycoord, int life, int size, int amount, Color colorOne,
-      Color colorTwo, Color colorThree) {
+  public ParticleSpawner(int xcoord, int ycoord, int life, int size, int amount, Color[] colors) {
     this.xcoord = xcoord;
     this.ycoord = ycoord;
-    for (int i = 0; i < amount; i++) {
-      new Particle(xcoord, ycoord, life, size, colorOne);
-    }
-    for (int i = 0; i < amount; i++) {
-      new Particle(xcoord, ycoord, life, size, colorTwo);
-    }
-    for (int i = 0; i < amount; i++) {
-      new Particle(xcoord, ycoord, life, size, colorThree);
+
+    for (int i = 0; i < colors.length; i++) {
+      for (int j = 0; j < amount; j++) {
+        new Particle(xcoord, ycoord, life, size, colors[i]);
+      }
     }
     Level.getEntities().remove(this);
   }

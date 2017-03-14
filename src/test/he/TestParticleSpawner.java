@@ -11,7 +11,7 @@ public class TestParticleSpawner {
   @Test
   public void testParticleSpawner() {
     ParticleSpawner spawner =
-        new ParticleSpawner(10, 10, 10, 10, 10, Color.RED, Color.RED, Color.RED);
+        new ParticleSpawner(10, 10, 10, 10, 10, new Color[] {Color.RED, Color.BLACK, Color.BLUE});
     assert (spawner != null);
   }
 

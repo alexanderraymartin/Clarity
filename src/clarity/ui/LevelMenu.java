@@ -44,6 +44,15 @@ public class LevelMenu extends State {
    * @see clarity.state.State#update()
    */
   public void update() {
+    updateHelper();
+    if (BACK.covered() && Mouse.getMouse().buttonClickAndRelease()) {
+      manager.loadNextState(new MainMenu(manager));
+    } else if (EXIT.covered() && Mouse.getMouse().buttonClickAndRelease()) {
+      Game.exitGame();
+    }
+  }
+
+  private void updateHelper() {
     if (LEVEL1.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(0);
       manager.loadNextState(new Loading(manager));
@@ -62,10 +71,6 @@ public class LevelMenu extends State {
     } else if (LEVEL6.covered() && Mouse.getMouse().buttonClickAndRelease()) {
       manager.setCurrentLevelIndex(5);
       manager.loadNextState(new Loading(manager));
-    } else if (BACK.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      manager.loadNextState(new MainMenu(manager));
-    } else if (EXIT.covered() && Mouse.getMouse().buttonClickAndRelease()) {
-      Game.exitGame();
     }
   }
 

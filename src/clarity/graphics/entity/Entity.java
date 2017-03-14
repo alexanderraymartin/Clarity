@@ -377,7 +377,8 @@ public abstract class Entity {
   }
 
   protected void createParticleSpawner() {
-    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 30, Color.RED, Color.PINK, Color.GRAY);
+    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 30,
+        new Color[] {Color.RED, Color.PINK, Color.GRAY});
   }
 
   /**

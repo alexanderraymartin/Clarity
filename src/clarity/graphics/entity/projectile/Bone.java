@@ -33,7 +33,6 @@ public class Bone extends Projectile {
 
   @Override
   protected void createParticleSpawner() {
-    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 3, Color.WHITE, Color.WHITE,
-        Color.WHITE);
+    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 10, new Color[] {Color.WHITE});
   }
 }

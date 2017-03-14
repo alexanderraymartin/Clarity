@@ -88,7 +88,7 @@ public class Level extends State {
       updateHelper();
       userInterface.update();
       // track player
-      getMap().setPosition(new Vector2d(Game.WINDOW_WIDTH / 2 - getPlayer().getX(),
+      getMap().setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - getPlayer().getX(),
           Game.WINDOW_HEIGHT / 2 - getPlayer().getY()));
     } else {
       if (Keyboard.qpressed()) {

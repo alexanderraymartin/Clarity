@@ -35,8 +35,7 @@ public class Torch extends Entity {
 
   @Override
   protected void createParticleSpawner() {
-    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 200, Color.YELLOW, Color.YELLOW,
-        Color.YELLOW);
+    new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 600, new Color[] {Color.YELLOW});
   }
 
   @Override
