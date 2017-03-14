@@ -6,7 +6,7 @@ import clarity.state.Level;
 
 public class Zombie extends Enemy {
 
-  private static final int DAMAGE = 40;
+  private static final int DAMAGE = 30;
   private double previousX = 0;
 
   public Zombie(int mobId) {
