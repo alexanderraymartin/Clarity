@@ -11,7 +11,7 @@ public class Skeleton extends Enemy {
 
   private static final int DAMAGE = 10;
   private static final int DELAY = 1000;
-  
+
   private Timer boneAttackTimer = new Timer();
 
   public Skeleton(int mobId) {
@@ -47,7 +47,7 @@ public class Skeleton extends Enemy {
   @Override
   protected void init() {
     spriteSheet = SpriteSheet.SKELETON;
-    collisionWidth = 25;
+    collisionWidth = 20;
     collisionHeight = 30;
     // movement speeds
     moveSpeed = 0.2;

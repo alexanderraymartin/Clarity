@@ -31,7 +31,7 @@ public class Ghost extends Enemy {
   @Override
   protected void init() {
     spriteSheet = SpriteSheet.GHOST;
-    collisionWidth = 25;
+    collisionWidth = 20;
     collisionHeight = 30;
     // movement speeds
     moveSpeed = 0.2;
