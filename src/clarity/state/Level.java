@@ -47,6 +47,7 @@ public class Level extends State {
     playerRespawnTimer = new Timer();
     respawnTimerSet = false;
     init();
+    startMap();
   }
 
   /**
@@ -149,13 +150,7 @@ public class Level extends State {
         Game.WINDOW_HEIGHT / 2 - getPlayer().getY()));
   }
 
-  /**
-   * (non-Javadoc)
-   * 
-   * @see clarity.state.State#init()
-   */
-  protected void init() {
-    super.init();
+  protected static void startMap() {
     getMap().loadMap("/maps/" + mapFileName);
     getMap().setPositionInstantly(getSpawnLocation());
     // creates player

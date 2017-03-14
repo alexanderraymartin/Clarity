@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class State {
 
   protected StateManager manager;
-  protected Background background;
+  protected static Background background;
 
   protected static String backgroundFileName;
   protected static String musicFileName;
@@ -52,7 +52,7 @@ public abstract class State {
   /**
    * Call init() in the sub-class constructor. Initializes the state.
    */
-  protected void init() {
+  protected static void init() {
     background = new Background(backgroundFileName);
     entities = new ArrayList<>();
     projectiles = new ArrayList<>();

@@ -10,7 +10,7 @@ public class Loading extends State {
 
   public Loading(StateManager manager) {
     super(manager);
-    this.background = StateManager.loadingScreen;
+    background = StateManager.loadingScreen;
   }
 
   @Override
