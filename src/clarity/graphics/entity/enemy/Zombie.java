@@ -15,16 +15,16 @@ public class Zombie extends Enemy {
 
   @Override
   public void move() {
-    if (Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
+    if (Math.abs(Level.getPlayer().getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
       double changeX = Math.abs(previousX - xcoord);
-      if (Level.player.getX() < xcoord) {
+      if (Level.getPlayer().getX() < xcoord) {
         isRight = false;
         isLeft = true;
       } else {
         isLeft = false;
         isRight = true;
       }
-      double ydistance = Math.abs(Level.player.getY()) - Math.abs(ycoord);
+      double ydistance = Math.abs(Level.getPlayer().getY()) - Math.abs(ycoord);
       boolean ycheck = ydistance > TileSet.getTileSize() * MAX_JUMP_RANGE
           && ydistance < TileSet.getTileSize() * MIN_JUMP_RANGE && ydistance < 0;
       if ((checkTileCollision() && dy == 0 && changeX < 1) || ycheck) {

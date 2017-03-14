@@ -12,7 +12,7 @@ public class Fireball extends Projectile {
   public static final int ENERGY_COST = 20;
 
   public Fireball() {
-    super(Level.player, MobId.DUMMY);
+    super(Level.getPlayer(), MobId.DUMMY);
     init();
   }
 

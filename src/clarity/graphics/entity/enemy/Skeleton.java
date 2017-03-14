@@ -21,8 +21,8 @@ public class Skeleton extends Enemy {
 
   @Override
   public void move() {
-    if (Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
-      if (Level.player.getX() < xcoord) {
+    if (Math.abs(Level.getPlayer().getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
+      if (Level.getPlayer().getX() < xcoord) {
         isRight = false;
         isLeft = true;
       } else {

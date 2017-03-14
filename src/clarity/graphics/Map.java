@@ -127,10 +127,10 @@ public class Map {
         // map tiles
         mapArray[row][col] = Integer.parseInt(tokens[col]);
         if (mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 1) {
-          Level.spawnLocation = new Vector2d((col + 1) * tileSize, row * tileSize);
+          Level.setSpawnLocation(new Vector2d((col + 1) * tileSize, row * tileSize));
         }
         if (mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 2) {
-          Level.winLocation = new Vector2d((col) * tileSize, row * tileSize);
+          Level.setWinLocation(new Vector2d((col) * tileSize, row * tileSize));
         }
       } else {
         // map entities
@@ -154,7 +154,7 @@ public class Map {
     xmax = 0;
     ymin = Game.WINDOW_HEIGHT - height;
     ymax = 0;
-    Level.map = this;
+    Level.setMap(this);
   }
 
   /**

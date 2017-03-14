@@ -27,12 +27,12 @@ public class Level extends State {
   private boolean respawnTimerSet;
   private static UserInterface userInterface;
 
-  public static Player player;
-  public static Map map;
-  public static final Background pauseScreen = new Background("pauseScreen.png");
-  public static Vector2d spawnLocation = new Vector2d(0, 0);
-  public static Vector2d winLocation = new Vector2d(0, 0);
-  public static boolean levelComplete;
+  private static Player player;
+  private static Map map;
+  private static final Background pauseScreen = new Background("pauseScreen.png");
+  private static Vector2d spawnLocation = new Vector2d(0, 0);
+  private static Vector2d winLocation = new Vector2d(0, 0);
+  private static boolean levelComplete;
 
   /**
    * @param manager The state manager.
@@ -42,7 +42,7 @@ public class Level extends State {
     getLevelFileNames(manager.getCurrentLevel());
     isPaused = false;
     pausePressed = false;
-    map = new Map();
+    setMap(new Map());
     setLight(new Light());
     playerRespawnTimer = new Timer();
     respawnTimerSet = false;
@@ -88,8 +88,8 @@ public class Level extends State {
       updateHelper();
       userInterface.update();
       // track player
-      map.setPosition(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
-          Game.WINDOW_HEIGHT / 2 - player.getY()));
+      getMap().setPosition(new Vector2d(Game.WINDOW_WIDTH / 2 - getPlayer().getX(),
+          Game.WINDOW_HEIGHT / 2 - getPlayer().getY()));
     } else {
       if (Keyboard.qpressed()) {
         manager.setCurrentLevelIndex(-1);
@@ -101,7 +101,7 @@ public class Level extends State {
   }
 
   private void updateHelper() {
-    if (player.isDead()) {
+    if (getPlayer().isDead()) {
       if (!respawnTimerSet) {
         playerRespawnTimer.reset();
         respawnTimerSet = true;
@@ -120,7 +120,7 @@ public class Level extends State {
    */
   public void render(Graphics2D graphics) {
     background.render(graphics);
-    map.render(graphics);
+    getMap().render(graphics);
     for (int i = 0; i < getEntities().size(); i++) {
       getEntities().get(i).render(graphics);
     }
@@ -141,12 +141,12 @@ public class Level extends State {
    * @param map The current map.
    */
   public static void createPlayer(Map map) {
-    player = new Player();
-    player.setPosition(spawnLocation, true);
-    player.setPlayerControlled(true);
+    setPlayer(new Player());
+    getPlayer().setPosition(getSpawnLocation(), true);
+    getPlayer().setPlayerControlled(true);
     Level.light.resetDarkness();
-    map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
-        Game.WINDOW_HEIGHT / 2 - player.getY()));
+    map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - getPlayer().getX(),
+        Game.WINDOW_HEIGHT / 2 - getPlayer().getY()));
   }
 
   /**
@@ -156,18 +156,18 @@ public class Level extends State {
    */
   protected void init() {
     super.init();
-    map.loadMap("/maps/" + mapFileName);
-    map.setPositionInstantly(spawnLocation);
+    getMap().loadMap("/maps/" + mapFileName);
+    getMap().setPositionInstantly(getSpawnLocation());
     // creates player
-    createPlayer(map);
-    userInterface = new UserInterface(player);
+    createPlayer(getMap());
+    userInterface = new UserInterface(getPlayer());
     playMusic();
-    levelComplete = false;
+    setLevelComplete(false);
   }
 
 
   private void checkLevelComplete() {
-    if (levelComplete) {
+    if (isLevelComplete()) {
       manager.setCurrentLevelIndex(manager.getCurrentLevelIndex() + 1);
       manager.loadNextState(new Loading(manager));
     }
@@ -195,7 +195,7 @@ public class Level extends State {
   }
 
   public static Map getCurrentMap() {
-    return map;
+    return getMap();
   }
 
   /**
@@ -210,6 +210,62 @@ public class Level extends State {
    */
   public static void setLight(Light light) {
     Level.light = light;
+  }
+
+  /**
+   * @return The levelComplete.
+   */
+  public static boolean isLevelComplete() {
+    return levelComplete;
+  }
+
+  /**
+   * @param levelComplete the levelComplete to set.
+   */
+  public static void setLevelComplete(boolean levelComplete) {
+    Level.levelComplete = levelComplete;
+  }
+
+  /**
+   * @return The map.
+   */
+  public static Map getMap() {
+    return map;
+  }
+
+  /**
+   * @param map the map to set.
+   */
+  public static void setMap(Map map) {
+    Level.map = map;
+  }
+
+  /**
+   * @return The player.
+   */
+  public static Player getPlayer() {
+    return player;
+  }
+
+  /**
+   * @param player The player to set.
+   */
+  public static void setPlayer(Player player) {
+    Level.player = player;
+  }
+
+  /**
+   * @param spawnLocation the spawnLocation to set.
+   */
+  public static void setSpawnLocation(Vector2d spawnLocation) {
+    Level.spawnLocation = spawnLocation;
+  }
+
+  /**
+   * @param winLocation the winLocation to set.
+   */
+  public static void setWinLocation(Vector2d winLocation) {
+    Level.winLocation = winLocation;
   }
 
 }

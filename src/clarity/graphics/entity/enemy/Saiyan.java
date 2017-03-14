@@ -17,7 +17,7 @@ public class Saiyan extends Enemy {
 
   @Override
   public void move() {
-    if (Math.abs(Level.player.getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
+    if (Math.abs(Level.getPlayer().getX() - xcoord) < TileSet.getTileSize() * CHASE_RANGE) {
       counter += 1;
       if (counter == 10) {
         counter = 0;

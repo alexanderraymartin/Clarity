@@ -27,7 +27,7 @@ public class Torch extends Entity {
    * Check for collision with the player.
    */
   public void playerCollisionCheck() {
-    if (intersection(Level.player)) {
+    if (intersection(Level.getPlayer())) {
       Level.getLight().increaseLight(LIGHT_AMOUNT);
       isDead = true;
     }

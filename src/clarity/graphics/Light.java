@@ -71,7 +71,7 @@ public class Light {
     currentDarkness = Math.min(currentDarkness, 1);
     if ((int) currentDarkness == 1) {
       currentDarkness = 0;
-      Level.player.setDead(true);
+      Level.getPlayer().setDead(true);
     }
   }
 

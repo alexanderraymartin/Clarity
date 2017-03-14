@@ -48,12 +48,12 @@ public abstract class Enemy extends Entity {
    * Check for collision with the player.
    */
   public void playerCollisionCheck() {
-    if (intersection(Level.player)) {
-      if (!Level.player.isImmune() && !Level.player.isDead()) {
+    if (intersection(Level.getPlayer())) {
+      if (!Level.getPlayer().isImmune() && !Level.getPlayer().isDead()) {
         isAttacking = true;
         attackTimer.reset();
       }
-      Level.player.hit(attackDamage);
+      Level.getPlayer().hit(attackDamage);
     }
   }
 
