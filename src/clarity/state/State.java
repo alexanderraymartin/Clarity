@@ -14,9 +14,9 @@ public abstract class State {
   protected StateManager manager;
   protected Background background;
 
-  protected String backgroundFileName;
-  protected String musicFileName;
-  protected String mapFileName;
+  protected static String backgroundFileName;
+  protected static String musicFileName;
+  protected static String mapFileName;
 
   private static ArrayList<Entity> entities;
   private static ArrayList<Projectile> projectiles;
@@ -34,9 +34,9 @@ public abstract class State {
   public State(StateManager manager, String backgroundFileName, String musicFileName,
       String mapFileName) {
     this.manager = manager;
-    this.backgroundFileName = backgroundFileName;
-    this.musicFileName = musicFileName;
-    this.mapFileName = mapFileName;
+    State.backgroundFileName = backgroundFileName;
+    State.musicFileName = musicFileName;
+    State.mapFileName = mapFileName;
   }
 
   /**
@@ -51,7 +51,7 @@ public abstract class State {
   /**
    * Call init() in the sub-class constructor. Initializes the state.
    */
-  public void init() {
+  protected void init() {
     background = new Background(backgroundFileName);
     entities = new ArrayList<Entity>();
     projectiles = new ArrayList<Projectile>();
@@ -101,7 +101,7 @@ public abstract class State {
   public abstract void render(Graphics2D graphics);
 
 
-  protected void playMusic() {
+  protected static void playMusic() {
     if (!Audio.getCurrentSongName().equals(musicFileName)) {
       if (Audio.getMusic() != null) {
         Audio.getMusic().close();

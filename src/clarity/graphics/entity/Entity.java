@@ -1,6 +1,5 @@
 package clarity.graphics.entity;
 
-import clarity.audio.Audio;
 import clarity.graphics.Map;
 import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.entity.particle.ParticleSpawner;
@@ -231,18 +230,6 @@ public abstract class Entity {
       }
       if (dy > maxFallSpeed) {
         dy = maxFallSpeed;
-      }
-    }
-  }
-
-  /**
-   * @param soundEffectName Name of the sound effect.
-   */
-  public void playSoundEffect(String soundEffectName) {
-    if (onScreen()) {
-      Audio soundEffect = Audio.getSoundEffects().get(soundEffectName);
-      if (soundEffect != null) {
-        soundEffect.play();
       }
     }
   }

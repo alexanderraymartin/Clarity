@@ -44,6 +44,7 @@ public class Particle extends Entity {
    * 
    * @see clarity.graphics.entity.Entity#update()
    */
+  @Override
   public void update() {
     checkTileCollision();
     setMapPosition();
@@ -67,6 +68,7 @@ public class Particle extends Entity {
    * 
    * @see clarity.graphics.entity.Entity#render(java.awt.Graphics2D)
    */
+  @Override
   public void render(Graphics2D graphics) {
     graphics.setColor(color);
     if (onScreen()) {
@@ -74,8 +76,9 @@ public class Particle extends Entity {
     }
   }
 
+  @Override
   protected void init() {
-
+    // SonarQube
   }
 
 }

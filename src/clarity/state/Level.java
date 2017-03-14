@@ -66,6 +66,8 @@ public class Level extends State {
     }
   }
 
+
+
   /**
    * Update the current state.
    */
@@ -83,16 +85,7 @@ public class Level extends State {
         getParticles().get(i).update();
       }
       getLight().update();
-      if (player.isDead()) {
-        if (!respawnTimerSet) {
-          playerRespawnTimer.reset();
-          respawnTimerSet = true;
-        }
-        if (playerRespawnTimer.hasElapsed(RESPAWN_TIME)) {
-          manager.loadNextState(new Level(manager));
-          respawnTimerSet = false;
-        }
-      }
+      updateHelper();
       userInterface.update();
       // track player
       map.setPosition(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
@@ -103,6 +96,19 @@ public class Level extends State {
         manager.loadNextState(new Loading(manager));
       } else if (Keyboard.rpressed()) {
         manager.loadNextState(new Level(manager));
+      }
+    }
+  }
+
+  private void updateHelper() {
+    if (player.isDead()) {
+      if (!respawnTimerSet) {
+        playerRespawnTimer.reset();
+        respawnTimerSet = true;
+      }
+      if (playerRespawnTimer.hasElapsed(RESPAWN_TIME)) {
+        manager.loadNextState(new Level(manager));
+        respawnTimerSet = false;
       }
     }
   }
@@ -148,7 +154,7 @@ public class Level extends State {
    * 
    * @see clarity.state.State#init()
    */
-  public void init() {
+  protected void init() {
     super.init();
     map.loadMap("/maps/" + mapFileName);
     map.setPositionInstantly(spawnLocation);

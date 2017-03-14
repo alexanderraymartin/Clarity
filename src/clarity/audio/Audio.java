@@ -2,10 +2,6 @@ package clarity.audio;
 
 import clarity.utilities.GameLogger;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -35,18 +31,18 @@ public class Audio {
 
     } catch (Exception exception) {
       GameLogger.getLogger().log(java.util.logging.Level.FINE, "Exception", exception);
-    } 
+    }
   }
-  
+
   private void setClip(String path) throws Exception {
     // raw input
     AudioInputStream rawAudioInput =
         AudioSystem.getAudioInputStream(getClass().getResourceAsStream(path));
     AudioFormat rawFormat = rawAudioInput.getFormat();
     // decoded input
-    AudioFormat decodedFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
-        rawFormat.getSampleRate(), 16, rawFormat.getChannels(), rawFormat.getChannels() * 2,
-        rawFormat.getSampleRate(), false);
+    AudioFormat decodedFormat =
+        new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, rawFormat.getSampleRate(), 16,
+            rawFormat.getChannels(), rawFormat.getChannels() * 2, rawFormat.getSampleRate(), false);
     AudioInputStream decodedAudioInput =
         AudioSystem.getAudioInputStream(decodedFormat, rawAudioInput);
     // clip
