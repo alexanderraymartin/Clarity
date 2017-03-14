@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Map {
+  // camera tracking speed
   private static final double CAM_SCROLL_SPD = 0.07;
 
   // Tracks current position in the map
@@ -45,8 +46,7 @@ public class Map {
   // number of rows and columns on the screen
   private int numOfRowsToDraw;
   private int numOfColsToDraw;
-  // camera tracking speed
-  private double moveSpeed = CAM_SCROLL_SPD;
+
 
 
   /**
@@ -97,7 +97,7 @@ public class Map {
       numOfCols = Integer.parseInt(reader.readLine());
       numOfRows = Integer.parseInt(reader.readLine());
       initMap(numOfCols, numOfRows);
-      String whiteSpace = "\\s+"; // separates tokens by whitespace
+
       String line = "";
       int row = 0;
       while (line != null) {
@@ -105,35 +105,39 @@ public class Map {
         if (line == null || line.isEmpty()) {
           break;
         }
-        String[] tokens = line.split(whiteSpace);
-        for (int col = 0; col < tokens.length; col++) {
-          String temp = tokens[col].trim();
-          if (!hasEntities) {
-            if ("#Entities#".equals(temp)) {
-              hasEntities = true;
-              break;
-            }
-            // map tiles
-            mapArray[row][col] = Integer.parseInt(tokens[col]);
-            if (mapArray[row][col]
-                % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 1) {
-              Level.spawnLocation = new Vector2d((col + 1) * tileSize, row * tileSize);
-            }
-            if (mapArray[row][col]
-                % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 2) {
-              Level.winLocation = new Vector2d((col) * tileSize, row * tileSize);
-            }
-          } else {
-            // map entities
-            addEntity(temp);
-          }
-        }
+        hasEntities = loadMapHelper(row, line, hasEntities);
         row++;
       }
       reader.close();
     } catch (Exception exception) {
       GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
     }
+  }
+
+  private boolean loadMapHelper(int row, String line, boolean hasEntities) {
+    String whiteSpace = "\\s+"; // separates tokens by whitespace
+    String[] tokens = line.split(whiteSpace);
+
+    for (int col = 0; col < tokens.length; col++) {
+      String temp = tokens[col].trim();
+      if (!hasEntities) {
+        if ("#Entities#".equals(temp)) {
+          return true;
+        }
+        // map tiles
+        mapArray[row][col] = Integer.parseInt(tokens[col]);
+        if (mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 1) {
+          Level.spawnLocation = new Vector2d((col + 1) * tileSize, row * tileSize);
+        }
+        if (mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown()) == 2) {
+          Level.winLocation = new Vector2d((col) * tileSize, row * tileSize);
+        }
+      } else {
+        // map entities
+        addEntity(temp);
+      }
+    }
+    return hasEntities;
   }
 
   /**
@@ -188,12 +192,12 @@ public class Map {
     if (vector.getX() - xmap < 1) {
       xmap = vector.getX();
     } else {
-      xmap += (vector.getX() - xmap) * moveSpeed;
+      xmap += (vector.getX() - xmap) * CAM_SCROLL_SPD;
     }
     if (vector.getY() - ymap < 1) {
       ymap = vector.getY();
     } else {
-      ymap += (vector.getY() - ymap) * moveSpeed;
+      ymap += (vector.getY() - ymap) * CAM_SCROLL_SPD;
     }
     fixBounds();
     colOffset = (int) -xmap / tileSize;
@@ -243,25 +247,30 @@ public class Map {
         if (row >= numOfRows) {
           break;
         }
-        for (int col = colOffset; col < colOffset + numOfColsToDraw; col++) {
-          if (col >= numOfCols) {
-            break;
-          }
-          int temp = mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-          if (temp == 0 || temp == 1) {
-            continue; // Clear block / spawn location
-          }
-          int value = mapArray[row][col]; // number in map file
-          int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-          int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
-          int rowIndex = number / TileSet.getNumTilesAcross();
-          int colIndex = number % TileSet.getNumTilesAcross();
-          graphics.drawImage(tileSets[index].getTiles()[rowIndex][colIndex].getImage(),
-              (int) xmap + col * tileSize, (int) ymap + row * tileSize, null);
-        }
+        renderHelper(graphics, row);
       }
     } catch (Exception exception) {
       GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);
+    }
+  }
+
+
+  private void renderHelper(Graphics2D graphics, int row) {
+    for (int col = colOffset; col < colOffset + numOfColsToDraw; col++) {
+      if (col >= numOfCols) {
+        break;
+      }
+      int temp = mapArray[row][col] % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+      if (temp == 0 || temp == 1) {
+        continue; // Clear block / spawn location
+      }
+      int value = mapArray[row][col]; // number in map file
+      int index = value / (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+      int number = value % (TileSet.getNumTilesAcross() * TileSet.getNumTilesDown());
+      int rowIndex = number / TileSet.getNumTilesAcross();
+      int colIndex = number % TileSet.getNumTilesAcross();
+      graphics.drawImage(tileSets[index].getTiles()[rowIndex][colIndex].getImage(),
+          (int) xmap + col * tileSize, (int) ymap + row * tileSize, null);
     }
   }
 

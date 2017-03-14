@@ -95,7 +95,7 @@ public class Level extends State {
       }
       userInterface.update();
       // track player
-      map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
+      map.setPosition(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
           Game.WINDOW_HEIGHT / 2 - player.getY()));
     } else {
       if (Keyboard.qpressed()) {
@@ -151,7 +151,7 @@ public class Level extends State {
   public void init() {
     super.init();
     map.loadMap("/maps/" + mapFileName);
-    map.setPosition(spawnLocation);
+    map.setPositionInstantly(spawnLocation);
     // creates player
     createPlayer(map);
     userInterface = new UserInterface(player);
