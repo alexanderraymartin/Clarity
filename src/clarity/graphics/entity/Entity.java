@@ -86,10 +86,14 @@ public abstract class Entity {
   // health and energy
   protected double currentHealth;
   protected double maxHealth;
+  protected double currentEnergy;
+  protected double maxEnergy;
   protected boolean isDead;
   private boolean isImmune;
   private int immunityTimer;
   protected boolean shouldExplode;
+  private static final double ENERGY_GAIN_RATE = 0.2;
+
   // player
   private boolean isPlayerControlled;
 
@@ -404,6 +408,7 @@ public abstract class Entity {
       }
       setAnimation(tempAnimation);
       animation.update();
+      rechargeEnergy();
     }
     if (isRight) {
       facingRight = true;
@@ -531,6 +536,34 @@ public abstract class Entity {
    */
   public double getMaxHealth() {
     return maxHealth;
+  }
+
+  private void rechargeEnergy() {
+    if (this.getEnergy() < maxEnergy) {
+      currentEnergy += ENERGY_GAIN_RATE;
+    }
+  }
+
+
+  /**
+   * @return The current energy.
+   */
+  public double getEnergy() {
+    return currentEnergy;
+  }
+
+  /**
+   * @param energy The energy.
+   */
+  public void setEnergy(double energy) {
+    this.currentEnergy = energy;
+  }
+
+  /**
+   * @return Max energy of entity.
+   */
+  public double getMaxEnergy() {
+    return maxEnergy;
   }
 
   /**

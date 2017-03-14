@@ -11,18 +11,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 public class Player extends Entity {
-
-  protected double currentEnergy;
-  protected double maxEnergy;
   /**
    * Duration of temporary immunity when the player is hit by an enemy.
    */
   private static final int TEMP_IMMUNITY_DURATION = 500; // milliseconds
-
-  /**
-   * Amount of energy regained per game tick.
-   */
-  private static final double ENERGY_GAIN_RATE = 0.2;
 
   /**
    * Timer for tracking the temporary immunity of the player.
@@ -43,7 +35,6 @@ public class Player extends Entity {
     checkImmunity();
     movePlayer();
     checkAbilities();
-    rechargeEnergy();
     super.update();
   }
 
@@ -119,8 +110,8 @@ public class Player extends Entity {
   private void checkAbilities() {
     // Shooting a fireball
     if (Mouse.buttonClickAndRelease()) {
-      if (this.getEnergy() - Fireball.ENERGY_COST >= 0) {
-        this.setEnergy(this.getEnergy() - Fireball.ENERGY_COST);
+      if (getEnergy() - Fireball.ENERGY_COST >= 0) {
+        setEnergy(getEnergy() - Fireball.ENERGY_COST);
         MobId.getEntity(MobId.FIREBALL);
       }
     }
@@ -132,36 +123,6 @@ public class Player extends Entity {
   public void gainHealth(int boost) {
     currentHealth += boost;
   }
-
-  private void rechargeEnergy() {
-    if (this.getEnergy() < maxEnergy) {
-      currentEnergy += ENERGY_GAIN_RATE;
-    }
-  }
-
-
-  /**
-   * @return Player's energy.
-   */
-  public double getEnergy() {
-    return currentEnergy;
-  }
-
-  /**
-   * @param energy The energy.
-   */
-  public void setEnergy(double energy) {
-    this.currentEnergy = energy;
-  }
-
-  /**
-   * @return Max energy of entity.
-   */
-  public double getMaxEnergy() {
-    return maxEnergy;
-  }
-
-
 
   protected void init() {
     spriteSheet = SpriteSheet.PLAYER;
