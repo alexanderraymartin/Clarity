@@ -2,12 +2,16 @@ package clarity.audio;
 
 import clarity.utilities.GameLogger;
 
+import java.io.IOException;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Audio {
   private Clip clip;
@@ -34,7 +38,8 @@ public class Audio {
     }
   }
 
-  private void setClip(String path) throws Exception {
+  private void setClip(String path) 
+      throws IOException, UnsupportedAudioFileException, LineUnavailableException {
     // raw input
     AudioInputStream rawAudioInput =
         AudioSystem.getAudioInputStream(getClass().getResourceAsStream(path));
