@@ -98,7 +98,11 @@ public class Level extends State {
       map.setPositionInstantly(new Vector2d(Game.WINDOW_WIDTH / 2 - player.getX(),
           Game.WINDOW_HEIGHT / 2 - player.getY()));
     } else {
-      // TODO
+      if (Keyboard.qpressed()) {
+        Game.exitGame();
+      } else if (Keyboard.rpressed()) {
+        manager.loadNextState(new Level(manager));
+      }
     }
   }
 
