@@ -10,9 +10,7 @@ import org.junit.Test;
 import java.awt.Color;
 
 /**
- * 
  * Test written by Wenmin He.
- *
  */
 public class TestParticleToParticleSpawner {
 
