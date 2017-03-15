@@ -7,6 +7,8 @@ import clarity.utilities.input.Keyboard;
 
 import org.junit.Test;
 
+// Alex Martin
+
 public class TestLevelToPlayer {
 
   @Test
@@ -15,7 +17,8 @@ public class TestLevelToPlayer {
     manager.setCurrentLevelIndex(0);
     new Level(manager);
 
-    Player player = new Player(manager);
+    Level.createPlayer(Level.getMap());
+    Player player = Level.getPlayer();
 
     assert (player != null);
   }

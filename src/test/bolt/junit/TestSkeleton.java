@@ -1,6 +1,6 @@
-package test.bolt;
+package test.bolt.junit;
 
-//Dustin Bolt
+// Dustin Bolt
 
 import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.enemy.Skeleton;

@@ -1,13 +1,13 @@
-package test.martin.integration;
+package test.bolt.integration;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-// Alex Martin
+// Dustin Bolt
 
 @RunWith(Suite.class)
-@SuiteClasses({TestLevelToPlayer.class, TestStateManagerToLevel.class})
+@SuiteClasses({TestMainMenuToHelp.class, TestStateManagerToMainMenu.class})
 public class IntegrationSuite {
 
 }

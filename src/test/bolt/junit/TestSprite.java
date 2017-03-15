@@ -1,6 +1,6 @@
-package test.bolt;
+package test.bolt.junit;
 
-//Dustin Bolt
+// Dustin Bolt
 
 import static org.junit.Assert.assertEquals;
 
