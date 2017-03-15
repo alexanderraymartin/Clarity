@@ -18,7 +18,7 @@ public class TestBone {
   }
 
   @Test
-  public void testBoneParticleSpawner() {
+  public void testBoneEnergy() {
     Bone testBone = new Bone(MobId.getEntity(MobId.SKELETON), MobId.DUMMY);
     testBone.setEnergy(50);
     int boneEnergy = (int) testBone.getEnergy();
