@@ -14,10 +14,37 @@ public class TestMap {
   private transient Graphics2D graphics;
   
   @Test
-  public void testRender() {
+  public void testRenderNeverExecute() {
     Map map = new Map();
-//    map.loadMap(/asset/);
+    map.initMap(0, 0);
     map.render(graphics);
+    assertEquals(0, map.getNumOfRows(), 0);
   }
+  
+  @Test
+  public void testRenderExecuteOnce() {
+    Map map = new Map(); 
+    map.initMap(1, 1);
+    map.render(graphics);
+    System.out.println(map.getNumOfRows());
+    assertEquals(1, map.getNumOfRows(), 0);
+  }
+  
+  @Test
+  public void testRenderExecuteTwice() {
+    Map map = new Map();
+    map.initMap(2, 2);
+    map.render(graphics);
+    assertEquals(2, map.getNumOfRows(), 0);
+  }
+  
+  @Test
+  public void testRenderExecuteFiveTimes() {
+    Map map = new Map();
+    map.initMap(5, 5);
+    map.render(graphics);
+    assertEquals(5, map.getNumOfRows(), 0);
+  }
+
 
 }
