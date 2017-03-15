@@ -1,4 +1,4 @@
-package test.martin;
+package test.martin.junit;
 
 import clarity.state.State;
 import clarity.state.StateManager;
@@ -10,6 +10,13 @@ public class TestStateManager {
 
   @Test
   public void testConstructor() {
+    StateManager stateManager = new StateManager(new Keyboard());
+
+    assert (stateManager != null);
+  }
+
+  @Test
+  public void testGetCurrentState() {
     StateManager stateManager = new StateManager(new Keyboard());
     State currentState;
     stateManager.setCurrentLevelIndex(-1);

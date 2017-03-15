@@ -1,4 +1,4 @@
-package test.martin;
+package test.martin.junit;
 
 import clarity.graphics.entity.Entity;
 import clarity.graphics.entity.particle.Particle;
