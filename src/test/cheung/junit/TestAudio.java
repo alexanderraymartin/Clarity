@@ -1,4 +1,4 @@
-package test.cheung;
+package test.cheung.junit;
 
 // Liang Cheung
 
