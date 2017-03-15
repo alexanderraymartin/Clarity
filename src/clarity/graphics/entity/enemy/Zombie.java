@@ -8,8 +8,14 @@ public class Zombie extends Enemy {
 
   private double previousX = 0;
 
+  /**
+   * @param mobId The mobID.
+   */
   public Zombie(int mobId) {
     super(mobId);
+    setSpeedValues(0.1, 1.75, 0.1, 0.15, 4.0, -10.0, 0.1);
+    setSpriteValues(SpriteSheet.ZOMBIE, 20, 30, 100, 100);
+    setAttackDamage(30);
   }
 
   @Override
@@ -34,70 +40,5 @@ public class Zombie extends Enemy {
 
       previousX = xcoord;
     }
-  }
-
-  @Override
-  protected void defineAttackDamage() {
-    attackDamage = 30;
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.ZOMBIE;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 20;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 30;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 0.1;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 1.75;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 0.1;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0.15;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 4.0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = -10.0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0.1;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
   }
 }

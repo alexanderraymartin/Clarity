@@ -98,16 +98,14 @@ public class Map {
       numOfRows = Integer.parseInt(reader.readLine());
       initMap(numOfCols, numOfRows);
 
-      String line = "";
+      String line;
       int row = 0;
-      while (!line.equals(null)) {
-        line = reader.readLine();
-        if (line == null || line.isEmpty()) {
-          break;
-        }
+
+      while ((line = reader.readLine()) != null && !line.isEmpty()) {
         hasEntities = loadMapHelper(row, line, hasEntities);
         row++;
       }
+
       reader.close();
     } catch (Exception exception) {
       GameLogger.getLogger().log(java.util.logging.Level.FINE, GameLogger.EXCEPTION, exception);

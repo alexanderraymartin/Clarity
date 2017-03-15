@@ -10,8 +10,14 @@ public class Saiyan extends Enemy {
 
   private int counter = 0;
 
+  /**
+   * @param mobId The mobID.
+   */
   public Saiyan(int mobId) {
     super(mobId);
+    setSpeedValues(0.2, 1.5, 0.4, 0.15, 4.0, -6.0, 0.5);
+    setSpriteValues(SpriteSheet.SAIYAN, 15, 30, 100, 100);
+    setAttackDamage(100);
   }
 
   @Override
@@ -43,70 +49,4 @@ public class Saiyan extends Enemy {
     }
 
   }
-
-  @Override
-  protected void defineAttackDamage() {
-    attackDamage = 100;
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.SAIYAN;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 15;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 30;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 0.2;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 1.5;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 0.4;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0.15;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 4.0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = -6.0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0.5;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
-  }
-
 }

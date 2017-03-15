@@ -16,6 +16,9 @@ public class Bone extends Projectile {
    */
   public Bone(Entity source, int mobId) {
     super(source, mobId);
+    setSpeedValues(1.0, 2.5, 5.0, 0.1, 4.0, -6.0, 0.5);
+    setSpriteValues(SpriteSheet.BONE, 15, 15, 100, 100);
+    setDamage(20);
     dy = -4;
   }
 
@@ -23,70 +26,4 @@ public class Bone extends Projectile {
   protected void createParticleSpawner() {
     new ParticleSpawner((int) xcoord, (int) ycoord, 5000, 2, 10, new Color[] {Color.WHITE});
   }
-
-  @Override
-  protected void defineDamage() {
-    damage = 20;
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.BONE;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 15;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 15;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 1;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 2.5;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 5;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0.10;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 4.0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = -6.0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0.5;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
-  }
-
 }

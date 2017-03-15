@@ -3,8 +3,8 @@ package clarity.graphics.entity;
 import clarity.graphics.entity.particle.ParticleSpawner;
 import clarity.graphics.entity.projectile.Fireball;
 import clarity.state.Level;
+import clarity.state.StateManager;
 import clarity.utilities.Timer;
-import clarity.utilities.input.Keyboard;
 import clarity.utilities.input.Mouse;
 
 import java.awt.Color;
@@ -21,13 +21,19 @@ public class Player extends Entity {
    */
   public static final Timer TEMP_IMMUNITY_TIMER = new Timer();
 
+  private StateManager manager;
+
   /**
    * Player constructor.
    */
-  public Player() {
+  public Player(StateManager manager) {
     super();
+    this.manager = manager;
     facingRight = true;
     setPlayerControlled(true);
+    setSpeedValues(0.3, 1.75, 0.4, 0.18, 4.0, -6.0, 0.5);
+    setSpriteValues(SpriteSheet.PLAYER, 18, 30, 100, 100);
+
   }
 
   /**
@@ -89,22 +95,22 @@ public class Player extends Entity {
   }
 
   private void movePlayer() {
-    if (Keyboard.leftPressed() && !Keyboard.rightPressed()) {
+    if (manager.getKeyboard().leftPressed() && !manager.getKeyboard().rightPressed()) {
       setLeft(true);
     } else {
       setLeft(false);
     }
-    if (Keyboard.rightPressed() && !Keyboard.leftPressed()) {
+    if (manager.getKeyboard().rightPressed() && !manager.getKeyboard().leftPressed()) {
       setRight(true);
     } else {
       setRight(false);
     }
-    if (Keyboard.upPressed()) {
+    if (manager.getKeyboard().upPressed()) {
       setJumping(true);
     } else {
       setJumping(false);
     }
-    if (Keyboard.downPressed()) {
+    if (manager.getKeyboard().downPressed()) {
       setDown(true);
     } else {
       setDown(false);
@@ -117,73 +123,6 @@ public class Player extends Entity {
       setEnergy(getEnergy() - Fireball.ENERGY_COST);
       new Fireball();
     }
-  }
-
-  /**
-   * @param boost The amount of health gained.
-   */
-  public void gainHealth(int boost) {
-    currentHealth += boost;
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    spriteSheet = SpriteSheet.PLAYER;
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    collisionWidth = 18;
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    collisionHeight = 30;
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    moveSpeed = 0.3;
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    maxSpeed = 1.75;
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    stopSpeed = 0.4;
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    fallSpeed = 0.18;
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    maxFallSpeed = 4.0;
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    jumpStart = -6.0;
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    stopJumpSpeed = 0.5;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    currentHealth = maxHealth = 100;
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    currentEnergy = maxEnergy = 100;
   }
 
 }

@@ -3,6 +3,7 @@ package test.loop;
 import static org.junit.Assert.assertEquals;
 
 import clarity.state.StateManager;
+import clarity.utilities.input.Keyboard;
 
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class StateManagerTest {
     actual.add("level4.level");
     actual.add("level5.level");
     actual.add("level6.level");
-    StateManager statemanager = new StateManager();
+    StateManager statemanager = new StateManager(new Keyboard());
     assertEquals(actual, statemanager.getLevels());
   }
 

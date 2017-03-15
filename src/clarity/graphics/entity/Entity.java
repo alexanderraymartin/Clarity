@@ -110,13 +110,6 @@ public abstract class Entity {
     this.isAttacking = false;
     this.setPlayerControlled(false);
     this.movementTimer = new Timer();
-    init();
-    if (spriteSheet != null) {
-      spriteWidth = spriteSheet.getWidth();
-      spriteHeight = spriteSheet.getHeight();
-      sprites = spriteSheet.getSprites();
-      animation.setFrames(sprites.get(currentAction));
-    }
     if (this instanceof Projectile) {
       State.getProjectiles().add((Projectile) this);
     } else if (this instanceof Particle) {
@@ -130,44 +123,45 @@ public abstract class Entity {
     this(MobId.DUMMY);
   }
 
-  private void init() {
-    defineSpriteSheet();
-    defineCollisionWidth();
-    defineCollisionHeight();
-    defineMoveSpeed();
-    defineMaxSpeed();
-    defineStopSpeed();
-    defineFallSpeed();
-    defineMaxFallSpeed();
-    defineJumpStart();
-    defineStopJumpSpeed();
-    defineCurrentAndMaxHealth();
-    defineCurrentAndMaxEnergy();
+  /**
+   * @param moveSpeed Move speed of entity.
+   * @param maxSpeed Max speed of entity.
+   * @param stopSpeed Stop speed of entity.
+   * @param fallSpeed Fall speed of entity.
+   * @param maxFallSpeed Max fall speed of entity.
+   * @param jumpStart Jump start of entity.
+   * @param stopJumpSpeed Stop jump speed of entity.
+   */
+  protected void setSpeedValues(double moveSpeed, double maxSpeed, double stopSpeed,
+      double fallSpeed, double maxFallSpeed, double jumpStart, double stopJumpSpeed) {
+    this.moveSpeed = moveSpeed;
+    this.maxSpeed = maxSpeed;
+    this.stopSpeed = stopSpeed;
+    this.fallSpeed = fallSpeed;
+    this.maxFallSpeed = maxFallSpeed;
+    this.jumpStart = jumpStart;
+    this.stopJumpSpeed = stopJumpSpeed;
   }
 
-  protected abstract void defineSpriteSheet();
-
-  protected abstract void defineCollisionWidth();
-
-  protected abstract void defineCollisionHeight();
-
-  protected abstract void defineMoveSpeed();
-
-  protected abstract void defineMaxSpeed();
-
-  protected abstract void defineStopSpeed();
-
-  protected abstract void defineFallSpeed();
-
-  protected abstract void defineMaxFallSpeed();
-
-  protected abstract void defineJumpStart();
-
-  protected abstract void defineStopJumpSpeed();
-
-  protected abstract void defineCurrentAndMaxHealth();
-
-  protected abstract void defineCurrentAndMaxEnergy();
+  /**
+   * @param spriteSheet Sprite sheet of entity.
+   * @param collisionWidth Collision width of entity.
+   * @param collisionHeight Collision height of entity.
+   * @param maxHealth Max health of entity.
+   * @param maxEnergy Max energy of entity.
+   */
+  protected void setSpriteValues(SpriteSheet spriteSheet, int collisionWidth, int collisionHeight,
+      double maxHealth, double maxEnergy) {
+    this.spriteSheet = spriteSheet;
+    this.collisionWidth = collisionWidth;
+    this.collisionHeight = collisionHeight;
+    this.currentHealth = this.maxHealth = maxHealth;
+    this.currentEnergy = this.maxEnergy = maxEnergy;
+    spriteWidth = spriteSheet.getWidth();
+    spriteHeight = spriteSheet.getHeight();
+    sprites = spriteSheet.getSprites();
+    animation.setFrames(sprites.get(currentAction));
+  }
 
   /**
    * @param entity The entity to check for collision.

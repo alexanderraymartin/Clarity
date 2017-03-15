@@ -6,93 +6,93 @@ import java.awt.event.KeyListener;
 public class Keyboard implements KeyListener {
 
   private static final int NUM_KEYS = 120;
-  private static boolean[] keys = new boolean[NUM_KEYS];
-
-  private static boolean up;
-  private static boolean down;
-  private static boolean left;
-  private static boolean right;
-  private static boolean enter;
-  private static boolean spaceBar;
-  private static boolean escape;
-  private static boolean rKey;
-  private static boolean qKey;
-  private static boolean sKey;
+  private final boolean[] keys = new boolean[NUM_KEYS];
+  
+  private boolean up;
+  private boolean down;
+  private boolean left;
+  private boolean right;
+  private boolean enter;
+  private boolean spaceBar;
+  private boolean escape;
+  private boolean rkey;
+  private boolean qkey;
+  private boolean skey;
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean upPressed() {
+  public boolean upPressed() {
     return up;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean downPressed() {
+  public boolean downPressed() {
     return down;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean leftPressed() {
+  public boolean leftPressed() {
     return left;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean rightPressed() {
+  public boolean rightPressed() {
     return right;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean enterPressed() {
+  public boolean enterPressed() {
     return enter;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean spacePressed() {
+  public boolean spacePressed() {
     return spaceBar;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean escapePressed() {
+  public boolean escapePressed() {
     return escape;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean rpressed() {
-    return rKey;
+  public boolean rpressed() {
+    return rkey;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean qpressed() {
-    return qKey;
+  public boolean qpressed() {
+    return qkey;
   }
 
   /**
    * @return True if key is pressed.
    */
-  public static boolean spressed() {
-    return sKey;
+  public boolean spressed() {
+    return skey;
   }
 
   /**
    * Updates key values.
    */
-  public static synchronized void update() {
+  public void update() {
     up = keys[KeyEvent.VK_UP] || keys[KeyEvent.VK_W];
     left = keys[KeyEvent.VK_LEFT] || keys[KeyEvent.VK_A];
     down = keys[KeyEvent.VK_DOWN] || keys[KeyEvent.VK_S];
@@ -100,9 +100,9 @@ public class Keyboard implements KeyListener {
     enter = keys[KeyEvent.VK_ENTER];
     spaceBar = keys[KeyEvent.VK_SPACE];
     escape = keys[KeyEvent.VK_ESCAPE];
-    rKey = keys[KeyEvent.VK_R];
-    qKey = keys[KeyEvent.VK_Q];
-    sKey = keys[KeyEvent.VK_S];
+    rkey = keys[KeyEvent.VK_R];
+    qkey = keys[KeyEvent.VK_Q];
+    skey = keys[KeyEvent.VK_S];
   }
 
   /**
@@ -136,6 +136,6 @@ public class Keyboard implements KeyListener {
    */
   @Override
   public void keyTyped(KeyEvent event) {
-    //required comment for SonarQube empty function code smell
+    // required comment for SonarQube empty function code smell
   }
 }

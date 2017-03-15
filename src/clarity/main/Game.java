@@ -96,7 +96,7 @@ public class Game extends JPanel {
     int frames = 0;
     int updates = 0;
     requestFocus();
-    manager = new StateManager();
+    manager = new StateManager(keyboard);
 
     while (isRunning) {
       if (gameLoopTimer.hasElapsed(1000.0 / 60.0)) { // update 60 times per second
@@ -116,7 +116,7 @@ public class Game extends JPanel {
   }
 
   private void update() {
-    Keyboard.update();
+    keyboard.update();
     manager.update();
   }
 

@@ -31,7 +31,7 @@ public class Particle extends Entity {
     this.ycoord = ycoord;
     this.size = size;
     this.color = color;
-    this.fallSpeed = 0.075;
+    fallSpeed = 0.075;
     maxFallSpeed = 4.0;
     collisionWidth = collisionHeight = size;
     this.life = life + (random.nextInt(1000));
@@ -74,66 +74,6 @@ public class Particle extends Entity {
     if (onScreen()) {
       graphics.fill(new Rectangle((int) (xcoord + xmap), (int) (ycoord + ymap), size, size));
     }
-  }
-
-  @Override
-  protected void defineSpriteSheet() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineCollisionWidth() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineCollisionHeight() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineMoveSpeed() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineMaxSpeed() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineStopSpeed() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineFallSpeed() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineMaxFallSpeed() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineJumpStart() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineStopJumpSpeed() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineCurrentAndMaxHealth() {
-    // SonarQube
-  }
-
-  @Override
-  protected void defineCurrentAndMaxEnergy() {
-    // SonarQube
   }
 
 }
