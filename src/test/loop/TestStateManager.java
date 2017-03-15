@@ -9,10 +9,10 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class StateManagerTest {
+public class TestStateManager {
 
   @Test
-  public void testgetLevels() {
+  public void testGetLevels() {
     ArrayList<String> actual = new ArrayList<String>();
     actual.add("level1.level");
     actual.add("level2.level");

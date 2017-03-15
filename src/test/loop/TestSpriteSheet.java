@@ -6,7 +6,7 @@ import clarity.graphics.entity.SpriteSheet;
 
 import org.junit.Test;
 
-public class SpriteSheetTest {
+public class TestSpriteSheet {
 
   @Test
   public void testNeverExecute() {

@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ParticleSpawnerTest.class, SpriteSheetTest.class, StateManagerTest.class,
-    TileSetTest.class})
+@SuiteClasses({TestParticleSpawner.class, TestSpriteSheet.class, TestStateManager.class,
+    TestTileSet.class})
 public class AllTests {
 
 }

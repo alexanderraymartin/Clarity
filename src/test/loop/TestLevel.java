@@ -6,12 +6,8 @@ import clarity.utilities.input.Keyboard;
 
 import org.junit.Test;
 
-import java.awt.Graphics2D;
+public class TestLevel {
 
-public class LevelTests {
-
-  private transient Graphics2D graphics;
-  
   @Test
   public void testLevelupdate() {
     StateManager statemanager = new StateManager(new Keyboard());

@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.awt.Color;
 
-public class ParticleSpawnerTest {
+public class TestParticleSpawner {
 
   // There is no upper limites
   @Test

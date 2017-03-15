@@ -7,7 +7,7 @@ import clarity.graphics.tile.TileSet;
 
 import org.junit.Test;
 
-public class TileSetTest {
+public class TestTileSet {
   @Test
   public void testLoadTiles() {
     TileSet ts = new TileSet();
