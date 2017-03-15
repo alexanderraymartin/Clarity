@@ -5,14 +5,14 @@ import clarity.graphics.entity.enemy.Ghost;
 
 import org.junit.Test;
 
-//Jason Mar
+// Jason Mar
 
 public class TestMobIdToGhost {
-  
+
   @Test
-  public void TestMobtoGhost() {
+  public void testMobToGhost() {
     Ghost ghost = (Ghost) MobId.getEntity(MobId.GHOST);
-    assert(ghost instanceof Ghost);
+    assert (ghost instanceof Ghost);
   }
 
 }

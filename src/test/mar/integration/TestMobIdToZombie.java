@@ -8,11 +8,11 @@ import org.junit.Test;
 // Jason Mar
 
 public class TestMobIdToZombie {
-  
+
   @Test
-  public void TestMobtoZombie() {
+  public void testMobToZombie() {
     Zombie zombie = (Zombie) MobId.getEntity(MobId.ZOMBIE);
-    assert(zombie instanceof Zombie);
+    assert (zombie instanceof Zombie);
   }
 }
 
