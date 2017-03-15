@@ -1,5 +1,6 @@
 package test.bolt;
 
+//Dustin Bolt
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
