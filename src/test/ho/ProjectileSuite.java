@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({TestMap.class})
-public class SaveSuite {
+@SuiteClasses({TestBone.class})
+public class ProjectileSuite {
+
 }
