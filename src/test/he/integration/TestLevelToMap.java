@@ -11,6 +11,12 @@ import org.junit.Test;
 
 import java.awt.Graphics2D;
 
+/**
+ * 
+ * Test written by Wenmin He.
+ *
+ */
+
 public class TestLevelToMap {
 
   private transient Graphics2D graphics;
