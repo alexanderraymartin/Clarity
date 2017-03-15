@@ -1,5 +1,7 @@
 package test.bolt;
 
+//Dustin Bolt
+
 import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.entity.SpriteSheet;
