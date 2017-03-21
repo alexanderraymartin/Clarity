@@ -86,6 +86,7 @@ public class Game extends JPanel {
       frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // full screen mode
     }
     frame.setVisible(true);
+    frame.setFocusable(true);
     isRunning = true;
     run();
   }
