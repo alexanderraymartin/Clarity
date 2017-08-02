@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.Map;
 
-import org.junit.Test;
-
 import java.awt.Graphics2D;
+
+import org.junit.Test;
 
 public class TestMap {
 

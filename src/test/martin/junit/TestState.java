@@ -5,9 +5,9 @@ import clarity.graphics.entity.particle.Particle;
 import clarity.graphics.entity.projectile.Projectile;
 import clarity.state.State;
 
-import org.junit.Test;
-
 import java.util.List;
+
+import org.junit.Test;
 
 // Alex Martin
 

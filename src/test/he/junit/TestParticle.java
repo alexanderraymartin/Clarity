@@ -4,9 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.entity.particle.Particle;
 
+import java.awt.Color;
+
 import org.junit.Test;
 
-import java.awt.Color;
 
 /**
  * Test written by Wenmin He.

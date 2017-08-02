@@ -2,9 +2,9 @@ package test.he.junit;
 
 import clarity.graphics.entity.particle.ParticleSpawner;
 
-import org.junit.Test;
-
 import java.awt.Color;
+
+import org.junit.Test;
 
 /**
  * Test written by Wenmin He.

@@ -1,6 +1,5 @@
 package test.mar.junit;
 
-
 import clarity.graphics.entity.MobId;
 import clarity.graphics.entity.enemy.Ghost;
 

@@ -7,9 +7,9 @@ import clarity.state.Level;
 import clarity.state.StateManager;
 import clarity.utilities.input.Keyboard;
 
-import org.junit.Test;
-
 import java.awt.Graphics2D;
+
+import org.junit.Test;
 
 /**
  * Test written by Wenmin He.

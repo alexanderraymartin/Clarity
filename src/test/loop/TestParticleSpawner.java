@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import clarity.graphics.entity.particle.ParticleSpawner;
 
-import org.junit.Test;
-
 import java.awt.Color;
+
+import org.junit.Test;
 
 public class TestParticleSpawner {
 

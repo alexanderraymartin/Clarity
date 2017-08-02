@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import clarity.state.StateManager;
 import clarity.utilities.input.Keyboard;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
+
+import org.junit.Test;
 
 public class TestStateManager {
 
